@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class FireSlash : Skill
 {
-    public override IEnumerator Use(Tactical tactic)
+    public override IEnumerator Use(AbilityUsingParams args)
     {
-        yield return base.Use(tactic);
+        yield return base.Use(args);
         
-        var positions = tactic.priorityPositions;
+        var positions = args.tactic.priorityPositions;
         var opponentFieldSlots = GetOpponentFieldSlots();
         var opponentFieldSlot = opponentFieldSlots[positions[0]];
         var opponentImage = opponentFieldSlot.GetComponent<Image>();

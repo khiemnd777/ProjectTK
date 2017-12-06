@@ -8,8 +8,8 @@ public class Skill : Ability
     public Color markColor;
     public Color selectColor;
     
-    public override IEnumerator Use(Tactical tactic) 
+    public override IEnumerator Use(AbilityUsingParams args) 
     {
-        yield return base.Use(tactic);
+        yield return base.Use(args);
     }
 }

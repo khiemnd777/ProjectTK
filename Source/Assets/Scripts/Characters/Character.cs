@@ -69,19 +69,16 @@ public class Character : MonoBehaviour
         abilities.Clear();
     }
 
-    public void HandleAbilities()
+    public IEnumerator HandleAbilities(MarathonRunner marathonRunner)
     {
-        StartCoroutine(OnAbilityHandling(this));
-    }
-
-    IEnumerator OnAbilityHandling(Character owner)
-    {
+        var owner = this;
         var validAbilities = owner.abilities
             .OrderBy(x => x.displayOrder)
             .Where(x =>
                 x.tactics
                     .OrderBy(x1 => x1.displayOrder)
-                    .Any(x1 => x1.Define()));
+                    .Any(x1 => x1.Define()))
+            .ToArray();
 
         var isNonDefaultUsed = false;
         var singleAbility = validAbilities.FirstOrDefault(x => !x.isDefault);
@@ -89,7 +86,11 @@ public class Character : MonoBehaviour
         {
             var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
             var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
-            yield return StartCoroutine(singleAbility.Use(singleTactic));
+            yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
+            {
+                tactic = singleTactic,
+                marathonRunner = marathonRunner
+            }));
             singleAbility.StopCoroutine("Use");
             isNonDefaultUsed = true;
         }
@@ -101,15 +102,19 @@ public class Character : MonoBehaviour
             {
                 var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
                 var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
-                yield return StartCoroutine(singleAbility.Use(singleTactic));
+                yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
+                {
+                    tactic = singleTactic,
+                    marathonRunner = marathonRunner
+                }));
                 singleAbility.StopCoroutine("Use");
             }
         }
 
-        owner.isTurn = false;
-
         if (owner.onAbilityHandledCallback != null)
             owner.onAbilityHandledCallback.Invoke(owner);
+
+        marathonRunner.StartSingleRunner(owner);
 
         validAbilities = null;
         singleAbility = null;

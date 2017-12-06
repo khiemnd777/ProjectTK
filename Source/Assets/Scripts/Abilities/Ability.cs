@@ -15,9 +15,9 @@ public class Ability : MonoBehaviour
     public bool isUsing;
     public List<Tactical> tactics = new List<Tactical>();
 
-    public virtual IEnumerator Use(Tactical tactic)
+    public virtual IEnumerator Use(AbilityUsingParams args)
     {
-        Debug.Log(character.name + " is using " + name + " with tactic " + tactic.description);
+        Debug.Log(character.name + " is using " + name + " with tactic " + args.tactic.description);
         yield return null;
     }
 
@@ -77,4 +77,10 @@ public class Ability : MonoBehaviour
         fieldSlots = null;
         return single;
     }
+}
+
+public struct AbilityUsingParams
+{
+    public Tactical tactic { get; set; }
+    public MarathonRunner marathonRunner { get; set; }
 }

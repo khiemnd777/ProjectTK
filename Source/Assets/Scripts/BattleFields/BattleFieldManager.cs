@@ -50,9 +50,12 @@ public class BattleFieldManager : MonoBehaviour
     [System.NonSerialized]
     public FieldSlot[] opponentFieldSlots;
 
+    Queue<Character> queueHandledAbilities = new Queue<Character>();
+
     void Start()
     {
         CreateNewBattle();
+        StartCoroutine(DequeueHandledAbilities());
     }
 
     void Update()
@@ -74,14 +77,28 @@ public class BattleFieldManager : MonoBehaviour
         if (singleCharacterInTurn != null)
         {
             Debug.Log(singleCharacterInTurn.name + " has been turned!");
-            marathonRunner.StopRunner();
-            singleCharacterInTurn.HandleAbilities();
+            //marathonRunner.StopRunner();
+            singleCharacterInTurn.isTurn = false;
+            marathonRunner.StopSingleRunner(singleCharacterInTurn);
+            queueHandledAbilities.Enqueue(singleCharacterInTurn);
+            // singleCharacterInTurn.HandleAbilities(marathonRunner);
+        }
+    }
+
+    IEnumerator DequeueHandledAbilities(){
+        while(!gameObject.IsNull()){
+            if(queueHandledAbilities.Count == 0){
+                yield return null;
+                continue;
+            }
+            var character = queueHandledAbilities.Dequeue();
+            yield return StartCoroutine(character.HandleAbilities(marathonRunner));
         }
     }
 
     public void CreateNewBattle()
     {
-        // Add skill for player's characters (It's a hijack)
+        // Add skill for player's characters (It's a bit hijack)
         foreach (var character in characters)
         {
             character.ClearAllLearnedSkills();

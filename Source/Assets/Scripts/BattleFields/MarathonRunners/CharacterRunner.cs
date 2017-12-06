@@ -10,7 +10,7 @@ public class CharacterRunner : MonoBehaviour
     public float deltaSpeed = .5f;
     [Range(1f, 2f)]
     public float deltaScale = 1.25f;
-    [System.NonSerialized]
+    [Space]
     public Character character;
 
     // invoked if the runner has reached
@@ -53,6 +53,12 @@ public class CharacterRunner : MonoBehaviour
 
     void Run()
     {
+        if(character.isDeath){
+            gameObject.SetActive(false);
+            ResetRunningPosition();
+            return;
+        }
+        gameObject.SetActive(true);
         // run if non-stop
         if (isStopped)
             return;

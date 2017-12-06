@@ -59,6 +59,22 @@ public class MarathonRunner : MonoBehaviour
         isStopped = true;
     }
 
+    public void StartSingleRunner(Character character){
+        var runner = GetCharacterRunner(character);
+        if(runner.IsNull())
+            return;
+        runner.StartRunning();
+        runner = null;
+    }
+
+    public void StopSingleRunner(Character character){
+        var runner = GetCharacterRunner(character);
+        if(runner.IsNull())
+            return;
+        runner.StopRunning();
+        runner = null;;
+    }
+
     public CharacterRunner CreateRunner(Character character, Transform parent)
     {
         var runner = Instantiate<CharacterRunner>(characterRunnerPrefab, parent.position, Quaternion.identity, parent);
@@ -83,6 +99,11 @@ public class MarathonRunner : MonoBehaviour
         characterRunners.Add(characterRunner);
     }
 
+    public CharacterRunner GetCharacterRunner(Character character){
+        var runner = characterRunners.FirstOrDefault(x => x.character == character);
+        return runner;
+    }
+
     void OnSingleRunnerReachedCallback(CharacterRunner runner)
     {
         // Debug.Log(runner.character.name + " has reached!");
@@ -91,7 +112,8 @@ public class MarathonRunner : MonoBehaviour
     void OnAbilityHandledCallback(Character character)
     {
         // Start runner after tactic process of character is finished
-        StartRunner();
+        // StartRunner();
+
     }
 
     void OrderCharacterRunners(List<CharacterRunner> characterRunners)
