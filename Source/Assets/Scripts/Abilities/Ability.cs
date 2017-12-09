@@ -12,6 +12,7 @@ public class Ability : MonoBehaviour
     public int displayOrder;
     public Tactical defaultTacticPrefab;
     public Character character;
+    public float deltaWaitingTime = .25f;
     public bool isUsing;
     public List<Tactical> tactics = new List<Tactical>();
 

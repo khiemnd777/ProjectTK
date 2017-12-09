@@ -86,6 +86,8 @@ public class Character : MonoBehaviour
         {
             var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
             var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
+            var characterRunner = marathonRunner.GetCharacterRunner(this);
+            characterRunner.RunOnActionRoad(singleAbility.deltaWaitingTime);
             yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
             {
                 tactic = singleTactic,
@@ -93,6 +95,7 @@ public class Character : MonoBehaviour
             }));
             singleAbility.StopCoroutine("Use");
             isNonDefaultUsed = true;
+            characterRunner = null;
         }
 
         if (!isNonDefaultUsed)
@@ -102,12 +105,15 @@ public class Character : MonoBehaviour
             {
                 var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
                 var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
+                var characterRunner = marathonRunner.GetCharacterRunner(this);
+                characterRunner.RunOnActionRoad(singleAbility.deltaWaitingTime);
                 yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
                 {
                     tactic = singleTactic,
                     marathonRunner = marathonRunner
                 }));
                 singleAbility.StopCoroutine("Use");
+                characterRunner = null;
             }
         }
 

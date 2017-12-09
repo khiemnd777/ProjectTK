@@ -35,21 +35,25 @@ public class CharacterRunner : MonoBehaviour
     RectTransform reachedRoadRect;
     RectTransform actionRoadRect;
 
-    float startTime;
     bool isStopped = true;
-    float percent;
+    bool isRunningOnActionRoad = false;
+    float runOnReachedRoadPercent;
+
     #endregion
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        marathonRunner = GetComponentInParent<MarathonRunner>();
         reachedRoadRect = reachedRoad.GetComponent<RectTransform>();
         actionRoadRect = actionRoad.GetComponent<RectTransform>();
     }
 
     void Update()
     {
-        Run();
+        if(marathonRunner.isStopped)
+            return;
+        RunOnReachedRoad();
     }
 
     public void ResetRunningPosition()
@@ -67,16 +71,15 @@ public class CharacterRunner : MonoBehaviour
         isStopped = false;
     }
 
-    void Run()
+    void RunOnReachedRoad()
     {
-        if(character.isDeath){
-            gameObject.SetActive(false);
-            ResetRunningPosition();
+        if(IsCharacterDied())
             return;
-        }
-        gameObject.SetActive(true);
+
         // run if non-stop
         if (isStopped)
+            return;
+        if (isRunningOnActionRoad)
             return;
         // check character is in turn. True if it reachs
         character.isTurn = false;
@@ -85,13 +88,13 @@ public class CharacterRunner : MonoBehaviour
         var journeyLength = reachedRoadRect.GetWidth();
         var targetAnchoredPosition = new Vector2(journeyLength, 0f);
 
-        percent += character.dexterity * deltaSpeed / 1000f;
+        runOnReachedRoadPercent += (character.dexterity / 60f) * Time.deltaTime;
 
-        rectTransform.anchoredPosition = Vector2.Lerp(Vector2.zero, targetAnchoredPosition, percent);
+        rectTransform.anchoredPosition = Vector2.Lerp(Vector2.zero, targetAnchoredPosition, runOnReachedRoadPercent);
 
-        if (percent >= 1f)
+        if (runOnReachedRoadPercent >= 1f)
         {
-            percent = 0f;
+            runOnReachedRoadPercent = 0f;
             character.isTurn = true;
             transform.localScale = Vector3.one * deltaScale;
             if (onRunnerReachedCallback != null)
@@ -99,5 +102,39 @@ public class CharacterRunner : MonoBehaviour
                 onRunnerReachedCallback.Invoke(this);
             }
         }
+    }
+
+    public void RunOnActionRoad(float executedAbilityTime){
+        if(IsCharacterDied())
+            return;
+        isRunningOnActionRoad = true;
+        StartCoroutine(RunningOnActionRoad(executedAbilityTime));
+    }
+
+    IEnumerator RunningOnActionRoad(float executedAbilityTime){
+        var reachedRoadLength = reachedRoadRect.GetWidth();
+        var journeyLength = reachedRoadLength + actionRoadRect.GetWidth();
+        var startPosition = new Vector2(reachedRoadLength, 0f);
+        var endPosition = new Vector2(journeyLength, 0f);
+        Debug.Log(character.name + ": " + executedAbilityTime);
+        var step = executedAbilityTime * Time.deltaTime;
+        var percent = 0f;
+        while(!IsCharacterDied() && percent <= 1f){
+            percent += Time.deltaTime / executedAbilityTime;
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, percent);
+            yield return null;
+        }
+        isRunningOnActionRoad = false;
+        StopCoroutine("RunningOnActionRoad");
+    }
+
+    bool IsCharacterDied(){
+        if(gameObject.activeSelf && character.isDeath){
+            gameObject.SetActive(false);
+            ResetRunningPosition();
+            return true;
+        }
+        gameObject.SetActive(true);
+        return false;
     }
 }
