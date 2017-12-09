@@ -116,7 +116,7 @@ public class CharacterRunner : MonoBehaviour
         var journeyLength = reachedRoadLength + actionRoadRect.GetWidth();
         var startPosition = new Vector2(reachedRoadLength, 0f);
         var endPosition = new Vector2(journeyLength, 0f);
-        Debug.Log(character.name + ": " + executedAbilityTime);
+        Debug.Log(character.name + " executes skill in " + executedAbilityTime + "s");
         var step = executedAbilityTime * Time.deltaTime;
         var percent = 0f;
         while(!IsCharacterDied() && percent <= 1f){
