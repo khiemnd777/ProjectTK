@@ -7,6 +7,7 @@ public class Skill : Ability
     public Sprite icon;
     public Color markColor;
     public Color selectColor;
+    public float deltaWaitingTime = .25f;
     
     public override IEnumerator Use(AbilityUsingParams args) 
     {

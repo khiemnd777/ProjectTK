@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterRunner : MonoBehaviour
 {
+    #region Unity fields
     public Image icon;
     [Range(0f, 1f)]
     public float deltaSpeed = .5f;
@@ -12,23 +13,38 @@ public class CharacterRunner : MonoBehaviour
     public float deltaScale = 1.25f;
     [Space]
     public Character character;
+    #endregion
 
+    #region Public non-serialized fields
+    [System.NonSerialized]
+    public Transform reachedRoad;
+    [System.NonSerialized]
+    public Transform actionRoad;
+    #endregion
+
+    #region Events
     // invoked if the runner has reached
     public delegate void OnRunnerReached(CharacterRunner runner);
     public OnRunnerReached onRunnerReachedCallback;
+    #endregion
 
+    #region Private fields
     MarathonRunner marathonRunner;
     RectTransform runnerRectTranform;
     RectTransform rectTransform;
+    RectTransform reachedRoadRect;
+    RectTransform actionRoadRect;
+
     float startTime;
     bool isStopped = true;
     float percent;
+    #endregion
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        marathonRunner = GetComponentInParent<MarathonRunner>();
-        runnerRectTranform = marathonRunner.GetComponent<RectTransform>();
+        reachedRoadRect = reachedRoad.GetComponent<RectTransform>();
+        actionRoadRect = actionRoad.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -66,7 +82,7 @@ public class CharacterRunner : MonoBehaviour
         character.isTurn = false;
         transform.localScale = Vector3.one;
         // Move position towards the end of road
-        var journeyLength = runnerRectTranform.GetWidth();
+        var journeyLength = reachedRoadRect.GetWidth();
         var targetAnchoredPosition = new Vector2(journeyLength, 0f);
 
         percent += character.dexterity * deltaSpeed / 1000f;

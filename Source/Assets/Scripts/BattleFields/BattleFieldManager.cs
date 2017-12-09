@@ -70,19 +70,30 @@ public class BattleFieldManager : MonoBehaviour
 
     void Run()
     {
-        // if character is in a turn
         if (marathonRunner.isStopped)
             return;
-        var singleCharacterInTurn = characters.FirstOrDefault(x => x.isTurn);
-        if (singleCharacterInTurn != null)
-        {
-            Debug.Log(singleCharacterInTurn.name + " has been turned!");
-            //marathonRunner.StopRunner();
-            singleCharacterInTurn.isTurn = false;
-            marathonRunner.StopSingleRunner(singleCharacterInTurn);
-            queueHandledAbilities.Enqueue(singleCharacterInTurn);
-            // singleCharacterInTurn.HandleAbilities(marathonRunner);
-        }
+        // if any characters reached turn
+        // they will be enqueued to handled ability list
+        EnqueueHandledAbilityListWhenCharacterTurned();
+    }
+
+    void EnqueueHandledAbilityListWhenCharacterTurned(){
+        // find any character when turned
+        var singleCharacterInTurn = GetCharacterInTurn();
+        if (singleCharacterInTurn.IsNull())
+            return;
+        Debug.Log(singleCharacterInTurn.name + " has been turned!");
+        marathonRunner.StopSingleRunner(singleCharacterInTurn);
+        queueHandledAbilities.Enqueue(singleCharacterInTurn);
+        singleCharacterInTurn = null;
+    }
+
+    Character GetCharacterInTurn(){
+        var character = characters.FirstOrDefault(x => x.isTurn);
+        if(character.IsNull())
+            return null;
+        character.isTurn = false;
+        return character;
     }
 
     IEnumerator DequeueHandledAbilities(){

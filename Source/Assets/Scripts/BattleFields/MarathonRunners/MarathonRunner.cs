@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class MarathonRunner : MonoBehaviour
 {
+    public Transform reachedRoad;
+    public Transform actionRoad;
     public Transform characterArea;
     public Transform enemyArea;
-
     public CharacterRunner characterRunnerPrefab;
 
     List<CharacterRunner> characterRunners = new List<CharacterRunner>();
@@ -80,8 +81,10 @@ public class MarathonRunner : MonoBehaviour
         var runner = Instantiate<CharacterRunner>(characterRunnerPrefab, parent.position, Quaternion.identity, parent);
         runner.icon.sprite = character.icon;
         runner.character = character;
+        runner.reachedRoad = reachedRoad;
+        runner.actionRoad = actionRoad;
 
-        // register event of reached
+        // register event of reaching
         runner.onRunnerReachedCallback += OnSingleRunnerReachedCallback;
         character.onAbilityHandledCallback += OnAbilityHandledCallback;
 

@@ -20,7 +20,7 @@ public class FireSlash : Skill
         opponentImage.color = markColor;
         ownImage.color = selectColor;
         
-        yield return new WaitForSeconds(.125f);
+        yield return new WaitForSeconds(deltaWaitingTime);
 
         opponentImage.color = Color.white;
         ownImage.color = Color.white;
