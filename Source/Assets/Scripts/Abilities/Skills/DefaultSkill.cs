@@ -19,16 +19,29 @@ public class DefaultSkill : Skill
 
         opponentImage.color = markColor;
         ownImage.color = selectColor;
-        
+
         yield return new WaitForSeconds(deltaWaitingTime);
 
         opponentImage.color = Color.white;
         ownImage.color = Color.white;
-        
+
         opponentImage = null;
         ownImage = null;
         positions = null;
         opponentFieldSlots = null;
         opponentFieldSlot = null;
+    }
+
+    IEnumerator MoveToTarget(Character target, float runningTime)
+    {
+        var percent = 0f;
+        var startPosition = character.transform.position;
+        var endPosition = target.transform.position;
+        while (percent <= 1f)
+        {
+            percent += Time.deltaTime / runningTime;
+            character.transform.position = Mathfx.Sinerp(startPosition, endPosition, percent);
+            yield return null;
+        }
     }
 }
