@@ -112,8 +112,7 @@ public class BattleFieldManager : MonoBehaviour
         // Add skill for player's characters (It's a bit hijack)
         foreach (var character in characters)
         {
-            character.ClearAllLearnedSkills();
-            character.ClearAllTactics();
+            character.Setup();
             foreach (var skill in character.skills)
             {
                 if (skill.IsNull())

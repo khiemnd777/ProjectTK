@@ -18,6 +18,10 @@ public class CharacterField : MonoBehaviour
     void Update()
     {
         Flip();
+    }
+
+    void LateUpdate()
+    {
         BeCoaxial();
     }
 
@@ -72,6 +76,7 @@ public class CharacterField : MonoBehaviour
         if (character.model.IsNull())
             return;
         var eulerAngles = cam.transform.rotation.eulerAngles;
+        // To be coaxial for character model
         character.model.rotation = Quaternion.Euler(eulerAngles);
     }
 }

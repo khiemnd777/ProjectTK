@@ -8,12 +8,16 @@ public class Character : MonoBehaviour
     new public string name = "New Character";
     public float health;
     public float maxHealth;
-    [Header("Stats")]
-    public float dexterity;
     [Space]
     public Transform model;
     [Space]
     public Sprite icon;
+    [Space]
+    [Header("Stats")]
+    public float dexterity;
+    [Space]
+    [Header("Animation")]
+    public RuntimeAnimatorController animatorController;
     [Space]
     public int slot;
     public bool isDeath;
@@ -30,6 +34,17 @@ public class Character : MonoBehaviour
     public void AddSkill(Skill skill)
     {
         skills.Add(skill);
+    }
+
+    public void Setup(){
+        // Clear all list before sets it up
+        ClearAllLearnedSkills();
+        ClearAllTactics();
+        // Assigns animator controller
+        var animator = model.GetComponentInChildren<Animator>();
+        if(!animator.IsNull()){
+            animator.runtimeAnimatorController = animatorController;
+        }
     }
 
     public Skill LearnSkill(Skill skill)
