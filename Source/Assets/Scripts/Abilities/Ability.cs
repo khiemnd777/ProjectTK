@@ -51,6 +51,34 @@ public class Ability : MonoBehaviour
         return ownFieldSlots.ToArray();
     }
 
+    public CharacterField[] GetFields()
+    {
+        var manager = BattleFieldManager.instance;
+        var ownFieldSlots = !character.isEnemy
+            ? manager.playerFields
+            : manager.opponentFields;
+        manager = null;
+        return ownFieldSlots;
+    }
+
+    public CharacterField[] GetOpponentFields()
+    {
+        var manager = BattleFieldManager.instance;
+        var opponentFieldSlots = !character.isEnemy
+            ? manager.opponentFields
+            : manager.playerFields;
+        manager = null;
+        return opponentFieldSlots;
+    }
+
+    public CharacterField GetOwnField()
+    {
+        var fields = GetFields();
+        var single = fields.FirstOrDefault(x => x.character == character);
+        fields = null;
+        return single;
+    }
+
     public FieldSlot[] GetFieldSlots()
     {
         var manager = BattleFieldManager.instance;

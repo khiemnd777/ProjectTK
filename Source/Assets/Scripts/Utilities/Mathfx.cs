@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Visit http://wiki.unity3d.com/index.php?title=Mathfx to view more detail
+
 public sealed class Mathfx
 {
     //Ease in out
