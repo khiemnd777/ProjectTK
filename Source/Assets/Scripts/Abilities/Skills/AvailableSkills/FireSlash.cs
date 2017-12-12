@@ -22,11 +22,17 @@ public class FireSlash : Skill
         opponentImage.color = markColor;
         ownImage.color = selectColor;
 
-        StartCoroutine(MoveToTarget(ownField, opponentField, deltaWaitingTime / 2f));
-        yield return new WaitForSeconds(deltaWaitingTime / 2f);
+        var timeMoveTo = deltaWaitingTime / 4f;
+        var timeBack = deltaWaitingTime - timeMoveTo;
+        var direction = character.isEnemy ? -1 : 1;
+        var ownFieldPosition = ownField.spawner.transform.position;
+        var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(2f,0,0));
+
+        StartCoroutine(MoveToTarget(ownFieldPosition, opponentFieldPosition, timeMoveTo));
+        yield return new WaitForSeconds(timeMoveTo);
         
-        StartCoroutine(MoveToTarget(opponentField, ownField, deltaWaitingTime / 2f));
-        yield return new WaitForSeconds(deltaWaitingTime / 2f);
+        StartCoroutine(MoveToTarget(opponentFieldPosition, ownFieldPosition, timeBack));
+        yield return new WaitForSeconds(timeBack);
 
         opponentImage.color = Color.white;
         ownImage.color = Color.white;
@@ -38,15 +44,13 @@ public class FireSlash : Skill
         opponentFieldSlot = null;
     }
 
-    IEnumerator MoveToTarget(CharacterField start, CharacterField end, float runningTime)
+    IEnumerator MoveToTarget(Vector3 start, Vector3 end, float runningTime)
     {
         var percent = 0f;
-        var startPosition = start.spawner.transform.position;
-        var endPosition = end.spawner.transform.position;
         while (percent <= 1f)
         {
             percent += Time.deltaTime / runningTime;
-            character.model.transform.position = Mathfx.Sinerp(startPosition, endPosition, percent);
+            character.model.transform.position = Mathfx.Sinerp(start, end, percent);
             yield return null;
         }
     }
