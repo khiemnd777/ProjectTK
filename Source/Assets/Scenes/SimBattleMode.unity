@@ -669,6 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 235596517}
   - component: {fileID: 235596518}
+  - component: {fileID: 235596519}
   m_Layer: 0
   m_Name: Zombie Boy 3
   m_TagString: Untagged
@@ -717,6 +718,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &235596519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235596516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1001 &237537105
 Prefab:
   m_ObjectHideFlags: 0
@@ -1224,6 +1242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422058733}
   - component: {fileID: 422058734}
+  - component: {fileID: 422058735}
   m_Layer: 0
   m_Name: Solider 2
   m_TagString: Untagged
@@ -1273,6 +1292,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &422058735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 422058732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1001 &423863183
 Prefab:
   m_ObjectHideFlags: 0
@@ -2151,6 +2187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705982366}
   - component: {fileID: 705982367}
+  - component: {fileID: 705982368}
   m_Layer: 0
   m_Name: Reyner
   m_TagString: Untagged
@@ -2200,6 +2237,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &705982368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705982365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1001 &722263176
 Prefab:
   m_ObjectHideFlags: 0
@@ -2951,6 +3005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1055906617}
   - component: {fileID: 1055906618}
+  - component: {fileID: 1055906619}
   m_Layer: 0
   m_Name: Solider 1
   m_TagString: Untagged
@@ -2999,6 +3054,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &1055906619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1055906616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1001 &1157811647
 Prefab:
   m_ObjectHideFlags: 0
@@ -3558,6 +3630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1375030894}
   - component: {fileID: 1375030895}
+  - component: {fileID: 1375030896}
   m_Layer: 0
   m_Name: Solider 3
   m_TagString: Untagged
@@ -3606,6 +3679,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &1375030896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375030893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1 &1393532197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,6 +4048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1451509094}
   - component: {fileID: 1451509095}
+  - component: {fileID: 1451509096}
   m_Layer: 0
   m_Name: Zombie Boy 1
   m_TagString: Untagged
@@ -4006,6 +4097,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &1451509096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451509093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1 &1475730608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4296,6 +4404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564884476}
   - component: {fileID: 1564884477}
+  - component: {fileID: 1564884478}
   m_Layer: 0
   m_Name: Zombie Boy 2
   m_TagString: Untagged
@@ -4344,6 +4453,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &1564884478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564884475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1 &1566519009
 GameObject:
   m_ObjectHideFlags: 0
@@ -4435,6 +4561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581171628}
   - component: {fileID: 1581171629}
+  - component: {fileID: 1581171630}
   m_Layer: 0
   m_Name: Zombie Boy 4
   m_TagString: Untagged
@@ -4483,6 +4610,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &1581171630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581171627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1 &1583204772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,6 +4942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696455309}
   - component: {fileID: 1696455310}
+  - component: {fileID: 1696455311}
   m_Layer: 0
   m_Name: Zombie Boy 5
   m_TagString: Untagged
@@ -4846,6 +4991,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &1696455311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696455308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!1 &1732718414
 GameObject:
   m_ObjectHideFlags: 0
@@ -5593,6 +5755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2003430897}
   - component: {fileID: 2003430898}
+  - component: {fileID: 2003430899}
   m_Layer: 0
   m_Name: Solider 4
   m_TagString: Untagged
@@ -5641,6 +5804,23 @@ MonoBehaviour:
   learnedSkills: []
   tactics: []
   abilities: []
+--- !u!114 &2003430899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003430896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b2cac63e4f64a5e8d1a483a6c71c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!4 &2028088558 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4566694704506628, guid: 210b359792a8a4e74a8bfb76cbc169a4,

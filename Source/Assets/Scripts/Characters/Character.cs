@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterStats))]
 public class Character : MonoBehaviour
 {
     new public string name = "New Character";
@@ -23,26 +24,36 @@ public class Character : MonoBehaviour
     public bool isDeath;
     public bool isEnemy;
     public bool isTurn;
+    [Space]
     public List<Skill> skills = new List<Skill>();
     public List<Skill> learnedSkills = new List<Skill>();
     public List<Tactical> tactics = new List<Tactical>();
     public List<Ability> abilities = new List<Ability>();
+    [System.NonSerialized]
+    public CharacterStats stats;
 
     public delegate void OnAbilityHandled(Character character);
     public OnAbilityHandled onAbilityHandledCallback;
+
+    void Start()
+    {
+        stats = GetComponent<CharacterStats>();
+    }
 
     public void AddSkill(Skill skill)
     {
         skills.Add(skill);
     }
 
-    public void Setup(){
+    public void Setup()
+    {
         // Clear all list before sets it up
         ClearAllLearnedSkills();
         ClearAllTactics();
         // Assigns animator controller
         var animator = model.GetComponentInChildren<Animator>();
-        if(!animator.IsNull()){
+        if (!animator.IsNull())
+        {
             animator.runtimeAnimatorController = animatorController;
         }
     }
@@ -99,18 +110,9 @@ public class Character : MonoBehaviour
         var singleAbility = validAbilities.FirstOrDefault(x => !x.isDefault);
         if (!singleAbility.IsNull())
         {
-            var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
-            var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
-            var characterRunner = marathonRunner.GetCharacterRunner(this);
-            characterRunner.RunOnActionRoad(singleAbility.deltaWaitingTime);
-            yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
-            {
-                tactic = singleTactic,
-                marathonRunner = marathonRunner
-            }));
-            singleAbility.StopCoroutine("Use");
+            yield return StartCoroutine(ExecuteAbility(singleAbility, marathonRunner));
+            this.StopCoroutine("ExecuteAbility");
             isNonDefaultUsed = true;
-            characterRunner = null;
         }
 
         if (!isNonDefaultUsed)
@@ -118,17 +120,8 @@ public class Character : MonoBehaviour
             singleAbility = validAbilities.FirstOrDefault(x => x.isDefault);
             if (!singleAbility.IsNull())
             {
-                var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
-                var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
-                var characterRunner = marathonRunner.GetCharacterRunner(this);
-                characterRunner.RunOnActionRoad(singleAbility.deltaWaitingTime);
-                yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
-                {
-                    tactic = singleTactic,
-                    marathonRunner = marathonRunner
-                }));
-                singleAbility.StopCoroutine("Use");
-                characterRunner = null;
+                yield return StartCoroutine(ExecuteAbility(singleAbility, marathonRunner));
+                this.StopCoroutine("ExecuteAbility");
             }
         }
 
@@ -142,5 +135,23 @@ public class Character : MonoBehaviour
 
         owner.StopCoroutine("OnAbilityHandling");
         owner = null;
+    }
+
+    IEnumerator ExecuteAbility(Ability singleAbility, MarathonRunner marathonRunner)
+    {
+        var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
+        var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
+        var characterRunner = marathonRunner.GetCharacterRunner(this);
+        characterRunner.RunOnActionRoad(singleAbility.deltaWaitingTime);
+        yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
+        {
+            tactic = singleTactic,
+            marathonRunner = marathonRunner
+        }));
+        singleAbility.StopCoroutine("Use");
+
+        characterRunner = null;
+        tactics = null;
+        singleTactic = null;
     }
 }
