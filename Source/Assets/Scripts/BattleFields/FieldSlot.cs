@@ -23,6 +23,9 @@ public class FieldSlot : MonoBehaviour
 
     void Update()
     {
+        if(!character.IsNull() && character.isDeath){
+            ClearSlot();
+        }
         Flip();
     }
 

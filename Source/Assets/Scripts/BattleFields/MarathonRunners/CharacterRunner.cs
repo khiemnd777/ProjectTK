@@ -87,8 +87,8 @@ public class CharacterRunner : MonoBehaviour
         // Move position towards the end of road
         var journeyLength = reachedRoadRect.GetWidth();
         var targetAnchoredPosition = new Vector2(journeyLength, 0f);
-
-        runOnReachedRoadPercent += (character.dexterity / 60f) * Time.deltaTime;
+        var stats = character.GetComponent<CharacterStats>();
+        runOnReachedRoadPercent += (stats.dexterity.GetValue() / 60f) * Time.deltaTime;
 
         rectTransform.anchoredPosition = Vector2.Lerp(Vector2.zero, targetAnchoredPosition, runOnReachedRoadPercent);
 

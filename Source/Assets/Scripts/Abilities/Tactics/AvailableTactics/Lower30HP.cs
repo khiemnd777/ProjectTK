@@ -25,7 +25,8 @@ public class Lower30HP : Tactical
         for(var i = 0; i< opponentFieldSlots.Length;i++){
             var opponentCharacter = opponentFieldSlots[i].character;
             if(!opponentCharacter.IsNull() && !opponentCharacter.isDeath){
-                if(opponentCharacter.health / opponentCharacter.maxHealth <= .3f){
+                var opponentStats = opponentCharacter.GetComponent<CharacterStats>();
+                if(opponentStats.currentHealth / opponentStats.maxHealth.GetValue() <= .3f){
                     priorityIndexes.Add(i);
                 }
             }

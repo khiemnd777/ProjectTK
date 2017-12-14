@@ -61,6 +61,8 @@ MonoBehaviour:
   deltaWaitingTime: 0.625
   isUsing: 0
   tactics: []
+  damageModifier: 10
+  armorModifier: 0
   icon: {fileID: 0}
   markColor: {r: 0.7941176, g: 0.7941176, b: 0.7941176, a: 0}
   selectColor: {r: 0.6604463, g: 1, b: 0.20588237, a: 0}

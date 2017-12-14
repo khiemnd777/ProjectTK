@@ -103,7 +103,8 @@ public class BattleFieldManager : MonoBehaviour
                 continue;
             }
             var character = queueHandledAbilities.Dequeue();
-            yield return StartCoroutine(character.HandleAbilities(marathonRunner));
+            if(!character.isDeath)
+                yield return StartCoroutine(character.HandleAbilities(marathonRunner));
         }
     }
 

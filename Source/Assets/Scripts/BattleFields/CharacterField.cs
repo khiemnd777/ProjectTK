@@ -17,6 +17,10 @@ public class CharacterField : MonoBehaviour
 
     void Update()
     {
+        if(!character.IsNull() && character.isDeath){
+            character.model.gameObject.SetActive(false);
+            ClearSlot();
+        }
         Flip();
     }
 

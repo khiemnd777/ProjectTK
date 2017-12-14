@@ -3,19 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterStats))]
 public class Character : MonoBehaviour
 {
     new public string name = "New Character";
-    public float health;
-    public float maxHealth;
     [Space]
     public Transform model;
     [Space]
     public Sprite icon;
-    [Space]
-    [Header("Stats")]
-    public float dexterity;
     [Space]
     [Header("Animation")]
     public RuntimeAnimatorController animatorController;
@@ -29,16 +23,9 @@ public class Character : MonoBehaviour
     public List<Skill> learnedSkills = new List<Skill>();
     public List<Tactical> tactics = new List<Tactical>();
     public List<Ability> abilities = new List<Ability>();
-    [System.NonSerialized]
-    public CharacterStats stats;
 
     public delegate void OnAbilityHandled(Character character);
     public OnAbilityHandled onAbilityHandledCallback;
-
-    void Start()
-    {
-        stats = GetComponent<CharacterStats>();
-    }
 
     public void AddSkill(Skill skill)
     {
