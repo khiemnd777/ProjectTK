@@ -1,0 +1,340 @@
+fileFormatVersion: 2
+guid: 1302246a4ac9cb342beffe4da9dfa825
+timeCreated: 1512894055
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: head
+    21300002: shouder_l
+    21300004: cloth
+    21300006: arm_l
+    21300008: hand_l
+    21300010: body
+    21300012: trouser
+    21300014: upperleg_r
+    21300016: reyner sprites idle_8
+    21300018: upperleg_l
+    21300020: shouder_r
+    21300022: leg_r
+    21300024: leg_l
+    21300026: arm_r
+    21300028: hadnnd_r
+    21300030: foot_r
+    21300032: foot_l
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 571
+        width: 284
+        height: 279
+      alignment: 9
+      pivot: {x: 0.48483378, y: 0.031711154}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shouder_l
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 715
+        width: 112
+        height: 74
+      alignment: 9
+      pivot: {x: 0.1154262, y: 0.48059824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cloth
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 704
+        width: 163
+        height: 77
+      alignment: 9
+      pivot: {x: 0.08601295, y: 0.8915667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: arm_l
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 631
+        width: 62
+        height: 62
+      alignment: 9
+      pivot: {x: 0.6621, y: 0.7547292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: hand_l
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 592
+        width: 82
+        height: 73
+      alignment: 9
+      pivot: {x: 0.67509127, y: 0.6180069}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 356
+        width: 158
+        height: 194
+      alignment: 9
+      pivot: {x: 0.4363914, y: 0.18916981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: trouser
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 422
+        width: 143
+        height: 117
+      alignment: 9
+      pivot: {x: 0.40963852, y: 0.8435972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: upperleg_r
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 292
+        width: 108
+        height: 111
+      alignment: 9
+      pivot: {x: 0.77917284, y: 0.8751042}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reyner sprites idle_8
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 391
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: upperleg_l
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 307
+        width: 125
+        height: 104
+      alignment: 9
+      pivot: {x: 0.15542163, y: 0.81752044}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shouder_r
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 238
+        width: 82
+        height: 113
+      alignment: 9
+      pivot: {x: 0.7801452, y: 0.8684655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: leg_r
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 137
+        width: 96
+        height: 131
+      alignment: 9
+      pivot: {x: 0.50000066, y: 0.71919775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: leg_l
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 154
+        width: 107
+        height: 126
+      alignment: 9
+      pivot: {x: 0.27189165, y: 0.65952736}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: arm_r
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 157
+        width: 91
+        height: 67
+      alignment: 9
+      pivot: {x: 0.8155484, y: 0.8000062}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: hadnnd_r
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 49
+        width: 78
+        height: 85
+      alignment: 9
+      pivot: {x: 0.75769806, y: 0.7364752}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: foot_r
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 46
+        width: 106
+        height: 59
+      alignment: 9
+      pivot: {x: 0.7031716, y: 0.8163503}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: foot_l
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 46
+        width: 123
+        height: 74
+      alignment: 9
+      pivot: {x: 0.27821907, y: 0.81043184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
