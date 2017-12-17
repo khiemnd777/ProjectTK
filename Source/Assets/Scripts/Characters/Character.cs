@@ -27,6 +27,14 @@ public class Character : MonoBehaviour
     public delegate void OnAbilityHandled(Character character);
     public OnAbilityHandled onAbilityHandledCallback;
 
+    Animator _animator;
+
+    public Animator animator{
+        get{
+            return _animator ?? (_animator = model.GetComponentInChildren<Animator>());
+        }
+    }
+
     public void AddSkill(Skill skill)
     {
         skills.Add(skill);
@@ -38,7 +46,6 @@ public class Character : MonoBehaviour
         ClearAllLearnedSkills();
         ClearAllTactics();
         // Assigns animator controller
-        var animator = model.GetComponentInChildren<Animator>();
         if (!animator.IsNull())
         {
             animator.runtimeAnimatorController = animatorController;

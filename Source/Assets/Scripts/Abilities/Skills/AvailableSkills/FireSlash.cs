@@ -22,23 +22,36 @@ public class FireSlash : Skill
         opponentImage.color = markColor;
         ownImage.color = selectColor;
 
-        var timeMoveTo = deltaWaitingTime / 4f;
+        var timeMoveTo = deltaWaitingTime / 1.25f;
+        var timePrepareIdleToMove = .1f;
+        var timeTotalMoving = timeMoveTo - timePrepareIdleToMove;
+        var timeSlash =  1.25f;
+        var timeSlashDelay = .025f;
+        var timeMoving = timeTotalMoving - timeSlash - timeSlashDelay;
         var timeBack = deltaWaitingTime - timeMoveTo;
         var direction = character.isEnemy ? -1 : 1;
         var ownFieldPosition = ownField.spawner.transform.position;
         var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(2f,0,0));
 
         // Move to opponent
+        character.animator.Play("reyner_dash");
+        yield return new WaitForSeconds(timePrepareIdleToMove);
         StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, ownFieldPosition, opponentFieldPosition, timeMoveTo));
-        yield return new WaitForSeconds(timeMoveTo);
+        yield return new WaitForSeconds(timeMoving);
+
+        character.animator.Play("reyner_slash");
+        yield return new WaitForSeconds(timeSlash);
 
         // Take damage
         TakeDamage(new[] { opponentField.character });
+        yield return new WaitForSeconds(timeSlashDelay);
 
         // Back own field
+        character.animator.Play("reyner_get_back");
         StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, timeBack));
         yield return new WaitForSeconds(timeBack);
 
+        character.animator.Play("reyner_idle");
         opponentImage.color = Color.white;
         ownImage.color = Color.white;
         
