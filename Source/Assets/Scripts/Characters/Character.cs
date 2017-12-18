@@ -133,16 +133,18 @@ public class Character : MonoBehaviour
 
     IEnumerator ExecuteAbility(Ability singleAbility, MarathonRunner marathonRunner)
     {
+        singleAbility.Setup();
         var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
         var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
         var characterRunner = marathonRunner.GetCharacterRunner(this);
-        characterRunner.RunOnActionRoad(singleAbility.deltaWaitingTime);
+        characterRunner.RunOnActionRoad(singleAbility.executedTime);
         yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
         {
             tactic = singleTactic,
             marathonRunner = marathonRunner
         }));
         singleAbility.StopCoroutine("Use");
+        singleAbility.Exit();
 
         characterRunner = null;
         tactics = null;

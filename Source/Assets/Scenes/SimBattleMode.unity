@@ -137,7 +137,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 25232324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -129.37347, y: -212.05003, z: 0}
+  m_LocalPosition: {x: -129.36096, y: -212.05003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 206684745}
@@ -698,7 +698,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 206684744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 129.37347, y: 10, z: 0}
+  m_LocalPosition: {x: 129.36096, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1051525783}
@@ -831,7 +831,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 1
   isTurn: 0
   skills:
@@ -1288,7 +1288,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 299941520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 132.37347, y: 212.04994, z: 0}
+  m_LocalPosition: {x: 132.36096, y: 212.04994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1301583160}
@@ -1681,12 +1681,11 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 0
   isTurn: 0
   skills:
   - {fileID: 114519697714501560, guid: e2cd6559f432e4e9ba87eddf573d30ab, type: 2}
-  - {fileID: 114200599791095318, guid: 6d4004f0d2e604385ac17534b6040891, type: 2}
   learnedSkills: []
   tactics: []
   abilities: []
@@ -2164,7 +2163,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 524187231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.099998474, y: -11.699997, z: 0}
+  m_LocalPosition: {x: 0.1000061, y: -11.699997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2035338156}
@@ -2769,7 +2768,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 629447796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 132.37347, y: 212.04997, z: 0}
+  m_LocalPosition: {x: 132.36096, y: 212.04997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 603309340}
@@ -2968,7 +2967,7 @@ MonoBehaviour:
   isTurn: 0
   skills:
   - {fileID: 114519697714501560, guid: e2cd6559f432e4e9ba87eddf573d30ab, type: 2}
-  - {fileID: 114200599791095318, guid: 6d4004f0d2e604385ac17534b6040891, type: 2}
+  - {fileID: 114873781535967612, guid: 6d4004f0d2e604385ac17534b6040891, type: 2}
   learnedSkills: []
   tactics: []
   abilities: []
@@ -3630,7 +3629,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 987470436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 129.37347, y: 10, z: 0}
+  m_LocalPosition: {x: 129.36096, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1507653568}
@@ -3724,8 +3723,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 992645642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 523, y: 294, z: 0}
-  m_LocalScale: {x: 0.98, y: 0.98, z: 0.98}
+  m_LocalPosition: {x: 362, y: 203.5, z: 0}
+  m_LocalScale: {x: 0.67833334, y: 0.67833334, z: 0.67833334}
   m_Children:
   - {fileID: 1566144408}
   - {fileID: 1459984694}
@@ -3769,7 +3768,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1003781012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 129.37347, y: 0, z: 0}
+  m_LocalPosition: {x: 129.36096, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 949989713}
@@ -3964,7 +3963,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 0
   isTurn: 0
   skills:
@@ -4603,7 +4602,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1331574011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -391.29996, y: -65.14996, z: 0}
+  m_LocalPosition: {x: -391.29993, y: -65.14996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1800546135}
@@ -4927,7 +4926,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 0
   isTurn: 0
   skills:
@@ -5126,7 +5125,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1393532197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -129.37347, y: -212.05, z: 0}
+  m_LocalPosition: {x: -129.36096, y: -212.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 987470437}
@@ -5243,7 +5242,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1422493855}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 129.37347, y: 0, z: 0}
+  m_LocalPosition: {x: 129.36096, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1443382165}
@@ -6032,7 +6031,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 1
   isTurn: 0
   skills:
@@ -6154,7 +6153,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1566519009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -129.37347, y: 212.05003, z: 0}
+  m_LocalPosition: {x: -129.36096, y: 212.05003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1422493856}
@@ -6339,7 +6338,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 1
   isTurn: 0
   skills:
@@ -6809,7 +6808,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 1
   isTurn: 0
   skills:
@@ -6874,7 +6873,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1732718414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.099998474, y: -11.699997, z: 0}
+  m_LocalPosition: {x: 0.1000061, y: -11.699997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1566519010}
@@ -7964,7 +7963,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 0
+  isDeath: 1
   isEnemy: 0
   isTurn: 0
   skills:
@@ -8022,7 +8021,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2035338155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -129.37347, y: 212.05, z: 0}
+  m_LocalPosition: {x: -129.36096, y: 212.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1003781013}

@@ -4,8 +4,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefaultSkill : Skill
+public class FireSlash : Skill
 {
+    public override void Setup()
+    {
+        base.Setup();
+    }
+
     public override IEnumerator Use(AbilityUsingParams args)
     {
         yield return base.Use(args);
@@ -14,7 +19,7 @@ public class DefaultSkill : Skill
         var opponentFieldSlots = GetOpponentFieldSlots();
         var opponentFieldSlot = opponentFieldSlots[positions[0]];
         var opponentImage = opponentFieldSlot.GetComponent<Image>();
-        var ownFieldSlot = GetOwnFieldSlot();
+        var ownFieldSlot = GetOwnFieldSlot(); 
         var ownImage = ownFieldSlot.GetComponent<Image>();
         var opponentField = GetOpponentFields()[positions[0]];
         var ownField = GetOwnField();
@@ -22,7 +27,7 @@ public class DefaultSkill : Skill
         opponentImage.color = markColor;
         ownImage.color = selectColor;
 
-        var timeMoveTo = executedTime / 3f;
+        var timeMoveTo = executedTime / 2f;
         var timeBack = executedTime - timeMoveTo;
         var direction = character.isEnemy ? -1 : 1;
         var ownFieldPosition = ownField.spawner.transform.position;
@@ -36,6 +41,7 @@ public class DefaultSkill : Skill
         TakeDamage(new[] { opponentField.character });
 
         // Back own field
+        character.animator.Play("reyner_get_back");
         StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, timeBack));
         yield return new WaitForSeconds(timeBack);
 

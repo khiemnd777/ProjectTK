@@ -13,8 +13,17 @@ public class Ability : MonoBehaviour
     public Tactical defaultTacticPrefab;
     public Character character;
     public float deltaWaitingTime = .25f;
+    public float executedTime;
     public bool isUsing;
     public List<Tactical> tactics = new List<Tactical>();
+
+    public virtual void Setup(){
+        
+    }
+
+    public virtual void Exit(){
+
+    }
 
     public virtual IEnumerator Use(AbilityUsingParams args)
     {

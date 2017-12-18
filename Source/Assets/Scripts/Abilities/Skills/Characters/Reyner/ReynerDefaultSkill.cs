@@ -4,17 +4,25 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FireSlash : Skill
+public class ReynerDefaultSkill : Skill
 {
+    public override void Setup()
+    {
+        base.Setup();
+        foreach(var x in character.animator.runtimeAnimatorController.animationClips){
+            
+        }
+    }
+
     public override IEnumerator Use(AbilityUsingParams args)
     {
         yield return base.Use(args);
-        
+
         var positions = args.tactic.priorityPositions;
         var opponentFieldSlots = GetOpponentFieldSlots();
         var opponentFieldSlot = opponentFieldSlots[positions[0]];
         var opponentImage = opponentFieldSlot.GetComponent<Image>();
-        var ownFieldSlot = GetOwnFieldSlot();
+        var ownFieldSlot = GetOwnFieldSlot(); 
         var ownImage = ownFieldSlot.GetComponent<Image>();
         var opponentField = GetOpponentFields()[positions[0]];
         var ownField = GetOwnField();
@@ -22,16 +30,16 @@ public class FireSlash : Skill
         opponentImage.color = markColor;
         ownImage.color = selectColor;
 
-        var timeMoveTo = deltaWaitingTime / 1.25f;
-        var timePrepareIdleToMove = .1f;
+        var timeMoveTo = executedTime / 2f;
+        var timePrepareIdleToMove = .02f;
         var timeTotalMoving = timeMoveTo - timePrepareIdleToMove;
-        var timeSlash =  1.25f;
+        var timeSlash = .25f;
         var timeSlashDelay = .025f;
         var timeMoving = timeTotalMoving - timeSlash - timeSlashDelay;
-        var timeBack = deltaWaitingTime - timeMoveTo;
+        var timeBack = executedTime - timeMoveTo;
         var direction = character.isEnemy ? -1 : 1;
         var ownFieldPosition = ownField.spawner.transform.position;
-        var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(2f,0,0));
+        var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(2f, 0, 0));
 
         // Move to opponent
         character.animator.Play("reyner_dash");
@@ -54,7 +62,7 @@ public class FireSlash : Skill
         character.animator.Play("reyner_idle");
         opponentImage.color = Color.white;
         ownImage.color = Color.white;
-        
+
         opponentImage = null;
         ownImage = null;
         positions = null;
