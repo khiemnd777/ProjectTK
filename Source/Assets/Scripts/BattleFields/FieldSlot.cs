@@ -11,11 +11,9 @@ public class FieldSlot : MonoBehaviour
     public Character character;
 
     DragDropHandler dragDropHandler;
-    Canvas canvas;
 
     void Start()
     {
-        canvas = GetComponentInParent<Canvas>();
         dragDropHandler = GetComponent<DragDropHandler>();
         dragDropHandler.onDragged += OnUpdateSlot;
         Flip();

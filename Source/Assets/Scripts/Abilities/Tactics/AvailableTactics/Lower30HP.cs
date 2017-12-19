@@ -17,7 +17,7 @@ public class Lower30HP : Tactical
 
     int[] FindPriorityPositions()
     {
-        var ownFieldSlots = ability.GetFieldSlots();
+        // var ownFieldSlots = ability.GetFieldSlots();
         var opponentFieldSlots = ability.GetOpponentFieldSlots();
 
         var priorityIndexes = new List<int>();

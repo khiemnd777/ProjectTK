@@ -44,7 +44,7 @@ public class DropZoneHandler : MonoBehaviour
                 foreach (var zone in droppableZones)
                 {
                     var rectZone = zone.GetComponent<RectTransform>();
-                    if (RectTransformUtility.RectangleContainsScreenPoint(zone.GetComponent<RectTransform>(), position))
+                    if (RectTransformUtility.RectangleContainsScreenPoint(rectZone, position))
                     {
                         lastDraggableZone = zone;
                         if (onDragInZoneEvent != null)
