@@ -9,8 +9,8 @@ public class TransformUtility
         var percent = 0f;
         while (percent <= 1f)
         {
-            percent += Time.deltaTime / runningTime;
             transform.position = Mathfx.Sinerp(start, end, percent);
+            percent += Time.deltaTime / runningTime;
             yield return null;
         }
     }

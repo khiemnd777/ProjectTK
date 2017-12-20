@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4901832072481886}
-  - component: {fileID: 114200599791095318}
+  - component: {fileID: 114873781535967612}
+  - component: {fileID: 114093714104229218}
   m_Layer: 0
-  m_Name: Fire Slash
+  m_Name: Reyner Default Skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114200599791095318
+--- !u!114 &114093714104229218
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,21 +49,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1380213923645772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af0849a34e774d9d98756a73f4c810d, type: 3}
+  m_Script: {fileID: 11500000, guid: e55be2bea13164d2aabf179293cfca0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Fire Slash
+  animations:
+  - animation: {fileID: 7400000, guid: 292e20afd2e7c47f1a2cf690643a1275, type: 2}
+    startTime: 0
+    endTime: 0
+    events: []
+  - animation: {fileID: 7400000, guid: bb03fe66c3739c8409970b0ad33a9d14, type: 2}
+    startTime: 0
+    endTime: 0
+    events: []
+  - animation: {fileID: 7400000, guid: 057fd6431c9f24aae9b670b632c8fc05, type: 2}
+    startTime: 0
+    endTime: 0
+    events: []
+  - animation: {fileID: 7400000, guid: ae05ae06a785d5a4ea66c0cee20788f1, type: 2}
+    startTime: 0
+    endTime: 0
+    events: []
+--- !u!114 &114873781535967612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380213923645772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800ac7b7433e6444da6ee6f8cf14f487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Reyner Default Skill
   description: 
   isDefault: 0
   displayOrder: 0
   defaultTacticPrefab: {fileID: 114405435392580238, guid: fcaaaa3f7d69bf345960101c067856a7,
     type: 2}
   character: {fileID: 0}
-  deltaWaitingTime: 0.625
+  deltaWaitingTime: 0
+  executedTime: 0.75
   isUsing: 0
   tactics: []
-  damageModifier: 10
+  damageModifier: 0
   armorModifier: 0
   icon: {fileID: 0}
-  markColor: {r: 0.7941176, g: 0.7941176, b: 0.7941176, a: 0}
-  selectColor: {r: 0.6604463, g: 1, b: 0.20588237, a: 0}
+  markColor: {r: 0, g: 0, b: 0, a: 0}
+  selectColor: {r: 0, g: 0, b: 0, a: 0}

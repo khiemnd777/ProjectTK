@@ -58,7 +58,8 @@ MonoBehaviour:
   defaultTacticPrefab: {fileID: 114405435392580238, guid: fcaaaa3f7d69bf345960101c067856a7,
     type: 2}
   character: {fileID: 0}
-  deltaWaitingTime: 0.625
+  deltaWaitingTime: 0
+  executedTime: 0.625
   isUsing: 0
   tactics: []
   damageModifier: 6

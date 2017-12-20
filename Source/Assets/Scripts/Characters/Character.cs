@@ -27,6 +27,14 @@ public class Character : MonoBehaviour
     public delegate void OnAbilityHandled(Character character);
     public OnAbilityHandled onAbilityHandledCallback;
 
+    Animator _animator;
+
+    public Animator animator{
+        get{
+            return _animator ?? (_animator = model.GetComponentInChildren<Animator>());
+        }
+    }
+
     public void AddSkill(Skill skill)
     {
         skills.Add(skill);
@@ -38,7 +46,6 @@ public class Character : MonoBehaviour
         ClearAllLearnedSkills();
         ClearAllTactics();
         // Assigns animator controller
-        var animator = model.GetComponentInChildren<Animator>();
         if (!animator.IsNull())
         {
             animator.runtimeAnimatorController = animatorController;
@@ -126,16 +133,18 @@ public class Character : MonoBehaviour
 
     IEnumerator ExecuteAbility(Ability singleAbility, MarathonRunner marathonRunner)
     {
+        singleAbility.Setup();
         var tactics = singleAbility.tactics.OrderBy(x => x.displayOrder).Where(x => x.Define());
         var singleTactic = tactics.FirstOrDefault(x => !x.isDefault) ?? tactics.FirstOrDefault(x => x.isDefault);
         var characterRunner = marathonRunner.GetCharacterRunner(this);
-        characterRunner.RunOnActionRoad(singleAbility.deltaWaitingTime);
+        characterRunner.RunOnActionRoad(singleAbility.executedTime);
         yield return StartCoroutine(singleAbility.Use(new AbilityUsingParams
         {
             tactic = singleTactic,
             marathonRunner = marathonRunner
         }));
         singleAbility.StopCoroutine("Use");
+        singleAbility.Exit();
 
         characterRunner = null;
         tactics = null;
