@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4901832072481886}
   - component: {fileID: 114873781535967612}
-  - component: {fileID: 114093714104229218}
+  - component: {fileID: 114015186376914078}
   m_Layer: 0
   m_Name: Reyner Default Skill
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114093714104229218
+--- !u!114 &114015186376914078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -53,21 +53,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
-  - animation: {fileID: 7400000, guid: 292e20afd2e7c47f1a2cf690643a1275, type: 2}
-    startTime: 0
-    endTime: 0
-    events: []
   - animation: {fileID: 7400000, guid: bb03fe66c3739c8409970b0ad33a9d14, type: 2}
-    startTime: 0
-    endTime: 0
-    events: []
+    startFrame: 0
+    endFrame: 0
+    frameLength: 15
+    events:
+    - eventName: MoveToOpponent
+      startFrame: 5
   - animation: {fileID: 7400000, guid: 057fd6431c9f24aae9b670b632c8fc05, type: 2}
-    startTime: 0
-    endTime: 0
-    events: []
-  - animation: {fileID: 7400000, guid: ae05ae06a785d5a4ea66c0cee20788f1, type: 2}
-    startTime: 0
-    endTime: 0
+    startFrame: 0
+    endFrame: 0
+    frameLength: 0
+    events:
+    - eventName: Slash
+      startFrame: 18
+  - animation: {fileID: 7400000, guid: 3d2ca9650eff049189ac5a1bf44eef05, type: 2}
+    startFrame: 0
+    endFrame: 0
+    frameLength: 0
+    events:
+    - eventName: MoveBack
+      startFrame: 7
+  - animation: {fileID: 7400000, guid: 292e20afd2e7c47f1a2cf690643a1275, type: 2}
+    startFrame: 0
+    endFrame: 0
+    frameLength: 1
     events: []
 --- !u!114 &114873781535967612
 MonoBehaviour:

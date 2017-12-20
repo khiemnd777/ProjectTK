@@ -8,9 +8,9 @@ public class ReynerDefaultSkill : Skill
 {
     public override void Setup()
     {
-        base.Setup();
-        foreach(var x in character.animator.runtimeAnimatorController.animationClips){
-            
+        var animManager = GetComponent<AnimationManager>();
+        if(!animManager.IsNull()){
+            executedTime = animManager.GetLength();
         }
     }
 
@@ -39,27 +39,43 @@ public class ReynerDefaultSkill : Skill
         var timeBack = executedTime - timeMoveTo;
         var direction = character.isEnemy ? -1 : 1;
         var ownFieldPosition = ownField.spawner.transform.position;
-        var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(2f, 0, 0));
+        var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(5f, 0, 0));
+        var animManager = GetComponent<AnimationManager>();
 
+        if(!animManager.IsNull()){
+            animManager.AddEvent("MoveToOpponent", (length) => {
+                StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, ownFieldPosition, opponentFieldPosition, length));
+            });
+            animManager.AddEvent("Slash", (length) => {
+                TakeDamage(new[] { opponentField.character });
+            });
+            animManager.AddEvent("MoveBack", (length) => {
+                StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, length));
+            });
+            animManager.Play();
+            yield return new WaitForSeconds(executedTime);
+            animManager.Stop();
+        }
         // Move to opponent
-        character.animator.Play("reyner_dash");
-        yield return new WaitForSeconds(timePrepareIdleToMove);
-        StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, ownFieldPosition, opponentFieldPosition, timeMoveTo));
-        yield return new WaitForSeconds(timeMoving);
+        // character.animator.Play("reyner_dash");
+        // yield return new WaitForSeconds(timePrepareIdleToMove);
+        // StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, ownFieldPosition, opponentFieldPosition, timeMoveTo));
+        // yield return new WaitForSeconds(timeMoving);
 
-        character.animator.Play("reyner_slash");
-        yield return new WaitForSeconds(timeSlash);
+        // character.animator.Play("reyner_slash");
+        // yield return new WaitForSeconds(timeSlash);
 
         // Take damage
-        TakeDamage(new[] { opponentField.character });
-        yield return new WaitForSeconds(timeSlashDelay);
+        // TakeDamage(new[] { opponentField.character });
+        // yield return new WaitForSeconds(timeSlashDelay);
 
         // Back own field
-        character.animator.Play("reyner_get_back");
-        StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, timeBack));
-        yield return new WaitForSeconds(timeBack);
+        // character.animator.Play("reyner_get_back");
+        // StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, timeBack));
+        // yield return new WaitForSeconds(timeBack);
 
-        character.animator.Play("reyner_idle");
+        // character.animator.Play("reyner_idle");
+        
         opponentImage.color = Color.white;
         ownImage.color = Color.white;
 

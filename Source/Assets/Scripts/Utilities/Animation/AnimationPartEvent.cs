@@ -3,5 +3,6 @@
 public class AnimationPartEvent
 {
     public string eventName;
-    public float startTime;
+    public float startFrame;
+    public System.Action<float> action;
 }
