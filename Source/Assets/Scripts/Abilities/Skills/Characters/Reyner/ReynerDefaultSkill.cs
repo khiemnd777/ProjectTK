@@ -56,25 +56,6 @@ public class ReynerDefaultSkill : Skill
             yield return new WaitForSeconds(executedTime);
             animManager.Stop();
         }
-        // Move to opponent
-        // character.animator.Play("reyner_dash");
-        // yield return new WaitForSeconds(timePrepareIdleToMove);
-        // StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, ownFieldPosition, opponentFieldPosition, timeMoveTo));
-        // yield return new WaitForSeconds(timeMoving);
-
-        // character.animator.Play("reyner_slash");
-        // yield return new WaitForSeconds(timeSlash);
-
-        // Take damage
-        // TakeDamage(new[] { opponentField.character });
-        // yield return new WaitForSeconds(timeSlashDelay);
-
-        // Back own field
-        // character.animator.Play("reyner_get_back");
-        // StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, timeBack));
-        // yield return new WaitForSeconds(timeBack);
-
-        // character.animator.Play("reyner_idle");
         
         opponentImage.color = Color.white;
         ownImage.color = Color.white;

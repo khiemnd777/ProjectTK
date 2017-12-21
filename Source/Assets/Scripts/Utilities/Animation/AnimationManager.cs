@@ -20,18 +20,6 @@ public class AnimationManager : MonoBehaviour
 
     }
 
-    void Setup()
-    {
-        if (!animations.Any())
-            return;
-        foreach (var animPart in animations)
-        {
-            var animClip = animPart.animation;
-
-            animClip = null;
-        }
-    }
-
     public void AddEvent(string eventName, System.Action<float> action)
     {
         foreach (var animPart in animations)
@@ -49,7 +37,6 @@ public class AnimationManager : MonoBehaviour
     public void Play()
     {
         _isStop = false;
-        Setup();
         if (!animations.Any())
             return;
         StartCoroutine(Playing());
@@ -71,8 +58,8 @@ public class AnimationManager : MonoBehaviour
             var endTime = animPart.endFrame <= 0 ? animClip.length : CalculatorUtility.TimeByFrame(animPart.endFrame, frameRate);
             var length = animPart.frameLength <= 0 ? animPart.animation.length : CalculatorUtility.TimeByFrame(animPart.frameLength, frameRate);
             var animator = _ability.character.animator;
-            animator.Play(animPart.animation.name, 0, startTime / endTime);
             StartCoroutine(ExecuteEvents(animPart.events, length, frameRate));
+            animator.Play(animPart.animation.name, 0, startTime / endTime);
             yield return new WaitForSeconds(length);
         }
     }

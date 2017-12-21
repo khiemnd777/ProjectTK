@@ -873,7 +873,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 1
   isTurn: 0
   skills:
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 0
   isTurn: 0
   skills:
@@ -4005,7 +4005,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 0
   isTurn: 0
   skills:
@@ -4968,7 +4968,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 0
   isTurn: 0
   skills:
@@ -6073,7 +6073,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 1
   isTurn: 0
   skills:
@@ -6380,7 +6380,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 1
   isTurn: 0
   skills:
@@ -6673,7 +6673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1643619418
 GameObject:
   m_ObjectHideFlags: 0
@@ -6850,7 +6850,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bbcad89035a924930970244d7a72002e, type: 3}
   animatorController: {fileID: 9100000, guid: a6b72b1a8a99340438cde199ff89d13a, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 1
   isTurn: 0
   skills:
@@ -8005,7 +8005,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 313794d4ffdbb478da185346a9346fc5, type: 3}
   animatorController: {fileID: 9100000, guid: 899bbed30ae044cacb26c0a54de9a333, type: 2}
   slot: 0
-  isDeath: 1
+  isDeath: 0
   isEnemy: 0
   isTurn: 0
   skills:

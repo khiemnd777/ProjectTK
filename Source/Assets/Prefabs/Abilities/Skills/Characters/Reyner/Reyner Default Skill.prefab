@@ -77,7 +77,7 @@ MonoBehaviour:
   - animation: {fileID: 7400000, guid: 292e20afd2e7c47f1a2cf690643a1275, type: 2}
     startFrame: 0
     endFrame: 0
-    frameLength: 1
+    frameLength: 5
     events: []
 --- !u!114 &114873781535967612
 MonoBehaviour:
