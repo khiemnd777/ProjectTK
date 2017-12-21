@@ -1,0 +1,265 @@
+fileFormatVersion: 2
+guid: 744720fdcbadb08449e230bafa66df3b
+timeCreated: 1513863316
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: head
+    21300002: eye_open
+    21300004: mouth_open
+    21300006: bat-monster sprites_3
+    21300008: mouth_closed
+    21300010: wing_l
+    21300012: bat-monster sprites_6
+    21300014: wing_r
+    21300016: wing_r_down
+    21300018: bat-monster sprites_9
+    21300020: eye closed
+    21300022: wing_l_down
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 674
+        width: 235
+        height: 219
+      alignment: 9
+      pivot: {x: 0.4114083, y: 0.48881608}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eye_open
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 551
+        width: 117
+        height: 133
+      alignment: 9
+      pivot: {x: 0.604671, y: 0.3987133}
+      border: {x: 0, y: 0, z: 0, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mouth_open
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 383
+        width: 179
+        height: 144
+      alignment: 9
+      pivot: {x: 0.7668232, y: 0.84868497}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bat-monster sprites_3
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 644
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mouth_closed
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 544
+        width: 163
+        height: 112
+      alignment: 9
+      pivot: {x: 0.575132, y: 0.762425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wing_l
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 644
+        width: 194
+        height: 214
+      alignment: 9
+      pivot: {x: 0.9608214, y: 0.4713868}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bat-monster sprites_6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 672
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wing_r
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 658
+        width: 286
+        height: 207
+      alignment: 9
+      pivot: {x: 0.050390925, y: 0.23968859}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wing_r_down
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 339
+        width: 221
+        height: 284
+      alignment: 9
+      pivot: {x: 0.7728589, y: 0.95468205}
+      border: {x: 0, y: 0, z: 0, w: 284}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bat-monster sprites_9
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 484
+        width: 6
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eye closed
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 395
+        width: 98
+        height: 86
+      alignment: 9
+      pivot: {x: 0.67494994, y: 0.47152036}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wing_l_down
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 371
+        width: 160
+        height: 221
+      alignment: 9
+      pivot: {x: 0.7066597, y: 0.90452224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
