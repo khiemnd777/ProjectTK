@@ -8,4 +8,5 @@ public class AnimationPart
     public float endFrame;
     public float frameLength;
     public AnimationPartEvent[] events;
+    public AnimationPartEffect[] effects;
 }

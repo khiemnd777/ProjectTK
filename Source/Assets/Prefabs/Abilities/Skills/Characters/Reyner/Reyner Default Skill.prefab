@@ -60,12 +60,20 @@ MonoBehaviour:
     events:
     - eventName: MoveToOpponent
       startFrame: 5
+    effects: []
   - animation: {fileID: 7400000, guid: 057fd6431c9f24aae9b670b632c8fc05, type: 2}
     startFrame: 0
     endFrame: 0
     frameLength: 0
     events:
-    - eventName: Slash
+    - eventName: TakeDamage
+      startFrame: 18
+    effects:
+    - position: {x: 2.75, y: 3.375, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      scale: {x: 0, y: 0, z: 0}
+      effectObject: {fileID: 1280353505778176, guid: 19f6d4c7ae2e14a43af420e93b452328,
+        type: 2}
       startFrame: 18
   - animation: {fileID: 7400000, guid: 3d2ca9650eff049189ac5a1bf44eef05, type: 2}
     startFrame: 0
@@ -74,11 +82,13 @@ MonoBehaviour:
     events:
     - eventName: MoveBack
       startFrame: 7
-  - animation: {fileID: 7400000, guid: 292e20afd2e7c47f1a2cf690643a1275, type: 2}
+    effects: []
+  - animation: {fileID: 7400000, guid: 40cca41c78d5f43f293c506f7d0f33c9, type: 2}
     startFrame: 0
     endFrame: 0
-    frameLength: 5
+    frameLength: 1
     events: []
+    effects: []
 --- !u!114 &114873781535967612
 MonoBehaviour:
   m_ObjectHideFlags: 1

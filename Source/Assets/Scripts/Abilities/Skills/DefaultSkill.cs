@@ -34,6 +34,16 @@ public class DefaultSkill : Skill
 
         // Take damage
         TakeDamage(new[] { opponentField.character });
+        StartCoroutine(AnimationManager.Play(opponentField.character.animator
+            , new AnimationManager.AnimationPlayingParams{
+                name = "hurt",
+                frameLength = 12
+            }
+            , new AnimationManager.AnimationPlayingParams{
+                name = "idle",
+                frameLength = 1
+            }
+        ));
 
         // Back own field
         StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, timeBack));
