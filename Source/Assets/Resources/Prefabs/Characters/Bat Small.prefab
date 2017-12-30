@@ -44,22 +44,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1082329974035020
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4550600273016060}
-  - component: {fileID: 95782204932603494}
-  m_Layer: 0
-  m_Name: Graphic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1182674521815806
 GameObject:
   m_ObjectHideFlags: 1
@@ -86,7 +70,7 @@ GameObject:
   - component: {fileID: 4471121907896396}
   - component: {fileID: 95198860810278016}
   m_Layer: 0
-  m_Name: Bat_small
+  m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,7 +307,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281833058367964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.81, y: -5.08, z: 0.0395899}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4613323684918738}
@@ -362,7 +346,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4550600273016060}
+  - {fileID: 4471121907896396}
   - {fileID: 224102636936144384}
   m_Father: {fileID: 4879742317336252}
   m_RootOrder: 0
@@ -387,11 +371,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214196768000766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.46, y: 3.66, z: 0}
-  m_LocalScale: {x: 1.010101, y: 1.0101008, z: 1.0101008}
+  m_LocalPosition: {x: 0.5, y: 5.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4101585766725696}
-  m_Father: {fileID: 4550600273016060}
+  m_Father: {fileID: 4211412217304020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4500570946930604
@@ -406,20 +390,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4101585766725696}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4550600273016060
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1082329974035020}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 5.45, z: 0}
-  m_LocalScale: {x: 0.99, y: 0.9900001, z: 0.9900001}
-  m_Children:
-  - {fileID: 4471121907896396}
-  m_Father: {fileID: 4211412217304020}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4613323684918738
 Transform:
@@ -530,23 +500,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95782204932603494
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1082329974035020}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ee93fc003ce404f4c9651ec6d4b48f90, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114052924650618210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,7 +541,7 @@ MonoBehaviour:
   maxHealth:
     baseValue: 100
   dexterity:
-    baseValue: 20
+    baseValue: 10
   damage:
     baseValue: 19
   armor:
@@ -671,14 +624,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bat Small
   model: {fileID: 4211412217304020}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c2185bede47c677488382a6f5a2c2ff2, type: 3}
   animatorController: {fileID: 9100000, guid: ee93fc003ce404f4c9651ec6d4b48f90, type: 2}
   slot: 0
   isDeath: 0
-  isEnemy: 0
+  isEnemy: 1
   isTurn: 0
   skills:
-  - {fileID: 114519697714501560, guid: e2cd6559f432e4e9ba87eddf573d30ab, type: 2}
+  - {fileID: 114094577118191160, guid: 03880724c9b934089bbcf6d504a797d8, type: 2}
   learnedSkills: []
   tactics: []
   abilities: []

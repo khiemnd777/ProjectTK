@@ -16,7 +16,7 @@ public class ReynerDefaultSkill : Skill
 
     public override IEnumerator Use(AbilityUsingParams args)
     {
-        yield return base.Use(args);
+        // yield return base.Use(args);
 
         var positions = args.tactic.priorityPositions;
         var opponentFieldSlots = GetOpponentFieldSlots();
@@ -30,13 +30,13 @@ public class ReynerDefaultSkill : Skill
         opponentImage.color = markColor;
         ownImage.color = selectColor;
 
-        var timeMoveTo = executedTime / 2f;
-        var timePrepareIdleToMove = .02f;
-        var timeTotalMoving = timeMoveTo - timePrepareIdleToMove;
-        var timeSlash = .25f;
-        var timeSlashDelay = .025f;
-        var timeMoving = timeTotalMoving - timeSlash - timeSlashDelay;
-        var timeBack = executedTime - timeMoveTo;
+        // var timeMoveTo = executedTime / 2f;
+        // var timePrepareIdleToMove = .02f;
+        // var timeTotalMoving = timeMoveTo - timePrepareIdleToMove;
+        // var timeSlash = .25f;
+        // var timeSlashDelay = .025f;
+        // var timeMoving = timeTotalMoving - timeSlash - timeSlashDelay;
+        // var timeBack = executedTime - timeMoveTo;
         var direction = character.isEnemy ? -1 : 1;
         var ownFieldPosition = ownField.spawner.transform.position;
         var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(5f, 0, 0));

@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1187864257665154}
+  m_IsPrefabParent: 1
+--- !u!1 &1187864257665154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4128704346294788}
+  - component: {fileID: 114094577118191160}
+  - component: {fileID: 114438190868631222}
+  m_Layer: 0
+  m_Name: Batsmall defaut skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4128704346294788
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187864257665154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3263607, y: 4.0861297, z: -0.07195613}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114094577118191160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187864257665154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dafead99e6d42a0badcba89912f4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Reyner's PU
+  description: New description of ability
+  isDefault: 0
+  displayOrder: 0
+  defaultTacticPrefab: {fileID: 114405435392580238, guid: fcaaaa3f7d69bf345960101c067856a7,
+    type: 2}
+  character: {fileID: 0}
+  deltaWaitingTime: 0.25
+  executedTime: 0
+  isUsing: 0
+  tactics: []
+  damageModifier: 0
+  armorModifier: 0
+  icon: {fileID: 0}
+  markColor: {r: 0, g: 0, b: 0, a: 0}
+  selectColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114438190868631222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187864257665154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55be2bea13164d2aabf179293cfca0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animations:
+  - animation: {fileID: 7400000, guid: 99609768537acad4b912b1e9b302b34e, type: 2}
+    startFrame: 0
+    endFrame: 0
+    frameLength: 0
+    events:
+    - eventName: MoveToOpponent
+      startFrame: 0
+    effects: []
+  - animation: {fileID: 7400000, guid: 84084c54191834b42892af44f4bf65e8, type: 2}
+    startFrame: 0
+    endFrame: 0
+    frameLength: 0
+    events:
+    - eventName: TakeDamage
+      startFrame: 20
+    effects: []
+  - animation: {fileID: 7400000, guid: 84084c54191834b42892af44f4bf65e8, type: 2}
+    startFrame: 0
+    endFrame: 0
+    frameLength: 0
+    events:
+    - eventName: TakeDamage
+      startFrame: 20
+    effects: []
+  - animation: {fileID: 7400000, guid: 99609768537acad4b912b1e9b302b34e, type: 2}
+    startFrame: 0
+    endFrame: 0
+    frameLength: 0
+    events:
+    - eventName: MoveBack
+      startFrame: 0
+    effects: []
+  - animation: {fileID: 7400000, guid: a0593632ee3725c49943907c062c9754, type: 2}
+    startFrame: 0
+    endFrame: 0
+    frameLength: 0
+    events: []
+    effects: []

@@ -68,7 +68,8 @@ public class CharacterField : MonoBehaviour
         if (!character.model.IsNull())
         {
             var renderer = character.model.GetComponentInChildren<SpriteRenderer>();
-            renderer.flipX = true;
+            // renderer.flipX = true;
+            renderer.transform.localScale = new Vector3(-1f,1f,1f);
             renderer = null;
         }
     }
