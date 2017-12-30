@@ -46,14 +46,14 @@ public class ReynerDefaultSkill : Skill
             animManager.AddEvent("MoveToOpponent", (length) => {
                 StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, ownFieldPosition, opponentFieldPosition, length));
             });
-            animManager.AddEvent("Slash", (length) => {
+            animManager.AddEvent("TakeDamage", (length) => {
                 TakeDamage(new[] { opponentField.character });
             });
             animManager.AddEvent("MoveBack", (length) => {
                 StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, length));
             });
             animManager.Play();
-            yield return new WaitForSeconds(executedTime);
+            yield return new WaitForSeconds(animManager.GetLength());
             animManager.Stop();
         }
         
