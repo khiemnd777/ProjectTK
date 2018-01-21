@@ -110,6 +110,8 @@ public class AnimationManager : MonoBehaviour
     {
         foreach (var effect in effects)
         {
+            if(effect.effectObject.IsNull())
+                continue;
             var startTime = CalculatorUtility.TimeByFrame(effect.startFrame, frameRate);
             yield return new WaitForSeconds(startTime);
             var length = animlength - startTime;

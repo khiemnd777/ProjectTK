@@ -20,6 +20,12 @@ public class Character : MonoBehaviour
     public bool isEnemy;
     public bool isTurn;
     [Space]
+    [Header("Default Animations")]
+    public AnimationClip idlingAnimation;
+    public AnimationClip hurtingAnimation;
+    public AnimationClip dodgingAnimation;
+    [Space]
+    [Header("Skills")]
     public List<Skill> skills = new List<Skill>();
     public List<Skill> learnedSkills = new List<Skill>();
     public List<Tactical> tactics = new List<Tactical>();

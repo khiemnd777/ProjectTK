@@ -12,10 +12,19 @@ public class Skill : Ability
     public Sprite icon;
     public Color markColor;
     public Color selectColor;
+
+    public override void Setup()
+    {
+        var animManager = GetComponent<AnimationManager>();
+        if (!animManager.IsNull())
+        {
+            executedTime = animManager.GetLength();
+        }
+    }
     
     public override IEnumerator Use(AbilityUsingParams args) 
     {
-        yield return base.Use(args);
+        // yield return base.Use(args);
 
         var positions = args.tactic.priorityPositions;
         var opponentFieldSlots = GetOpponentFieldSlots();
@@ -29,13 +38,6 @@ public class Skill : Ability
         opponentImage.color = markColor;
         ownImage.color = selectColor;
 
-        // var timeMoveTo = executedTime / 2f;
-        // var timePrepareIdleToMove = .02f;
-        // var timeTotalMoving = timeMoveTo - timePrepareIdleToMove;
-        // var timeSlash = .25f;
-        // var timeSlashDelay = .025f;
-        // var timeMoving = timeTotalMoving - timeSlash - timeSlashDelay;
-        // var timeBack = executedTime - timeMoveTo;
         var direction = character.isEnemy ? -1 : 1;
         var ownFieldPosition = ownField.spawner.transform.position;
         var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(5f, 0, 0));
@@ -47,12 +49,6 @@ public class Skill : Ability
             });
             animManager.AddEvent("TakeDamage", (length) => {
                 TakeDamage(new[] { opponentField.character });
-            });
-            animManager.AddEvent("OpponentHurt", (length) =>
-            {
-                // var opponent = opponentField.character;
-                // var animator = opponent.animator;
-                // animator.Play("hurt", 0);
             });
             animManager.AddEvent("MoveBack", (length) => {
                 StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, length));
@@ -78,8 +74,23 @@ public class Skill : Ability
         {
             var stats = opponent.GetComponent<CharacterStats>();
             stats.TakeDamage(damage);
+            StartCoroutine(TakingDamageAnimation(opponent));
             stats = null;
             yield return null;
+        }
+    }
+
+    IEnumerator TakingDamageAnimation(Character opponent){
+        if(!opponent.hurtingAnimation.IsNull()){
+            var animClip = opponent.hurtingAnimation;
+            var animator = opponent.animator;
+            animator.Play(animClip.name, 0);
+            yield return new WaitForSeconds(animClip.length);
+        }
+        if(!opponent.idlingAnimation.IsNull()){
+            var animClip = opponent.idlingAnimation;
+            var animator = opponent.animator;
+            animator.Play(animClip.name, 0);
         }
     }
 
@@ -87,6 +98,6 @@ public class Skill : Ability
         var stats = character.GetComponent<CharacterStats>();
         stats.damage.AddModifier(damageModifier);
         StartCoroutine(TakingDamage(stats.damage.GetValue(), characters));
-        stats.damage.RemoveModifier(damageModifier);
+        stats.damage.RemoveModifier(damageModifier);   
     }
 }

@@ -31,13 +31,6 @@ public class ReynerDefaultSkill : Skill
         opponentImage.color = markColor;
         ownImage.color = selectColor;
 
-        // var timeMoveTo = executedTime / 2f;
-        // var timePrepareIdleToMove = .02f;
-        // var timeTotalMoving = timeMoveTo - timePrepareIdleToMove;
-        // var timeSlash = .25f;
-        // var timeSlashDelay = .025f;
-        // var timeMoving = timeTotalMoving - timeSlash - timeSlashDelay;
-        // var timeBack = executedTime - timeMoveTo;
         var direction = character.isEnemy ? -1 : 1;
         var ownFieldPosition = ownField.spawner.transform.position;
         var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(5f, 0, 0));
@@ -52,13 +45,6 @@ public class ReynerDefaultSkill : Skill
             animManager.AddEvent("TakeDamage", (length) =>
             {
                 TakeDamage(new[] { opponentField.character });
-            });
-            animManager.AddEvent("OpponentHurt", (length) =>
-            {
-                Debug.Log("Im here!");
-                var opponent = opponentField.character;
-                var animator = opponent.animator;
-                animator.Play("hurt");
             });
             animManager.AddEvent("MoveBack", (length) =>
             {
