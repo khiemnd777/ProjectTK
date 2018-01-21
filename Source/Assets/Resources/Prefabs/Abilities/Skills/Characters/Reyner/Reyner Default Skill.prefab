@@ -72,8 +72,7 @@ MonoBehaviour:
     - position: {x: 2.75, y: 3.375, z: 0}
       rotation: {x: 0, y: 0, z: 0}
       scale: {x: 0, y: 0, z: 0}
-      effectObject: {fileID: 1280353505778176, guid: 19f6d4c7ae2e14a43af420e93b452328,
-        type: 2}
+      effectObject: {fileID: 0}
       startFrame: 18
   - animation: {fileID: 7400000, guid: 3d2ca9650eff049189ac5a1bf44eef05, type: 2}
     startFrame: 0
@@ -86,7 +85,7 @@ MonoBehaviour:
   - animation: {fileID: 7400000, guid: 40cca41c78d5f43f293c506f7d0f33c9, type: 2}
     startFrame: 0
     endFrame: 0
-    frameLength: 1
+    frameLength: 0.1
     events: []
     effects: []
 --- !u!114 &114873781535967612

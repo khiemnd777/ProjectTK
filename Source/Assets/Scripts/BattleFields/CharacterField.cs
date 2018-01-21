@@ -69,7 +69,11 @@ public class CharacterField : MonoBehaviour
         {
             var renderer = character.model.GetComponentInChildren<SpriteRenderer>();
             // renderer.flipX = true;
-            renderer.transform.localScale = new Vector3(-1f,1f,1f);
+            // flip of model according to origin
+            var originScale = character.transform.localScale;
+            var flipDelta = originScale.x < 0 ? -1 : 1;
+            var flip = -1f * flipDelta;
+            renderer.transform.localScale = new Vector3(flip, 1f, 1f);
             renderer = null;
         }
     }

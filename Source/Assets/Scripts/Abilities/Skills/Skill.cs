@@ -48,6 +48,12 @@ public class Skill : Ability
             animManager.AddEvent("TakeDamage", (length) => {
                 TakeDamage(new[] { opponentField.character });
             });
+            animManager.AddEvent("OpponentHurt", (length) =>
+            {
+                // var opponent = opponentField.character;
+                // var animator = opponent.animator;
+                // animator.Play("hurt", 0);
+            });
             animManager.AddEvent("MoveBack", (length) => {
                 StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, length));
             });

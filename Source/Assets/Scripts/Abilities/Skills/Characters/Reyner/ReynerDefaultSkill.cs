@@ -9,7 +9,8 @@ public class ReynerDefaultSkill : Skill
     public override void Setup()
     {
         var animManager = GetComponent<AnimationManager>();
-        if(!animManager.IsNull()){
+        if (!animManager.IsNull())
+        {
             executedTime = animManager.GetLength();
         }
     }
@@ -22,7 +23,7 @@ public class ReynerDefaultSkill : Skill
         var opponentFieldSlots = GetOpponentFieldSlots();
         var opponentFieldSlot = opponentFieldSlots[positions[0]];
         var opponentImage = opponentFieldSlot.GetComponent<Image>();
-        var ownFieldSlot = GetOwnFieldSlot(); 
+        var ownFieldSlot = GetOwnFieldSlot();
         var ownImage = ownFieldSlot.GetComponent<Image>();
         var opponentField = GetOpponentFields()[positions[0]];
         var ownField = GetOwnField();
@@ -42,21 +43,32 @@ public class ReynerDefaultSkill : Skill
         var opponentFieldPosition = opponentField.spawner.transform.position - (direction * new Vector3(5f, 0, 0));
         var animManager = GetComponent<AnimationManager>();
 
-        if(!animManager.IsNull()){
-            animManager.AddEvent("MoveToOpponent", (length) => {
+        if (!animManager.IsNull())
+        {
+            animManager.AddEvent("MoveToOpponent", (length) =>
+            {
                 StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, ownFieldPosition, opponentFieldPosition, length));
             });
-            animManager.AddEvent("TakeDamage", (length) => {
+            animManager.AddEvent("TakeDamage", (length) =>
+            {
                 TakeDamage(new[] { opponentField.character });
             });
-            animManager.AddEvent("MoveBack", (length) => {
+            animManager.AddEvent("OpponentHurt", (length) =>
+            {
+                Debug.Log("Im here!");
+                var opponent = opponentField.character;
+                var animator = opponent.animator;
+                animator.Play("hurt");
+            });
+            animManager.AddEvent("MoveBack", (length) =>
+            {
                 StartCoroutine(TransformUtility.MoveToTarget(character.model.transform, opponentFieldPosition, ownFieldPosition, length));
             });
             animManager.Play();
             yield return new WaitForSeconds(animManager.GetLength());
             animManager.Stop();
         }
-        
+
         opponentImage.color = Color.white;
         ownImage.color = Color.white;
 

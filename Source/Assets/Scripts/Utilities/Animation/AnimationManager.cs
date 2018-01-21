@@ -95,6 +95,7 @@ public class AnimationManager : MonoBehaviour
     {
         foreach (var evt in events)
         {
+            Debug.Log("Event name: " + evt.eventName);
             if (evt.action.IsNull())
                 continue;
             var startTime = CalculatorUtility.TimeByFrame(evt.startFrame, frameRate);
@@ -113,6 +114,12 @@ public class AnimationManager : MonoBehaviour
             yield return new WaitForSeconds(startTime);
             var length = animlength - startTime;
             var effectObj = Instantiate(effect.effectObject, _ability.character.model.transform.position + effect.position, Quaternion.identity, _ability.character.model.transform);
+            var isEnemy = _ability.character.isEnemy;
+            if(!isEnemy){
+                var originScale = effectObj.transform.localScale;
+                originScale.x *= -1;
+                effectObj.transform.localScale = originScale;
+            }
             Destroy(effectObj, length);
             yield return new WaitForSeconds(length);
         }

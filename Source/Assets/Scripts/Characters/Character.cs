@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     public RuntimeAnimatorController animatorController;
     [Space]
     public int slot;
+    public bool flip;
     public bool isDeath;
     public bool isEnemy;
     public bool isTurn;
@@ -29,10 +30,16 @@ public class Character : MonoBehaviour
 
     Animator _animator;
 
-    public Animator animator{
-        get{
+    public Animator animator
+    {
+        get
+        {
             return _animator ?? (_animator = model.GetComponentInChildren<Animator>());
         }
+    }
+
+    void Awake(){
+        Flip();
     }
 
     public void AddSkill(Skill skill)
@@ -149,5 +156,15 @@ public class Character : MonoBehaviour
         characterRunner = null;
         tactics = null;
         singleTactic = null;
+    }
+
+    void Flip()
+    {
+        if (flip)
+        {
+            var originScale = transform.localScale;
+            originScale.x *= -1;
+            transform.localScale = originScale;
+        }
     }
 }

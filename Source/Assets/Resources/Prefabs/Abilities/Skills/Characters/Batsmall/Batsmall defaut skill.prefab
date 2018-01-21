@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187864257665154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3263607, y: 4.0861297, z: -0.07195613}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,8 +95,10 @@ MonoBehaviour:
     events:
     - eventName: TakeDamage
       startFrame: 20
+    - eventName: OpponentHurt
+      startFrame: 0
     effects: []
-  - animation: {fileID: 7400000, guid: 84084c54191834b42892af44f4bf65e8, type: 2}
+  - animation: {fileID: 0}
     startFrame: 0
     endFrame: 0
     frameLength: 0
@@ -115,6 +117,6 @@ MonoBehaviour:
   - animation: {fileID: 7400000, guid: a0593632ee3725c49943907c062c9754, type: 2}
     startFrame: 0
     endFrame: 0
-    frameLength: 0
+    frameLength: 0.1
     events: []
     effects: []
