@@ -69,10 +69,11 @@ MonoBehaviour:
     - eventName: TakeDamage
       startFrame: 18
     effects:
-    - position: {x: 2.75, y: 3.375, z: 0}
+    - position: {x: 4.88, y: 4.81, z: 0}
       rotation: {x: 0, y: 0, z: 0}
       scale: {x: 0, y: 0, z: 0}
-      effectObject: {fileID: 0}
+      effectObject: {fileID: 1067187449656942, guid: 30f1615f062133d4f839a1f0469d2ff6,
+        type: 2}
       startFrame: 18
   - animation: {fileID: 7400000, guid: 3d2ca9650eff049189ac5a1bf44eef05, type: 2}
     startFrame: 0
