@@ -1,0 +1,324 @@
+fileFormatVersion: 2
+guid: b7314108b249db34cb358f303bfc9c8c
+timeCreated: 1517627249
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: head
+    21300002: body
+    21300004: face
+    21300006: r_hand
+    21300008: l_hand
+    21300010: base model_5
+    21300012: base model_6
+    21300014: base model_7
+    21300016: base model_8
+    21300018: weapon
+    21300020: base model_10
+    21300022: base model_11
+    21300024: r_leg
+    21300026: l_leg
+    21300028: eyes
+    21300030: mouth
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 776
+        width: 374
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 112}
+        - {x: -86, y: 108}
+        - {x: -169, y: 43}
+        - {x: -187, y: -3}
+        - {x: -187, y: -100}
+        - {x: -86, y: -112}
+        - {x: 186, y: -112}
+        - {x: 187, y: -111}
+        - {x: 187, y: 24}
+        - {x: 143, y: 112}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 731
+        width: 322
+        height: 182
+      alignment: 9
+      pivot: {x: 0.49440458, y: 0.948867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -67.5, y: 90.5}
+        - {x: -71.5, y: 63.5}
+        - {x: -71.5, y: -90.5}
+        - {x: 159.5, y: -90.5}
+        - {x: 160.5, y: -85.5}
+        - {x: 160.5, y: 88.5}
+        - {x: 145.5, y: 90.5}
+      - - {x: -159.5, y: -30.5}
+        - {x: -160.5, y: -31.5}
+        - {x: -160.5, y: -37.5}
+        - {x: -153.5, y: -37.5}
+        - {x: -153.5, y: -32.5}
+        - {x: -156.5, y: -30.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: face
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 431
+        width: 393
+        height: 329
+      alignment: 9
+      pivot: {x: 0.45632458, y: 0.030455986}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -180.5, y: 164.5}
+        - {x: -196.5, y: 153.5}
+        - {x: -196.5, y: -164.5}
+        - {x: 154.5, y: -164.5}
+        - {x: 196.5, y: -83.5}
+        - {x: 196.5, y: 133.5}
+        - {x: 146.5, y: 164.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_hand
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 576
+        width: 146
+        height: 104
+      alignment: 9
+      pivot: {x: 0.94674516, y: 0.8740962}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -73, y: 13}
+        - {x: -73, y: -47}
+        - {x: -65, y: -52}
+        - {x: 11, y: -52}
+        - {x: 73, y: 11}
+        - {x: 73, y: 52}
+        - {x: 24, y: 52}
+        - {x: -71, y: 18}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_hand
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 564
+        width: 221
+        height: 106
+      alignment: 9
+      pivot: {x: 0.059886258, y: 0.8454475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42.5, y: 53}
+        - {x: -110.5, y: 53}
+        - {x: -110.5, y: 26}
+        - {x: -107.5, y: 22}
+        - {x: -56.5, y: -45}
+        - {x: -21.5, y: -53}
+        - {x: 33.5, y: -53}
+        - {x: 39.5, y: -30}
+        - {x: 39.5, y: -2}
+        - {x: -7.5, y: 51}
+      - - {x: 105.5, y: 50}
+        - {x: 106.5, y: 47}
+        - {x: 109.5, y: 47}
+        - {x: 110.5, y: 48}
+        - {x: 110.5, y: 53}
+        - {x: 108.5, y: 53}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: weapon
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 22
+        width: 286
+        height: 389
+      alignment: 9
+      pivot: {x: 0.83208555, y: 0.14994544}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: 194.5}
+        - {x: -143, y: 194.5}
+        - {x: -143, y: 149.5}
+        - {x: -138, y: 108.5}
+        - {x: 18, y: -131.5}
+        - {x: 29, y: -140.5}
+        - {x: 41, y: -145.5}
+        - {x: 87, y: -185.5}
+        - {x: 103, y: -194.5}
+        - {x: 143, y: -194.5}
+        - {x: 143, y: -128.5}
+        - {x: 109, y: -21.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_leg
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 104
+        width: 104
+        height: 158
+      alignment: 9
+      pivot: {x: 0.83008575, y: 0.91281533}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 79}
+        - {x: -43, y: -9}
+        - {x: -52, y: -39}
+        - {x: -52, y: -79}
+        - {x: 52, y: -79}
+        - {x: 52, y: 79}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_leg
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 104
+        width: 103
+        height: 156
+      alignment: 9
+      pivot: {x: 0.8221803, y: 0.9107727}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51.5, y: 16}
+        - {x: 51.5, y: 76}
+        - {x: 50.5, y: 78}
+        - {x: 7.5, y: 78}
+        - {x: -50.5, y: -40}
+        - {x: -51.5, y: -47}
+        - {x: -51.5, y: -78}
+        - {x: 49.5, y: -78}
+        - {x: 51.5, y: -76}
+        - {x: 51.5, y: -2}
+        - {x: 49.5, y: -1}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eyes
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 410
+        width: 281
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mouth
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 329
+        width: 94
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
