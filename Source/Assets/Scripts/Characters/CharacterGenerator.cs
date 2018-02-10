@@ -10,14 +10,21 @@ public class CharacterGenerator : MonoBehaviour
     const string leftLegSprite = "Sprites/legs";
     const string rightLegSprite = "Sprites/legs";
 
+    SpriteHelper spriteHelper;
+
+    void Awake()
+    {
+        spriteHelper = SpriteHelper.instance;
+    }
+
     public void Generate()
     {
-        var countOfHairSprite = SpriteHelper.instance.Count(hairSprite);
-        var countOfHeadSprite = SpriteHelper.instance.Count(headSprite);
-        var countOfBodySprite = SpriteHelper.instance.Count(bodySprite);
-        var countOfLeftArmSprite = SpriteHelper.instance.Count(leftArmSprite);
-        var countOfRightArmSprite = SpriteHelper.instance.Count(rightArmSprite);
-        var countOfLeftLegSprite = SpriteHelper.instance.Count(leftLegSprite);
-        var countOfRightLegSprite = SpriteHelper.instance.Count(rightLegSprite);
+        var countOfHairSprite = spriteHelper.Count(hairSprite);
+        var countOfHeadSprite = spriteHelper.Count(headSprite);
+        var countOfBodySprite = spriteHelper.Count(bodySprite);
+        var countOfLeftArmSprite = spriteHelper.Count(leftArmSprite);
+        var countOfRightArmSprite = spriteHelper.Count(rightArmSprite);
+        var countOfLeftLegSprite = spriteHelper.Count(leftLegSprite);
+        var countOfRightLegSprite = spriteHelper.Count(rightLegSprite);
     }
 }
