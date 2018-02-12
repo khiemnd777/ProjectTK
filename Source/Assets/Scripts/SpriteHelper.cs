@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteHelper : MonoBehaviour
+public class SpriteHelper
 {
 
     static SpriteHelper _instance;
