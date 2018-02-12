@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,16 +30,17 @@ public class CharacterGenerator : MonoBehaviour
     }
     #endregion
 
-    const string hairSpriteLoc = "Sprites/Characters/Generated Characters/hairs";
-    const string headSpriteLoc = "Sprites/Characters/Generated Characters/heads";
-    const string eyeSpriteLoc = "Sprites/Characters/Generated Characters/eyes";
-    const string mouthSpriteLoc = "Sprites/Characters/Generated Characters/mouths";
-    const string bodySpriteLoc = "Sprites/Characters/Generated Characters/bodys";
-    const string armSpriteLoc = "Sprites/Characters/Generated Characters/arms";
-    const string legSpriteLoc = "Sprites/Characters/Generated Characters/legs";
-
+    public string hairSpriteLoc = "Sprites/Characters/Generated Characters/hairs";
+    public string headSpriteLoc = "Sprites/Characters/Generated Characters/heads";
+    public string eyeSpriteLoc = "Sprites/Characters/Generated Characters/eyes";
+    public string mouthSpriteLoc = "Sprites/Characters/Generated Characters/mouths";
+    public string bodySpriteLoc = "Sprites/Characters/Generated Characters/bodys";
+    public string armSpriteLoc = "Sprites/Characters/Generated Characters/arms";
+    public string legSpriteLoc = "Sprites/Characters/Generated Characters/legs";
+    [Space]
     public GeneratedBaseCharacter generatedBaseCharacterPrefab;
     public GeneratedBaseCharacter currentGeneratedBaseCharacter;
+    public Text characterName;
 
     List<GeneratedBaseCharacter> _generatedCharaters;
 
@@ -51,6 +53,8 @@ public class CharacterGenerator : MonoBehaviour
     }
 
     SpriteHelper spriteHelper;
+    CharacterNameGenerator nameGenerator;
+
     int countOfHairSprite;
     int countOfHeadSprite;
     int countOfEyeSprite;
@@ -59,9 +63,12 @@ public class CharacterGenerator : MonoBehaviour
     int countOfArmSprite;
     int countOfLegSprite;
 
+    List<string> _listOfCharacterName;
+
     void Awake()
     {
         spriteHelper = SpriteHelper.instance;
+        nameGenerator = CharacterNameGenerator.instance;
         _generatedCharaters = new List<GeneratedBaseCharacter>();
     }
 
@@ -110,5 +117,9 @@ public class CharacterGenerator : MonoBehaviour
         characterElements.rightArm.sprite = rightArmSprite;
         characterElements.leftLeg.sprite = leftLegSprite;
         characterElements.rightLeg.sprite = rightLegSprite;
+
+        var genName = nameGenerator.Generate();
+        currentGeneratedBaseCharacter.name = genName;
+        characterName.text = genName;
     }
 }
