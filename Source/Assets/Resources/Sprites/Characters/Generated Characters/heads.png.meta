@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: 8b5156978b6fd3d4a8be36042a47f496
-timeCreated: 1518408124
+guid: b33f1485b982a4d56a73161bd2c6f761
+timeCreated: 1518682324
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: 0
+    21300002: 1
+    21300004: 2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -32,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -93,15 +95,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   - buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -118,12 +111,40 @@ TextureImporter:
       name: 0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 2610
+        x: 56
+        y: 2550
         width: 397
-        height: 332
+        height: 411
       alignment: 9
-      pivot: {x: 0.5640343, y: 0.04057367}
+      pivot: {x: 0.60065997, y: 0.03185055}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 2550
+        width: 397
+        height: 411
+      alignment: 9
+      pivot: {x: 0.60065997, y: 0.03185055}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 2541
+        width: 440
+        height: 448
+      alignment: 9
+      pivot: {x: 0.6263819, y: 0.062165942}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

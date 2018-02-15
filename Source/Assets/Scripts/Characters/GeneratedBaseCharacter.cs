@@ -3,7 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class BaseCharacterElement
 {
-    public SpriteRenderer hair;
     public SpriteRenderer head;
     public SpriteRenderer eye;
     public SpriteRenderer mouth;

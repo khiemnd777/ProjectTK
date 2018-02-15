@@ -30,7 +30,6 @@ public class CharacterGenerator : MonoBehaviour
     }
     #endregion
 
-    public string hairSpriteLoc = "Sprites/Characters/Generated Characters/hairs";
     public string headSpriteLoc = "Sprites/Characters/Generated Characters/heads";
     public string eyeSpriteLoc = "Sprites/Characters/Generated Characters/eyes";
     public string mouthSpriteLoc = "Sprites/Characters/Generated Characters/mouths";
@@ -55,7 +54,6 @@ public class CharacterGenerator : MonoBehaviour
     SpriteHelper spriteHelper;
     CharacterNameGenerator nameGenerator;
 
-    int countOfHairSprite;
     int countOfHeadSprite;
     int countOfEyeSprite;
     int countOfMouthSprite;
@@ -74,7 +72,6 @@ public class CharacterGenerator : MonoBehaviour
 
     void Start()
     {
-        countOfHairSprite = spriteHelper.Count(hairSpriteLoc);
         countOfHeadSprite = spriteHelper.Count(headSpriteLoc);
         countOfEyeSprite = spriteHelper.Count(eyeSpriteLoc);
         countOfMouthSprite = spriteHelper.Count(mouthSpriteLoc);
@@ -86,7 +83,6 @@ public class CharacterGenerator : MonoBehaviour
     public void Generate()
     {
         var pattern = "{0} => {1}";
-        var hairIndex = Random.Range(0, countOfHairSprite);
         var headIndex = Random.Range(0, countOfHeadSprite);
         var eyeIndex = Random.Range(0, countOfEyeSprite);
         var mouthIndex = Random.Range(0, countOfMouthSprite);
@@ -94,13 +90,12 @@ public class CharacterGenerator : MonoBehaviour
         var armIndex = Random.Range(0, countOfArmSprite);
         var legIndex = Random.Range(0, countOfLegSprite);
 
-        var hairSprite = spriteHelper.Get(string.Format(pattern, hairSpriteLoc, hairIndex));
         var headSprite = spriteHelper.Get(string.Format(pattern, headSpriteLoc, headIndex));
         var eyeSprite = spriteHelper.Get(string.Format(pattern, eyeSpriteLoc, eyeIndex));
         var mouthSprite = spriteHelper.Get(string.Format(pattern, mouthSpriteLoc, mouthIndex));
         var bodySprite = spriteHelper.Get(string.Format(pattern, bodySpriteLoc, bodyIndex));
-        var leftArmSprite = spriteHelper.Get(string.Format(pattern, armSpriteLoc, "l_" + armIndex));
-        var rightArmSprite = spriteHelper.Get(string.Format(pattern, armSpriteLoc, "r_" + armIndex));
+        var leftArmSprite = spriteHelper.Get(string.Format(pattern, armSpriteLoc, "l_" + bodyIndex));
+        var rightArmSprite = spriteHelper.Get(string.Format(pattern, armSpriteLoc, "r_" + bodyIndex));
         var leftLegSprite = spriteHelper.Get(string.Format(pattern, legSpriteLoc, "l_" + legIndex));
         var rightLegSprite = spriteHelper.Get(string.Format(pattern, legSpriteLoc, "r_" + legIndex));
 
@@ -108,15 +103,29 @@ public class CharacterGenerator : MonoBehaviour
         // _generatedCharaters.Add(instanceOfBaseCharacter);
 
         var characterElements = currentGeneratedBaseCharacter.elements;
-        characterElements.hair.sprite = hairSprite;
+        var characterEyes = characterElements.eye;
+        var characterMouth = characterElements.mouth;
         characterElements.head.sprite = headSprite;
-        characterElements.eye.sprite = eyeSprite;
-        characterElements.mouth.sprite = mouthSprite;
+        characterEyes.sprite = eyeSprite;
+        characterMouth.sprite = mouthSprite;
         characterElements.body.sprite = bodySprite;
         characterElements.leftArm.sprite = leftArmSprite;
         characterElements.rightArm.sprite = rightArmSprite;
         characterElements.leftLeg.sprite = leftLegSprite;
         characterElements.rightLeg.sprite = rightLegSprite;
+
+        // transform eyes and mouth according to pivot of Y
+        // range of mouth
+        var rangeYOfMouth = Random.Range(.2f, .6f);
+        var mouthPosition = characterMouth.transform.localPosition;
+        mouthPosition.y = rangeYOfMouth;
+        characterMouth.transform.localPosition = mouthPosition;
+        // range of eyes
+        var rangeYOfEyes = Random.Range(1f, 1.3f);
+        var eyesPosition = characterEyes.transform.localPosition;
+        eyesPosition.y = rangeYOfEyes;
+        characterEyes.transform.localPosition = eyesPosition;
+        
 
         var genName = nameGenerator.Generate();
         currentGeneratedBaseCharacter.name = genName;
