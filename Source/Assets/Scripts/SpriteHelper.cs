@@ -35,7 +35,13 @@ public class SpriteHelper
         if (prefabCond.Length == 2)
         {
             var n2 = prefabCond[1].Trim();
-            icons.Add(name, Resources.LoadAll<Sprite>(n1).FirstOrDefault(x => x.name == n2));
+            var sprites = Resources.LoadAll<Sprite>(n1);
+            if(sprites.Count() == 0)
+                return null;
+            var singleSprite = sprites.First(x => x.name == n2);
+            if(singleSprite.IsNull())
+                return null;
+            icons.Add(name, singleSprite);
             return Get(name);
         }
         return null;
