@@ -1,12 +1,14 @@
 fileFormatVersion: 2
 guid: b33f1485b982a4d56a73161bd2c6f761
-timeCreated: 1518682324
+timeCreated: 1518923402
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: 0
     21300002: 1
     21300004: 2
+    21300006: 3
+    21300008: 4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -145,6 +147,34 @@ TextureImporter:
         height: 448
       alignment: 9
       pivot: {x: 0.6263819, y: 0.062165942}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 3
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 2551
+        width: 481
+        height: 426
+      alignment: 9
+      pivot: {x: 0.50715166, y: 0.072021484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 2558
+        width: 454
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5985016, y: 0.07000234}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

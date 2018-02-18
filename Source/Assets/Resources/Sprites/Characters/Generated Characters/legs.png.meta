@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6caa0b7035aa848438480c4eff6ab1e7
-timeCreated: 1518407095
+timeCreated: 1518923696
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,22 @@ TextureImporter:
     21300002: r_0
     21300004: l_1
     21300006: r_1
+    21300008: l_2
+    21300010: r_2
+    21300012: l_3
+    21300014: r_3
+    21300016: l_4
+    21300018: r-$
+    21300020: l_5
+    21300022: r_5
+    21300024: l_6
+    21300026: r_6
+    21300028: l_7
+    21300030: r_7
+    21300032: l_8
+    21300034: r_8
+    21300036: l_9
+    21300038: r_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -169,6 +185,230 @@ TextureImporter:
         height: 170
       alignment: 9
       pivot: {x: 0.8256609, y: 0.9331285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_2
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 2620
+        width: 143
+        height: 166
+      alignment: 9
+      pivot: {x: 0.8262837, y: 0.89350617}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_2
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 2615
+        width: 137
+        height: 157
+      alignment: 9
+      pivot: {x: 0.8405735, y: 0.92455435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_3
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 2608
+        width: 125
+        height: 186
+      alignment: 9
+      pivot: {x: 0.77728516, y: 0.94436747}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_3
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 2612
+        width: 122
+        height: 180
+      alignment: 9
+      pivot: {x: 0.80595726, y: 0.922149}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_4
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 2611
+        width: 120
+        height: 179
+      alignment: 9
+      pivot: {x: 0.8110575, y: 0.8723745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r-$
+      rect:
+        serializedVersion: 2
+        x: 2041
+        y: 2614
+        width: 117
+        height: 176
+      alignment: 9
+      pivot: {x: 0.8304266, y: 0.90144485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_5
+      rect:
+        serializedVersion: 2
+        x: 2222
+        y: 2608
+        width: 125
+        height: 183
+      alignment: 9
+      pivot: {x: 0.8306094, y: 0.84238124}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_5
+      rect:
+        serializedVersion: 2
+        x: 2403
+        y: 2608
+        width: 123
+        height: 183
+      alignment: 9
+      pivot: {x: 0.8143082, y: 0.8350957}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_6
+      rect:
+        serializedVersion: 2
+        x: 2602
+        y: 2596
+        width: 124
+        height: 172
+      alignment: 9
+      pivot: {x: 0.8440257, y: 0.8731874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_6
+      rect:
+        serializedVersion: 2
+        x: 2787
+        y: 2594
+        width: 126
+        height: 166
+      alignment: 9
+      pivot: {x: 0.82798547, y: 0.9256283}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_7
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 2364
+        width: 132
+        height: 160
+      alignment: 9
+      pivot: {x: 0.76258063, y: 0.94158936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_7
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 2362
+        width: 114
+        height: 160
+      alignment: 9
+      pivot: {x: 0.8508164, y: 0.9165939}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_8
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 2367
+        width: 110
+        height: 159
+      alignment: 9
+      pivot: {x: 0.8150968, y: 0.9108303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_8
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2363
+        width: 112
+        height: 159
+      alignment: 9
+      pivot: {x: 0.85708076, y: 0.91082877}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_9
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 2359
+        width: 124
+        height: 184
+      alignment: 9
+      pivot: {x: 0.8010234, y: 0.8984813}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_9
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 2359
+        width: 127
+        height: 179
+      alignment: 9
+      pivot: {x: 0.8149058, y: 0.917059}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
