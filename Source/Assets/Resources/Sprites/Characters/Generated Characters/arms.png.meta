@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a3be8b38b25eb314aa4a88a59a9a7f39
-timeCreated: 1518682695
+timeCreated: 1519030033
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,14 @@ TextureImporter:
     21300010: l_3
     21300012: r_2
     21300014: r_3
+    21300016: l_4
+    21300018: r_4
+    21300020: l_5
+    21300022: r_5
+    21300024: l_6
+    21300026: r_6
+    21300028: l_7
+    21300030: r_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -229,6 +237,118 @@ TextureImporter:
         height: 112
       alignment: 9
       pivot: {x: 0.0717191, y: 0.8876299}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_4
+      rect:
+        serializedVersion: 2
+        x: 2119
+        y: 2838
+        width: 156
+        height: 112
+      alignment: 9
+      pivot: {x: 0.86520153, y: 0.79287285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_4
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 2838
+        width: 145
+        height: 109
+      alignment: 9
+      pivot: {x: 0.13090652, y: 0.8167713}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2836
+        width: 157
+        height: 118
+      alignment: 9
+      pivot: {x: 0.8738726, y: 0.82187253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_5
+      rect:
+        serializedVersion: 2
+        x: 2774
+        y: 2838
+        width: 152
+        height: 110
+      alignment: 9
+      pivot: {x: 0.12518792, y: 0.8452814}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_6
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 2607
+        width: 152
+        height: 115
+      alignment: 9
+      pivot: {x: 0.9202435, y: 0.78523266}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_6
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 2610
+        width: 161
+        height: 111
+      alignment: 9
+      pivot: {x: 0.15686357, y: 0.8266184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_7
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 2612
+        width: 164
+        height: 112
+      alignment: 9
+      pivot: {x: 0.88949436, y: 0.80828637}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_7
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 2612
+        width: 152
+        height: 112
+      alignment: 9
+      pivot: {x: 0.13654609, y: 0.79287285}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
