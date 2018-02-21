@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6caa0b7035aa848438480c4eff6ab1e7
-timeCreated: 1519030765
+timeCreated: 1519138425
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,7 +13,7 @@ TextureImporter:
     21300012: l_3
     21300014: r_3
     21300016: l_4
-    21300018: r-$
+    21300018: r_4
     21300020: l_5
     21300022: r_5
     21300024: l_6
@@ -260,10 +260,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: r-$
+      name: r_4
       rect:
         serializedVersion: 2
-        x: 2041
+        x: 2033
         y: 2614
         width: 117
         height: 176

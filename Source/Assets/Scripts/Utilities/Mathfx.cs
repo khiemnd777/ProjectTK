@@ -183,4 +183,10 @@ public sealed class Mathfx
         // Debug.Log("Start: "  + start + "   End: " + end + "  Value: " + value + "  Half: " + half + "  Diff: " + diff + "  Retval: " + retval);
         return retval;
     }
+
+    public static Vector3 LerpByDistance(Vector3 a, Vector3 b, float x)
+    {
+        var p = x * Vector3.Normalize(b - a) + a;
+        return p;
+    }
 }

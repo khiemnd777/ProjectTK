@@ -36,7 +36,7 @@ public class SpriteHelper
         {
             var n2 = prefabCond[1].Trim();
             var sprites = Resources.LoadAll<Sprite>(n1);
-            if(sprites.Count() == 0)
+            if(!sprites.Any())
                 return null;
             var singleSprite = sprites.First(x => x.name == n2);
             if(singleSprite.IsNull())

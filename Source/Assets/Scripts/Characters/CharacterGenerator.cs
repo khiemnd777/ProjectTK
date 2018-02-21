@@ -58,7 +58,7 @@ public class CharacterGenerator : MonoBehaviour
     int countOfEyeSprite;
     int countOfMouthSprite;
     int countOfBodySprite;
-    int countOfArmSprite;
+    // int countOfArmSprite;
     int countOfLegSprite;
 
     List<string> _listOfCharacterName;
@@ -76,7 +76,7 @@ public class CharacterGenerator : MonoBehaviour
         countOfEyeSprite = spriteHelper.Count(eyeSpriteLoc);
         countOfMouthSprite = spriteHelper.Count(mouthSpriteLoc);
         countOfBodySprite = spriteHelper.Count(bodySpriteLoc);
-        countOfArmSprite = spriteHelper.Count(armSpriteLoc) / 2;
+        // countOfArmSprite = spriteHelper.Count(armSpriteLoc) / 2;
         countOfLegSprite = spriteHelper.Count(legSpriteLoc) / 2;
     }
 
@@ -87,7 +87,7 @@ public class CharacterGenerator : MonoBehaviour
         var eyeIndex = Random.Range(0, countOfEyeSprite);
         var mouthIndex = Random.Range(0, countOfMouthSprite);
         var bodyIndex = Random.Range(0, countOfBodySprite);
-        var armIndex = Random.Range(0, countOfArmSprite);
+        // var armIndex = Random.Range(0, countOfArmSprite);
         var legIndex = Random.Range(0, countOfLegSprite);
 
         var headSprite = spriteHelper.Get(string.Format(pattern, headSpriteLoc, headIndex));
