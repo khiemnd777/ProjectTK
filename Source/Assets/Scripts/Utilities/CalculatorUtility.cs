@@ -17,4 +17,11 @@ public class CalculatorUtility
         var p = x * Vector3.Normalize(b - a) + a;
         return p;
     }
+
+    public static float Snap(float value, float snapDelta)
+    {
+        var valApartSnap = value / snapDelta;
+        var valRound = value < 0 ? Mathf.Ceil(valApartSnap) : Mathf.Floor(valApartSnap);
+        return valRound * snapDelta + Mathf.Round((value % snapDelta) / snapDelta) * snapDelta;
+    }
 }

@@ -56,6 +56,9 @@ public class TendencyPoint1 : MonoBehaviour
 		_lineRenderer.useWorldSpace = false;
 		_lineRenderer.loop = false;
 		_lineRenderer.positionCount = 7;
+
+		// generate init points
+		GeneratePoints();
 	}
 
     void Update()
@@ -94,9 +97,10 @@ public class TendencyPoint1 : MonoBehaviour
 	void DetermineTendencyPositions()
 	{
 		var originalPosition = Vector3.zero;
-		hpPos = Vector3.Lerp(originalPosition, originalHpPos, hpPoint);
-		damagePos = Vector3.Lerp(originalPosition, originalDamagePos, damagePoint);
-		speedPos = Vector3.Lerp(originalPosition, originalSpeedPos, speedPoint);
+		var maxPoint = Mathf.Max(hpPoint, damagePoint, speedPoint);
+		hpPos = Vector3.Lerp(originalPosition, originalHpPos, hpPoint / maxPoint);
+		damagePos = Vector3.Lerp(originalPosition, originalDamagePos, damagePoint / maxPoint);
+		speedPos = Vector3.Lerp(originalPosition, originalSpeedPos, speedPoint / maxPoint);
 	}
 
 	void ConfigureText()
@@ -117,8 +121,8 @@ public class TendencyPoint1 : MonoBehaviour
 
 	public void GeneratePoints()
 	{
-		damagePoint = Random.Range(.2f, 1);
-		hpPoint = Random.Range(.2f, 1);
-		speedPoint = Random.Range(.2f, 1);
+		damagePoint = Random.Range(.1f, .8f);
+		hpPoint = Random.Range(.1f, 1 - damagePoint - .1f); 
+		speedPoint = Mathf.Max(.1f, 1 - (hpPoint + damagePoint));
 	}
 }

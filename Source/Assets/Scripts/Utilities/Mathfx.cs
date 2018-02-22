@@ -7,7 +7,7 @@ using UnityEngine;
 public sealed class Mathfx
 {
     //Ease in out
-	#region Ease in out
+    #region Ease in out
     public static float Hermite(float start, float end, float value)
     {
         return Mathf.Lerp(start, end, value * value * (3.0f - 2.0f * value));
@@ -22,10 +22,10 @@ public sealed class Mathfx
     {
         return new Vector3(Hermite(start.x, end.x, value), Hermite(start.y, end.y, value), Hermite(start.z, end.z, value));
     }
-	#endregion
+    #endregion
 
     //Ease out
-	#region Sinerp
+    #region Sinerp
     public static float Sinerp(float start, float end, float value)
     {
         return Mathf.Lerp(start, end, Mathf.Sin(value * Mathf.PI * 0.5f));
@@ -40,10 +40,10 @@ public sealed class Mathfx
     {
         return new Vector3(Mathf.Lerp(start.x, end.x, Mathf.Sin(value * Mathf.PI * 0.5f)), Mathf.Lerp(start.y, end.y, Mathf.Sin(value * Mathf.PI * 0.5f)), Mathf.Lerp(start.z, end.z, Mathf.Sin(value * Mathf.PI * 0.5f)));
     }
-	#endregion
+    #endregion
 
     //Ease in
-	#region Ease in
+    #region Ease in
     public static float Coserp(float start, float end, float value)
     {
         return Mathf.Lerp(start, end, 1.0f - Mathf.Cos(value * Mathf.PI * 0.5f));
@@ -58,10 +58,10 @@ public sealed class Mathfx
     {
         return new Vector3(Coserp(start.x, end.x, value), Coserp(start.y, end.y, value), Coserp(start.z, end.z, value));
     }
-	#endregion
+    #endregion
 
     //Boing
-	#region Boing
+    #region Boing
     public static float Berp(float start, float end, float value)
     {
         value = Mathf.Clamp01(value);
@@ -78,10 +78,10 @@ public sealed class Mathfx
     {
         return new Vector3(Berp(start.x, end.x, value), Berp(start.y, end.y, value), Berp(start.z, end.z, value));
     }
-	#endregion
+    #endregion
 
     //Like lerp with ease in ease out
-	#region Like lerp with ease in ease out
+    #region Like lerp with ease in ease out
     public static float SmoothStep(float x, float min, float max)
     {
         x = Mathf.Clamp(x, min, max);
@@ -99,7 +99,7 @@ public sealed class Mathfx
     {
         return new Vector3(SmoothStep(vec.x, min, max), SmoothStep(vec.y, min, max), SmoothStep(vec.z, min, max));
     }
-	#endregion
+    #endregion
 
     public static float Lerp(float start, float end, float value)
     {
@@ -122,7 +122,7 @@ public sealed class Mathfx
     }
 
     //Bounce
-	#region Bounce
+    #region Bounce
     public static float Bounce(float x)
     {
         return Mathf.Abs(Mathf.Sin(6.28f * (x + 1f) * (x + 1f)) * (1f - x));
@@ -137,7 +137,7 @@ public sealed class Mathfx
     {
         return new Vector3(Bounce(vec.x), Bounce(vec.y), Bounce(vec.z));
     }
-	#endregion
+    #endregion
 
     // test for value that is near specified float (due to floating point inprecision)
     // all thanks to Opless for this!
@@ -153,7 +153,7 @@ public sealed class Mathfx
     {
         return ((val - about).sqrMagnitude < range * range);
     }
-	
+
     /*
       * CLerp - Circular Lerp - is like lerp but handles the wraparound from 0 to 360.
       * This is useful when interpolating eulerAngles and the object
@@ -188,5 +188,46 @@ public sealed class Mathfx
     {
         var p = x * Vector3.Normalize(b - a) + a;
         return p;
+    }
+
+    public static float Snap(float value, float snapDelta)
+    {
+        var valApartSnap = value / snapDelta;
+        var valRound = value < 0 ? Mathf.Ceil(valApartSnap) : Mathf.Floor(valApartSnap);
+        return valRound * snapDelta + Mathf.Round((value % snapDelta) / snapDelta) * snapDelta;
+    }
+
+    public static int RoundToInt(float value)
+    {
+        var valApartSnap = value / .5f;
+        var valRound = value < 0 ? Mathf.Ceil(valApartSnap) : Mathf.Floor(valApartSnap);
+        return (int)valRound;
+    }
+
+    public static double RoundApproximate(double dbl, int digits, double margin, System.MidpointRounding mode)
+    {
+        double fraction = dbl * System.Math.Pow(10, digits);
+        double value = System.Math.Truncate(fraction);
+        fraction = fraction - value;
+        if (fraction == 0)
+            return dbl;
+
+        double tolerance = margin * dbl;
+        // Determine whether this is a midpoint value.
+        if ((fraction >= .5 - tolerance) & (fraction <= .5 + tolerance))
+        {
+            if (mode == System.MidpointRounding.AwayFromZero)
+                return (value + 1) / System.Math.Pow(10, digits);
+            else
+               if (value % 2 != 0)
+                return (value + 1) / System.Math.Pow(10, digits);
+            else
+                return value / System.Math.Pow(10, digits);
+        }
+        // Any remaining fractional value greater than .5 is not a midpoint value.
+        if (fraction > .5)
+            return (value + 1) / System.Math.Pow(10, digits);
+        else
+            return value / System.Math.Pow(10, digits);
     }
 }
