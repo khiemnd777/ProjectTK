@@ -13,7 +13,7 @@ public class StatsView : MonoBehaviour {
 	Text speedVal;
 
 	[SerializeField]
-	TendencyPoint1 tendencyPoint;
+	TendencyPoint tendencyPoint;
 
 	// Use this for initialization
 	void Update () {

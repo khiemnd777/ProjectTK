@@ -126,9 +126,10 @@ public class CharacterGenerator : MonoBehaviour
         eyesPosition.y = rangeYOfEyes;
         characterEyes.transform.localPosition = eyesPosition;
         
-
         var genName = nameGenerator.Generate();
         currentGeneratedBaseCharacter.name = genName;
         characterName.text = genName;
     }
+
+    
 }
