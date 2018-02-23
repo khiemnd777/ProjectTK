@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13878c020fff4d9bb8d8cdaa94b0a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grownDelta: 1
+  grownDelta: 2
   damagePoint: 1
   hpPoint: 1
   speedPoint: 1

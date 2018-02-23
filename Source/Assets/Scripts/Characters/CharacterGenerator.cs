@@ -22,14 +22,14 @@ public class CharacterGenerator : MonoBehaviour
                 }
                 else
                 {
-                    
+
                 }
             }
             return _instance;
         }
     }
     #endregion
-
+    [Header("Element Location")]
     public string headSpriteLoc = "Sprites/Characters/Generated Characters/heads";
     public string eyeSpriteLoc = "Sprites/Characters/Generated Characters/eyes";
     public string mouthSpriteLoc = "Sprites/Characters/Generated Characters/mouths";
@@ -40,6 +40,23 @@ public class CharacterGenerator : MonoBehaviour
     public GeneratedBaseCharacter generatedBaseCharacterPrefab;
     public GeneratedBaseCharacter currentGeneratedBaseCharacter;
     public Text characterName;
+    [Header("Class's Percent")]
+    [Range(0, 1)]
+    public float sPercent = .01f;
+    [Range(0, 1)]
+    public float aPercent = .05f;
+    [Range(0, 1)]
+    public float bPercent = .6f;
+    [Range(0, 1)]
+    public float cPercent = .34f;
+    [Header("Job's Percent")]
+    [Range(0, 1)]
+    public float swordmanPercent = 1/3f;
+    [Range(0, 1)]
+    public float archerPercent = 1/3f;
+    [Range(0, 1)]
+    public float magePercent = 1/3f;
+
 
     List<GeneratedBaseCharacter> _generatedCharaters;
 
@@ -76,7 +93,6 @@ public class CharacterGenerator : MonoBehaviour
         countOfEyeSprite = spriteHelper.Count(eyeSpriteLoc);
         countOfMouthSprite = spriteHelper.Count(mouthSpriteLoc);
         countOfBodySprite = spriteHelper.Count(bodySpriteLoc);
-        // countOfArmSprite = spriteHelper.Count(armSpriteLoc) / 2;
         countOfLegSprite = spriteHelper.Count(legSpriteLoc) / 2;
     }
 
@@ -87,7 +103,6 @@ public class CharacterGenerator : MonoBehaviour
         var eyeIndex = Random.Range(0, countOfEyeSprite);
         var mouthIndex = Random.Range(0, countOfMouthSprite);
         var bodyIndex = Random.Range(0, countOfBodySprite);
-        // var armIndex = Random.Range(0, countOfArmSprite);
         var legIndex = Random.Range(0, countOfLegSprite);
 
         var headSprite = spriteHelper.Get(string.Format(pattern, headSpriteLoc, headIndex));
@@ -125,11 +140,12 @@ public class CharacterGenerator : MonoBehaviour
         var eyesPosition = characterEyes.transform.localPosition;
         eyesPosition.y = rangeYOfEyes;
         characterEyes.transform.localPosition = eyesPosition;
-        
+
         var genName = nameGenerator.Generate();
         currentGeneratedBaseCharacter.name = genName;
         characterName.text = genName;
-    }
 
-    
+        currentGeneratedBaseCharacter.GenerateClass(sPercent, aPercent, bPercent, cPercent);
+        currentGeneratedBaseCharacter.GenerateJob(swordmanPercent, archerPercent, magePercent);
+    }
 }

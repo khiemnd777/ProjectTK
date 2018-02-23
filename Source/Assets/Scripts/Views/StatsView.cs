@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsView : MonoBehaviour {
-
+public class StatsView : MonoBehaviour 
+{
 	[SerializeField]
 	Text damageVal;
 	[SerializeField]
