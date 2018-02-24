@@ -13,15 +13,18 @@ public class StatsView : MonoBehaviour
 	Text speedVal;
 
 	[SerializeField]
-	TendencyPoint tendencyPoint;
+	GeneratedBaseCharacter baseCharacter;
 
 	// Use this for initialization
 	void Update () {
-		var damagePoint = tendencyPoint.damagePoint * 100f;
-		var hpPoint = tendencyPoint.hpPoint * 100f;
-		var speedPoint = 100 - (damagePoint + hpPoint);
-		damageVal.text = Mathf.Round(damagePoint).ToString() + "%";
-		hpVal.text = Mathf.Round(hpPoint).ToString() + "%";
-		speedVal.text = Mathf.Round(speedPoint).ToString() + "%";
+		// var damagePoint = tendencyPoint.damagePoint * 100f;
+		// var hpPoint = tendencyPoint.hpPoint * 100f;
+		// var speedPoint = 100 - (damagePoint + hpPoint);
+		// damageVal.text = Mathf.Round(damagePoint).ToString() + "%";
+		// hpVal.text = Mathf.Round(hpPoint).ToString() + "%";
+		// speedVal.text = Mathf.Round(speedPoint).ToString() + "%";
+		damageVal.text = baseCharacter.stats.damage.GetValue().ToString();
+		hpVal.text = baseCharacter.stats.hp.GetValue().ToString();
+		speedVal.text = baseCharacter.stats.speed.GetValue().ToString();
 	}
 }

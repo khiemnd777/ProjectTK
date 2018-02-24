@@ -7,6 +7,7 @@ using UnityEngine;
 public class Stat
 {
 	public float baseValue;
+	public float growthPercent;
 
 	List<float> modifiers = new List<float>();
 
@@ -14,6 +15,11 @@ public class Stat
 		var finalValue = baseValue;
 		finalValue += modifiers.Sum();
 		return finalValue;
+	}
+
+	public void GrowUp()
+	{
+		baseValue *= (1 + growthPercent);
 	}
 
 	public void AddModifier(float modifier){
@@ -24,5 +30,10 @@ public class Stat
 	public void RemoveModifier(float modifier){
 		if(modifier != 0)
 			modifiers.Remove(modifier);
+	}
+
+	public void ClearModifiers()
+	{
+		modifiers.Clear();
 	}
 }

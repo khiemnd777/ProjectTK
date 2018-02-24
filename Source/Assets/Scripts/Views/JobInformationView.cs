@@ -9,13 +9,26 @@ public class JobInformationView : MonoBehaviour
 	Text jobVal;
 	[SerializeField]
 	Text classVal;
+	[SerializeField]
+	Text levelVal;
+	[SerializeField]
+	Text pointVal;
 
 	[SerializeField]
 	GeneratedBaseCharacter baseCharacter;
 
+	BaseClass baseClass;
+
+	void Start()
+	{
+		baseClass = baseCharacter.baseClass;
+	}
+
 	// Use this for initialization
 	void Update () {
 		jobVal.text = baseCharacter.jobLabel.ToString();
-		classVal.text = baseCharacter.classLabel.ToString();
+		classVal.text = baseClass.label.ToString();
+		levelVal.text = baseClass.level.ToString();
+		pointVal.text = baseClass.pointPerLevel.ToString();
 	}
 }

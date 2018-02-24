@@ -4,6 +4,16 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum ClassLabel
+{
+    S, A, B, C
+}
+
+public enum JobLabel
+{
+    Swordman, Archer, Mage, Healer
+}
+
 public class CharacterGenerator : MonoBehaviour
 {
     #region Singleton
@@ -51,13 +61,21 @@ public class CharacterGenerator : MonoBehaviour
     public float cPercent = .34f;
     [Header("Job's Percent")]
     [Range(0, 1)]
-    public float swordmanPercent = 1/3f;
+    public float swordmanPercent = 1/4f;
     [Range(0, 1)]
-    public float archerPercent = 1/3f;
+    public float archerPercent = 1/4f;
     [Range(0, 1)]
-    public float magePercent = 1/3f;
+    public float magePercent = 1/4f;
+    [Range(0, 1)]
+    public float healerPercent = 1/4f;
+    [Header("Base Generated Level")]
+    public int baseLevelMin = 1;
+    public int baseLevelMax = 1;
+    [Header("Temporary")]
+    public TendencyPoint tendencyPoint;
 
-
+    ClassLabel[] _cachedClassLabels;
+    JobLabel[] _cachedJobLabels;
     List<GeneratedBaseCharacter> _generatedCharaters;
 
     public ICollection<GeneratedBaseCharacter> generatedCharaters
@@ -141,11 +159,58 @@ public class CharacterGenerator : MonoBehaviour
         eyesPosition.y = rangeYOfEyes;
         characterEyes.transform.localPosition = eyesPosition;
 
+        // generating names
         var genName = nameGenerator.Generate();
         currentGeneratedBaseCharacter.name = genName;
         characterName.text = genName;
 
-        currentGeneratedBaseCharacter.GenerateClass(sPercent, aPercent, bPercent, cPercent);
-        currentGeneratedBaseCharacter.GenerateJob(swordmanPercent, archerPercent, magePercent);
+        // generating jobs
+        currentGeneratedBaseCharacter.jobLabel = GenerateJob();
+
+        // generating classes and base point per level
+        var baseClass = currentGeneratedBaseCharacter.baseClass;
+        baseClass.label = GenerateClass();
+
+        // generating tendency points
+        tendencyPoint.GeneratePoints();
+        var stats = currentGeneratedBaseCharacter.stats;
+        stats.damage.growthPercent = tendencyPoint.damagePoint;
+        stats.speed.growthPercent = tendencyPoint.speedPoint;
+        stats.hp.growthPercent = tendencyPoint.hpPoint;
+
+        // generating level and point per level
+        var baseLevel = Random.Range(baseLevelMin, baseLevelMax + 1);
+        baseClass.pointPerLevel = 0;
+        for(var i = 0; i < baseLevel; i++)
+        {
+            baseClass.AssignBasePointPerLevel();
+            var pointPerLevel = baseClass.basePointPerLevel;
+            baseClass.pointPerLevel += pointPerLevel;
+        }
+        stats.damage.baseValue = Mathf.RoundToInt(baseClass.pointPerLevel * tendencyPoint.damagePoint);
+        stats.speed.baseValue = Mathf.RoundToInt(baseClass.pointPerLevel * tendencyPoint.speedPoint);
+        stats.hp.baseValue = Mathf.RoundToInt(baseClass.pointPerLevel * tendencyPoint.hpPoint);
+        baseClass.level = baseLevel;
+        stats.TransformValues();
+    }
+
+    public ClassLabel GenerateClass()
+    {
+        if(_cachedClassLabels == null || _cachedClassLabels.Length == 0){
+            var classLabels = new[] { ClassLabel.S, ClassLabel.A, ClassLabel.B, ClassLabel.C };
+            var percents = new[] { sPercent * 100, aPercent * 100, bPercent * 100, cPercent * 100 };
+            _cachedClassLabels = Probability.Initialize(classLabels, percents);
+        }
+        return Probability.GetValueInProbability(_cachedClassLabels);
+    }
+
+    public JobLabel GenerateJob()
+    {
+        if(_cachedJobLabels == null || _cachedJobLabels.Length == 0){
+            var jobLabels = new[] { JobLabel.Swordman, JobLabel.Archer, JobLabel.Mage, JobLabel.Healer };
+            var percents = new[] { swordmanPercent * 100, archerPercent * 100, magePercent * 100, healerPercent * 100 };
+            _cachedJobLabels = Probability.Initialize(jobLabels, percents);
+        }
+        return Probability.GetValueInProbability(_cachedJobLabels);
     }
 }
