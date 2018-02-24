@@ -187,9 +187,10 @@ public class CharacterGenerator : MonoBehaviour
             var pointPerLevel = baseClass.basePointPerLevel;
             baseClass.pointPerLevel += pointPerLevel;
         }
-        stats.damage.baseValue = Mathf.RoundToInt(baseClass.pointPerLevel * tendencyPoint.damagePoint);
-        stats.speed.baseValue = Mathf.RoundToInt(baseClass.pointPerLevel * tendencyPoint.speedPoint);
-        stats.hp.baseValue = Mathf.RoundToInt(baseClass.pointPerLevel * tendencyPoint.hpPoint);
+        var baseClassPointPerLevel = baseClass.pointPerLevel;
+        stats.damage.baseValue = Mathf.Round(baseClassPointPerLevel * tendencyPoint.damagePoint);
+        stats.speed.baseValue = Mathf.Round(baseClassPointPerLevel * tendencyPoint.speedPoint);
+        stats.hp.baseValue = baseClassPointPerLevel - (stats.damage.baseValue + stats.speed.baseValue); //Mathf.Round(basePointPerLevel * tendencyPoint.hpPoint);
         baseClass.level = baseLevel;
         stats.TransformValues();
     }

@@ -5,12 +5,21 @@ using UnityEngine.UI;
 
 public class BaseCharacterStat : MonoBehaviour
 {
+    const float baseHpValue = 100f;
+    const float baseHpGrowthDelta = 1.07f;
+
+    const float baseDamageValue = 10f;
+    const float baseDamageGrowthDelta = 1.15f;
+
+    [Header("Speed")]
+    public Stat speed;
+    [Header("Damage")]
+    public Stat damage;
+    public Stat realDamage;
+    [Header("HP")]
+    public Stat hp;
     public Stat maxHealth;
     public float currentHealth { get; protected set; }
-    public Stat speed;
-    public Stat damage;
-    public Stat hp;
-    public Stat realDamage;
     [Space]
     public Image healthBar;
 
@@ -30,27 +39,11 @@ public class BaseCharacterStat : MonoBehaviour
     {
         // health
         var hpPoint = hp.GetValue();
-        maxHealth.ClearModifiers();
-        var baseHpValue = 100f;
-        var baseHpDelta = 1.07f;
-        var baseHpIncreasement = baseHpDelta;
-        for(var i = 0; i < hpPoint - 1; i++)
-        {
-            baseHpIncreasement *= baseHpDelta;
-        }
-        maxHealth.baseValue = (float)(baseHpValue * baseHpIncreasement);
-
+        maxHealth.baseValue = baseHpValue * Mathf.Pow(baseHpGrowthDelta, hpPoint - 1);// (float)(baseHpValue * baseHpIncreasement);
+        currentHealth = maxHealth.GetValue();
         // damage
         var damagePoint = damage.GetValue();
-        realDamage.ClearModifiers();
-        var baseDamageValue = 10f;
-        var baseDamageDelta = 1.15f;
-        var baseDamageIncreasement = baseDamageDelta;
-        for(var i = 0; i < damagePoint - 1; i++)
-        {
-            baseDamageIncreasement *= baseDamageDelta;
-        }
-        realDamage.baseValue = (float)(baseDamageValue * baseDamageIncreasement);
+        realDamage.baseValue = baseDamageValue * Mathf.Pow(baseDamageGrowthDelta, damagePoint - 1); //(float)(baseDamageValue * baseDamageIncreasement);
     }
 
     public void TakeDamage(float damage)
