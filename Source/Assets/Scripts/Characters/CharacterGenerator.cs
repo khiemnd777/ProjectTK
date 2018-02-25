@@ -39,7 +39,10 @@ public class CharacterGenerator : MonoBehaviour
         }
     }
     #endregion
-    [Header("Element Location")]
+    [Header("List of Generated Characters")]
+    [SerializeField]
+    GeneratedBaseCharacter[] generatedCharaters;
+    [Header("Element's Sprite Locations")]
     public string headSpriteLoc = "Sprites/Characters/Generated Characters/heads";
     public string eyeSpriteLoc = "Sprites/Characters/Generated Characters/eyes";
     public string mouthSpriteLoc = "Sprites/Characters/Generated Characters/mouths";
@@ -47,11 +50,11 @@ public class CharacterGenerator : MonoBehaviour
     public string armSpriteLoc = "Sprites/Characters/Generated Characters/arms";
     public string legSpriteLoc = "Sprites/Characters/Generated Characters/legs";
     [Space]
-    public GeneratedBaseCharacter generatedBaseCharacterPrefab;
-    public GeneratedBaseCharacter currentGeneratedBaseCharacter;
+    [SerializeField]
+    GeneratedBaseCharacter generatedBaseCharacterPrefab;
+    [SerializeField]
+    GeneratedBaseCharacter currentGeneratedBaseCharacter;
     public Text characterName;
-    [Space]
-    List<GeneratedBaseCharacter> generatedCharaters = new List<GeneratedBaseCharacter>();
     [Header("Class's Generated Percent")]
     [Range(0, 1)]
     public float sPercent = .01f;
