@@ -64,12 +64,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a87cfc93584440a9b75d52f67ce0bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generatedCharaters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  generatedCharaterBlocks:
+  - baseCharacter: {fileID: 0}
+    tendencyPoint: {fileID: 0}
+  - baseCharacter: {fileID: 0}
+    tendencyPoint: {fileID: 0}
+  - baseCharacter: {fileID: 0}
+    tendencyPoint: {fileID: 0}
+  - baseCharacter: {fileID: 0}
+    tendencyPoint: {fileID: 0}
+  - baseCharacter: {fileID: 0}
+    tendencyPoint: {fileID: 0}
   headSpriteLoc: Sprites/Characters/Generated Characters/heads
   eyeSpriteLoc: Sprites/Characters/Generated Characters/eyes
   mouthSpriteLoc: Sprites/Characters/Generated Characters/mouths
