@@ -26,7 +26,7 @@ public class JobInformationView : MonoBehaviour
 
 	// Use this for initialization
 	void Update () {
-		jobVal.text = baseCharacter.jobLabel.ToString();
+		jobVal.text = baseCharacter.baseJob.label.ToString();
 		classVal.text = baseClass.label.ToString();
 		levelVal.text = baseClass.level.ToString();
 		pointVal.text = baseClass.pointPerLevel.ToString();

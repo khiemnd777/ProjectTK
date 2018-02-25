@@ -3,5 +3,5 @@ using UnityEngine;
 [System.Serializable]
 public class BaseJob
 {
-    public JobLabel job;
+    public JobLabel label;
 }

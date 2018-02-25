@@ -161,8 +161,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4662943989703664}
+  - component: {fileID: 95721635074709074}
   - component: {fileID: 114260507223162080}
-  - component: {fileID: 95264566614139472}
   - component: {fileID: 114560150389988736}
   m_Layer: 0
   m_Name: Generated Base Character
@@ -340,7 +340,7 @@ Transform:
   m_Father: {fileID: 4123425462557720}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95264566614139472
+--- !u!95 &95721635074709074
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -378,7 +378,10 @@ MonoBehaviour:
     leftLeg: {fileID: 212217129461611542}
     rightLeg: {fileID: 212013643915029774}
   jobLabel: 0
-  classLabel: 0
+  baseClass:
+    level: 0
+    pointPerLevel: 0
+    label: 0
   isDeath: 0
 --- !u!114 &114560150389988736
 MonoBehaviour:
@@ -391,12 +394,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b161551055a4cf6a4130dcee747b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth:
-    baseValue: 0
   speed:
     baseValue: 0
+    growthPercent: 0
   damage:
     baseValue: 0
+    growthPercent: 0
+  realDamage:
+    baseValue: 0
+    growthPercent: 0
+  hp:
+    baseValue: 0
+    growthPercent: 0
+  maxHealth:
+    baseValue: 0
+    growthPercent: 0
   healthBar: {fileID: 0}
 --- !u!212 &212013643915029774
 SpriteRenderer:

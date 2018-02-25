@@ -19,7 +19,7 @@ public class GeneratedBaseCharacter : MonoBehaviour
 
     [System.NonSerialized]
     public int id;
-    public JobLabel jobLabel;
+    public BaseJob baseJob;
     public BaseClass baseClass;
     public bool isDeath;
 
@@ -32,9 +32,18 @@ public class GeneratedBaseCharacter : MonoBehaviour
         }
     }
 
+    Animator _animator;
+    public Animator animator
+    {
+        get
+        {
+            return _animator ?? (_animator = GetComponent<Animator>());
+        }
+    }
+
     void Awake()
     {
         id = transform.GetInstanceID();
-        jobLabel = JobLabel.Swordman;
+        baseJob.label = JobLabel.Swordman;
     }
 }

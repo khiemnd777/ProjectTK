@@ -171,7 +171,7 @@ public class CharacterGenerator : MonoBehaviour
         characterName.text = genName;
 
         // generating jobs
-        currentGeneratedBaseCharacter.jobLabel = GenerateJob();
+        currentGeneratedBaseCharacter.baseJob.label = GenerateJob();
 
         // generating classes and base point per level
         var baseClass = currentGeneratedBaseCharacter.baseClass;
