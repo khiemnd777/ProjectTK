@@ -1008,6 +1008,18 @@ MonoBehaviour:
   healerPercent: 0.25
   baseLevelMin: 7
   baseLevelMax: 10
+  sPointPerLevel:
+    min: 5
+    max: 5
+  aPointPerLevel:
+    min: 4
+    max: 5
+  bPointPerLevel:
+    min: 3
+    max: 4
+  cPointPerLevel:
+    min: 2
+    max: 3
   tendencyPoint: {fileID: 1017688893}
 --- !u!4 &923776290
 Transform:

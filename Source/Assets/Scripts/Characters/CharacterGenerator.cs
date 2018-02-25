@@ -50,7 +50,7 @@ public class CharacterGenerator : MonoBehaviour
     public GeneratedBaseCharacter generatedBaseCharacterPrefab;
     public GeneratedBaseCharacter currentGeneratedBaseCharacter;
     public Text characterName;
-    [Header("Class's Percent")]
+    [Header("Class's Generated Percent")]
     [Range(0, 1)]
     public float sPercent = .01f;
     [Range(0, 1)]
@@ -59,18 +59,24 @@ public class CharacterGenerator : MonoBehaviour
     public float bPercent = .6f;
     [Range(0, 1)]
     public float cPercent = .34f;
-    [Header("Job's Percent")]
+    [Header("Job's Generated Percent")]
     [Range(0, 1)]
-    public float swordmanPercent = 1/4f;
+    public float swordmanPercent = 1 / 4f;
     [Range(0, 1)]
-    public float archerPercent = 1/4f;
+    public float archerPercent = 1 / 4f;
     [Range(0, 1)]
-    public float magePercent = 1/4f;
+    public float magePercent = 1 / 4f;
     [Range(0, 1)]
-    public float healerPercent = 1/4f;
+    public float healerPercent = 1 / 4f;
     [Header("Base Generated Level")]
     public int baseLevelMin = 1;
     public int baseLevelMax = 1;
+    [Header("Point/level of Class")]
+    public MinMax sPointPerLevel;
+    public MinMax aPointPerLevel;
+    public MinMax bPointPerLevel;
+    public MinMax cPointPerLevel;
+
     [Header("Temporary")]
     public TendencyPoint tendencyPoint;
 
@@ -178,13 +184,13 @@ public class CharacterGenerator : MonoBehaviour
         stats.speed.growthPercent = tendencyPoint.speedPoint;
         stats.hp.growthPercent = tendencyPoint.hpPoint;
 
-        // generating level and point per level
+        // generating stats, level and point per level
         var baseLevel = Random.Range(baseLevelMin, baseLevelMax + 1);
         baseClass.pointPerLevel = 0;
-        for(var i = 0; i < baseLevel; i++)
+        for (var i = 0; i < baseLevel; i++)
         {
-            baseClass.AssignBasePointPerLevel();
-            var pointPerLevel = baseClass.basePointPerLevel;
+            var basePointPerLevel = AssignBasePointPerLevelOfClass(baseClass.label);
+            var pointPerLevel = basePointPerLevel;
             baseClass.pointPerLevel += pointPerLevel;
         }
         var baseClassPointPerLevel = baseClass.pointPerLevel;
@@ -197,7 +203,8 @@ public class CharacterGenerator : MonoBehaviour
 
     public ClassLabel GenerateClass()
     {
-        if(_cachedClassLabels == null || _cachedClassLabels.Length == 0){
+        if (_cachedClassLabels == null || _cachedClassLabels.Length == 0)
+        {
             var classLabels = new[] { ClassLabel.S, ClassLabel.A, ClassLabel.B, ClassLabel.C };
             var percents = new[] { sPercent * 100, aPercent * 100, bPercent * 100, cPercent * 100 };
             _cachedClassLabels = Probability.Initialize(classLabels, percents);
@@ -207,11 +214,35 @@ public class CharacterGenerator : MonoBehaviour
 
     public JobLabel GenerateJob()
     {
-        if(_cachedJobLabels == null || _cachedJobLabels.Length == 0){
+        if (_cachedJobLabels == null || _cachedJobLabels.Length == 0)
+        {
             var jobLabels = new[] { JobLabel.Swordman, JobLabel.Archer, JobLabel.Mage, JobLabel.Healer };
             var percents = new[] { swordmanPercent * 100, archerPercent * 100, magePercent * 100, healerPercent * 100 };
             _cachedJobLabels = Probability.Initialize(jobLabels, percents);
         }
         return Probability.GetValueInProbability(_cachedJobLabels);
+    }
+
+    public int AssignBasePointPerLevelOfClass(ClassLabel classLabel)
+    {
+        var point = 0;
+        switch (classLabel)
+        {
+            case ClassLabel.S:
+                point = (int) Random.Range(sPointPerLevel.min, sPointPerLevel.max + 1);
+                break;
+            case ClassLabel.A:
+                point = (int) Random.Range(aPointPerLevel.min, aPointPerLevel.max + 1);
+                break;
+            case ClassLabel.B:
+                point = (int) Random.Range(bPointPerLevel.min, bPointPerLevel.max + 1);
+                break;
+            case ClassLabel.C:
+                point = (int) Random.Range(cPointPerLevel.min, cPointPerLevel.max + 1);
+                break;
+            default:
+                break;
+        }
+        return point;
     }
 }

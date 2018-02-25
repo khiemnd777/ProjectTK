@@ -39,11 +39,11 @@ public class BaseCharacterStat : MonoBehaviour
     {
         // health
         var hpPoint = hp.GetValue();
-        maxHealth.baseValue = baseHpValue * Mathf.Pow(baseHpGrowthDelta, hpPoint - 1);// (float)(baseHpValue * baseHpIncreasement);
+        maxHealth.baseValue = baseHpValue * Mathf.Pow(baseHpGrowthDelta, hpPoint);
         currentHealth = maxHealth.GetValue();
         // damage
         var damagePoint = damage.GetValue();
-        realDamage.baseValue = baseDamageValue * Mathf.Pow(baseDamageGrowthDelta, damagePoint - 1); //(float)(baseDamageValue * baseDamageIncreasement);
+        realDamage.baseValue = baseDamageValue * Mathf.Pow(baseDamageGrowthDelta, damagePoint);
     }
 
     public void TakeDamage(float damage)
