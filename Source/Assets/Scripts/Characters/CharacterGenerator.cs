@@ -50,6 +50,8 @@ public class CharacterGenerator : MonoBehaviour
     public GeneratedBaseCharacter generatedBaseCharacterPrefab;
     public GeneratedBaseCharacter currentGeneratedBaseCharacter;
     public Text characterName;
+    [Space]
+    List<GeneratedBaseCharacter> generatedCharaters = new List<GeneratedBaseCharacter>();
     [Header("Class's Generated Percent")]
     [Range(0, 1)]
     public float sPercent = .01f;
@@ -82,15 +84,6 @@ public class CharacterGenerator : MonoBehaviour
 
     ClassLabel[] _cachedClassLabels;
     JobLabel[] _cachedJobLabels;
-    List<GeneratedBaseCharacter> _generatedCharaters;
-
-    public ICollection<GeneratedBaseCharacter> generatedCharaters
-    {
-        get
-        {
-            return _generatedCharaters ?? (_generatedCharaters = new List<GeneratedBaseCharacter>());
-        }
-    }
 
     SpriteHelper spriteHelper;
     CharacterNameGenerator nameGenerator;
@@ -108,7 +101,6 @@ public class CharacterGenerator : MonoBehaviour
     {
         spriteHelper = SpriteHelper.instance;
         nameGenerator = CharacterNameGenerator.instance;
-        _generatedCharaters = new List<GeneratedBaseCharacter>();
     }
 
     void Start()
