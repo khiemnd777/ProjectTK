@@ -54,7 +54,6 @@ public class CharacterGenerator : MonoBehaviour
     GeneratedBaseCharacter generatedBaseCharacterPrefab;
     // [SerializeField]
     // GeneratedBaseCharacter currentGeneratedBaseCharacter;
-    public Text characterName;
     [Header("Class's Generated Percent")]
     [Range(0, 1)]
     public float sPercent = .01f;
@@ -118,11 +117,15 @@ public class CharacterGenerator : MonoBehaviour
     public void Generate()
     {
         var pattern = "{0} => {1}";
+        var descFormat = "{0} ({1})\nLvl. {2}\nHP {3}/{4}";
         var blocks = generatedCharaterBlocks;
         foreach (var block in blocks)
         {
             var currentGeneratedBaseCharacter = block.baseCharacter;
             var tendencyPoint = block.tendencyPoint;
+            var characterName = block.name;
+            var characterDescription = block.description;
+
             var headIndex = Random.Range(0, countOfHeadSprite);
             var eyeIndex = Random.Range(0, countOfEyeSprite);
             var mouthIndex = Random.Range(0, countOfMouthSprite);
@@ -171,7 +174,8 @@ public class CharacterGenerator : MonoBehaviour
             characterName.text = genName;
 
             // generating jobs
-            currentGeneratedBaseCharacter.baseJob.label = GenerateJob();
+            var baseJob = currentGeneratedBaseCharacter.baseJob;
+            baseJob.label = GenerateJob();
 
             // generating classes and base point per level
             var baseClass = currentGeneratedBaseCharacter.baseClass;
@@ -194,11 +198,26 @@ public class CharacterGenerator : MonoBehaviour
                 baseClass.pointPerLevel += pointPerLevel;
             }
             var baseClassPointPerLevel = baseClass.pointPerLevel;
-            stats.damage.baseValue = Mathf.Round(baseClassPointPerLevel * tendencyPoint.damagePoint);
-            stats.speed.baseValue = Mathf.Round(baseClassPointPerLevel * tendencyPoint.speedPoint);
-            stats.hp.baseValue = baseClassPointPerLevel - (stats.damage.baseValue + stats.speed.baseValue); //Mathf.Round(basePointPerLevel * tendencyPoint.hpPoint);
+            var statDamage = stats.damage;
+            var statSpeed = stats.speed;
+            var statHp = stats.hp;
+            statDamage.baseValue = Mathf.Round(baseClassPointPerLevel * tendencyPoint.damagePoint);
+            statSpeed.baseValue = Mathf.Round(baseClassPointPerLevel * tendencyPoint.speedPoint);
+            statHp.baseValue = baseClassPointPerLevel - (stats.damage.baseValue + stats.speed.baseValue); //Mathf.Round(basePointPerLevel * tendencyPoint.hpPoint);
             baseClass.level = baseLevel;
             stats.TransformValues();
+
+            // presentation of description
+            var pHealth = Mathf.FloorToInt(stats.currentHealth);
+            var pMaxHealth = Mathf.FloorToInt(stats.maxHealth.GetValue());
+            var desc = string.Format(descFormat, baseJob.label, baseClass.label, baseLevel, pHealth, pMaxHealth);
+            characterDescription.text = desc;
+
+            // presentation of stats
+            block.damage.text = string.Format("Damage ({0})", statDamage.GetValue());
+            block.hp.text = string.Format("HP ({0})", statHp.GetValue());
+            block.speed.text = string.Format("Speed ({0})", statSpeed.GetValue());
+
             // release memory
             currentGeneratedBaseCharacter = null;
             tendencyPoint = null;
