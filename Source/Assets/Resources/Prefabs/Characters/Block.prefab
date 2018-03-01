@@ -962,7 +962,9 @@ MonoBehaviour:
     mouth: {fileID: 212395891235445586}
     body: {fileID: 212055813552985054}
     leftArm: {fileID: 212791325471362740}
+    leftWeapon: {fileID: 212760214867071850}
     rightArm: {fileID: 212857572299098784}
+    rightWeapon: {fileID: 212369831671335456}
     leftLeg: {fileID: 212288095127084498}
     rightLeg: {fileID: 212888602017132588}
   baseJob:

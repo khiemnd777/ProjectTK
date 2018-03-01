@@ -179,6 +179,11 @@ public class CharacterGenerator : MonoBehaviour
             var baseJob = currentGeneratedBaseCharacter.baseJob;
             baseJob.label = GenerateJob();
 
+            // assign weapon by job
+            characterElements.rightWeapon.sprite = null;
+
+            AssignWeaponByJob(baseJob.label, characterElements.leftWeapon, characterElements.rightWeapon);
+
             // generating classes and base point per level
             var baseClass = currentGeneratedBaseCharacter.baseClass;
             baseClass.label = GenerateClass();
@@ -225,6 +230,32 @@ public class CharacterGenerator : MonoBehaviour
             tendencyPoint = null;
         }
         blocks = null;
+    }
+
+    void AssignWeaponByJob(JobLabel jobLabel, SpriteRenderer leftWeaponRenderer, SpriteRenderer rightWeaponRenderer)
+    {
+        var pattern = "{0} => {1}_{2}";
+        Sprite sprite;
+        switch(jobLabel)
+        {
+            default:
+            case JobLabel.Swordman:
+                sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "sword", 0));
+                break;
+            case JobLabel.Archer:
+                sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "bow", 0));
+                leftWeaponRenderer.flipX = true;
+                break;
+            case JobLabel.Mage:
+                sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "staff", 0));
+                leftWeaponRenderer.flipX = true;
+                break;
+            case JobLabel.Healer:
+                sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "book", 0));
+                break;
+        }
+        leftWeaponRenderer.sprite = sprite;
+        rightWeaponRenderer.sprite = null;
     }
 
     public ClassLabel GenerateClass()
