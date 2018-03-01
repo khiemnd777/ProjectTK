@@ -49,6 +49,8 @@ public class CharacterGenerator : MonoBehaviour
     public string bodySpriteLoc = "Sprites/Characters/Generated Characters/bodys";
     public string armSpriteLoc = "Sprites/Characters/Generated Characters/arms";
     public string legSpriteLoc = "Sprites/Characters/Generated Characters/legs";
+    [Header("Weapon's Sprite Location")]
+    public string weaponSpriteLoc = "Sprites/Weapons/basic weapons";
     [Space]
     [SerializeField]
     GeneratedBaseCharacter generatedBaseCharacterPrefab;

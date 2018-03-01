@@ -67,24 +67,48 @@ MonoBehaviour:
   generatedCharaterBlocks:
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
+    name: {fileID: 0}
+    description: {fileID: 0}
+    damage: {fileID: 0}
+    hp: {fileID: 0}
+    speed: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
+    name: {fileID: 0}
+    description: {fileID: 0}
+    damage: {fileID: 0}
+    hp: {fileID: 0}
+    speed: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
+    name: {fileID: 0}
+    description: {fileID: 0}
+    damage: {fileID: 0}
+    hp: {fileID: 0}
+    speed: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
+    name: {fileID: 0}
+    description: {fileID: 0}
+    damage: {fileID: 0}
+    hp: {fileID: 0}
+    speed: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
+    name: {fileID: 0}
+    description: {fileID: 0}
+    damage: {fileID: 0}
+    hp: {fileID: 0}
+    speed: {fileID: 0}
   headSpriteLoc: Sprites/Characters/Generated Characters/heads
   eyeSpriteLoc: Sprites/Characters/Generated Characters/eyes
   mouthSpriteLoc: Sprites/Characters/Generated Characters/mouths
   bodySpriteLoc: Sprites/Characters/Generated Characters/bodys
   armSpriteLoc: Sprites/Characters/Generated Characters/arms
   legSpriteLoc: Sprites/Characters/Generated Characters/legs
+  weaponSpriteLoc: Sprites/Weapons/basic weapons
   generatedBaseCharacterPrefab: {fileID: 114260507223162080, guid: 0562bea1d64db614e91b4892825248b7,
     type: 2}
-  currentGeneratedBaseCharacter: {fileID: 0}
-  characterName: {fileID: 0}
   sPercent: 0.01
   aPercent: 0.1
   bPercent: 0.55
@@ -107,4 +131,3 @@ MonoBehaviour:
   cPointPerLevel:
     min: 2
     max: 3
-  tendencyPoint: {fileID: 0}
