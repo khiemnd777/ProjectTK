@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public enum ClassLabel
 {
-    S, A, B, C
+    S, A, B, C, Common
 }
 
 public enum JobLabel
@@ -43,12 +43,15 @@ public class CharacterGenerator : MonoBehaviour
     [SerializeField]
     GeneratedCharacterBlock[] generatedCharaterBlocks;
     [Header("Element's Sprite Locations")]
-    public string headSpriteLoc = "Sprites/Characters/Generated Characters/heads";
-    public string eyeSpriteLoc = "Sprites/Characters/Generated Characters/eyes";
-    public string mouthSpriteLoc = "Sprites/Characters/Generated Characters/mouths";
-    public string bodySpriteLoc = "Sprites/Characters/Generated Characters/bodys";
-    public string armSpriteLoc = "Sprites/Characters/Generated Characters/arms";
-    public string legSpriteLoc = "Sprites/Characters/Generated Characters/legs";
+    public string headSpriteLoc = "Sprites/Characters/Generated Characters/{0}/heads";
+    public string eyeSpriteLoc = "Sprites/Characters/Generated Characters/{0}/eyes";
+    public string mouthSpriteLoc = "Sprites/Characters/Generated Characters/{0}/mouths";
+    public string bodySpriteLoc = "Sprites/Characters/Generated Characters/{0}/bodys";
+    public string armSpriteLoc = "Sprites/Characters/Generated Characters/{0}/arms";
+    public string legSpriteLoc = "Sprites/Characters/Generated Characters/{0}/legs";
+    public ClassLabel generatedCommonClassLabel = ClassLabel.Common;
+    public ClassLabel generatedAClassLabel = ClassLabel.A;
+    public ClassLabel generatedSClassLabel = ClassLabel.A;
     [Header("Weapon's Sprite Location")]
     public string weaponSpriteLoc = "Sprites/Weapons/basic weapons";
     [Space]
@@ -109,16 +112,11 @@ public class CharacterGenerator : MonoBehaviour
 
     void Start()
     {
-        countOfHeadSprite = spriteHelper.Count(headSpriteLoc);
-        countOfEyeSprite = spriteHelper.Count(eyeSpriteLoc);
-        countOfMouthSprite = spriteHelper.Count(mouthSpriteLoc);
-        countOfBodySprite = spriteHelper.Count(bodySpriteLoc);
-        countOfLegSprite = spriteHelper.Count(legSpriteLoc) / 2;
+
     }
 
     public void Generate()
     {
-        var pattern = "{0} => {1}";
         var descFormat = "{0} ({1})\nLvl. {2}\nHP {3}/{4}";
         var blocks = generatedCharaterBlocks;
         foreach (var block in blocks)
@@ -127,48 +125,7 @@ public class CharacterGenerator : MonoBehaviour
             var tendencyPoint = block.tendencyPoint;
             var characterName = block.name;
             var characterDescription = block.description;
-
-            var headIndex = Random.Range(0, countOfHeadSprite);
-            var eyeIndex = Random.Range(0, countOfEyeSprite);
-            var mouthIndex = Random.Range(0, countOfMouthSprite);
-            var bodyIndex = Random.Range(0, countOfBodySprite);
-            var legIndex = Random.Range(0, countOfLegSprite);
-
-            var headSprite = spriteHelper.Get(string.Format(pattern, headSpriteLoc, headIndex));
-            var eyeSprite = spriteHelper.Get(string.Format(pattern, eyeSpriteLoc, eyeIndex));
-            var mouthSprite = spriteHelper.Get(string.Format(pattern, mouthSpriteLoc, mouthIndex));
-            var bodySprite = spriteHelper.Get(string.Format(pattern, bodySpriteLoc, bodyIndex));
-            var leftArmSprite = spriteHelper.Get(string.Format(pattern, armSpriteLoc, "l_" + bodyIndex));
-            var rightArmSprite = spriteHelper.Get(string.Format(pattern, armSpriteLoc, "r_" + bodyIndex));
-            var leftLegSprite = spriteHelper.Get(string.Format(pattern, legSpriteLoc, "l_" + legIndex));
-            var rightLegSprite = spriteHelper.Get(string.Format(pattern, legSpriteLoc, "r_" + legIndex));
-
-            // var instanceOfBaseCharacter = Instantiate<GeneratedBaseCharacter>(generatedBaseCharacterPrefab, Vector3.zero, Quaternion.identity);
-            // _generatedCharaters.Add(instanceOfBaseCharacter);
-
             var characterElements = currentGeneratedBaseCharacter.elements;
-            var characterEyes = characterElements.eye;
-            var characterMouth = characterElements.mouth;
-            characterElements.head.sprite = headSprite;
-            characterEyes.sprite = eyeSprite;
-            characterMouth.sprite = mouthSprite;
-            characterElements.body.sprite = bodySprite;
-            characterElements.leftArm.sprite = leftArmSprite;
-            characterElements.rightArm.sprite = rightArmSprite;
-            characterElements.leftLeg.sprite = leftLegSprite;
-            characterElements.rightLeg.sprite = rightLegSprite;
-
-            // transform eyes and mouth according to pivot of Y
-            // range of mouth
-            var rangeYOfMouth = Random.Range(.2f, .6f);
-            var mouthPosition = characterMouth.transform.localPosition;
-            mouthPosition.y = rangeYOfMouth;
-            characterMouth.transform.localPosition = mouthPosition;
-            // range of eyes
-            var rangeYOfEyes = Random.Range(1f, 1.3f);
-            var eyesPosition = characterEyes.transform.localPosition;
-            eyesPosition.y = rangeYOfEyes;
-            characterEyes.transform.localPosition = eyesPosition;
 
             // generating names
             var genName = nameGenerator.Generate();
@@ -225,6 +182,12 @@ public class CharacterGenerator : MonoBehaviour
             block.hp.text = string.Format("HP ({0})", statHp.GetValue());
             block.speed.text = string.Format("Speed ({0})", statSpeed.GetValue());
 
+            // generate sprite of characters
+            GenerateSpriteCharacters(currentGeneratedBaseCharacter, baseClass.label);
+
+            // generate posture by job
+            GeneratePostureByJob(currentGeneratedBaseCharacter, baseJob.label);
+
             // release memory
             currentGeneratedBaseCharacter = null;
             tendencyPoint = null;
@@ -232,26 +195,137 @@ public class CharacterGenerator : MonoBehaviour
         blocks = null;
     }
 
+    void GeneratePostureByJob(GeneratedBaseCharacter character, JobLabel jobLabel)
+    {
+        var idle = string.Format("{0}_Idle", jobLabel);
+        character.animator.Play(idle);
+    }
+
+    void GenerateSpriteCharacters(GeneratedBaseCharacter character, ClassLabel classLabel)
+    {
+        var pattern = "{0} => {1}";
+
+        var generatedAClassLabels = new[] { generatedCommonClassLabel, generatedAClassLabel };
+        var generatedSClassLabels = new[] { generatedSClassLabel, generatedAClassLabel };
+
+        var realHeadSpriteLoc = string.Empty;
+        var realEyeSpriteLoc = string.Empty;
+        var realMouthSpriteLoc = string.Empty;
+        var realBodySpriteLoc = string.Empty;
+        var realArmSpriteLoc = string.Empty;
+        var realLegSpriteLoc = string.Empty;
+
+        if (classLabel == ClassLabel.B || classLabel == ClassLabel.C)
+        {
+            realHeadSpriteLoc = string.Format(headSpriteLoc, generatedCommonClassLabel);
+            realEyeSpriteLoc = string.Format(eyeSpriteLoc, generatedCommonClassLabel);
+            realMouthSpriteLoc = string.Format(mouthSpriteLoc, generatedCommonClassLabel);
+            realBodySpriteLoc = string.Format(bodySpriteLoc, generatedCommonClassLabel);
+            realArmSpriteLoc = string.Format(armSpriteLoc, generatedCommonClassLabel);
+            realLegSpriteLoc = string.Format(legSpriteLoc, generatedCommonClassLabel);
+        }
+        else if (classLabel == ClassLabel.A)
+        {
+            var rIndex = Random.Range(0, generatedAClassLabels.Length);
+            realHeadSpriteLoc = string.Format(headSpriteLoc, generatedAClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedAClassLabels.Length);
+            realEyeSpriteLoc = string.Format(eyeSpriteLoc, generatedAClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedAClassLabels.Length);
+            realMouthSpriteLoc = string.Format(mouthSpriteLoc, generatedAClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedAClassLabels.Length);
+            realBodySpriteLoc = string.Format(bodySpriteLoc, generatedAClassLabels[rIndex]);
+            realArmSpriteLoc = string.Format(armSpriteLoc, generatedAClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedAClassLabels.Length);
+            realLegSpriteLoc = string.Format(legSpriteLoc, generatedAClassLabels[rIndex]);
+        }
+        else
+        {
+            var rIndex = Random.Range(0, generatedSClassLabels.Length);
+            realHeadSpriteLoc = string.Format(headSpriteLoc, generatedSClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedSClassLabels.Length);
+            realEyeSpriteLoc = string.Format(eyeSpriteLoc, generatedSClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedSClassLabels.Length);
+            realMouthSpriteLoc = string.Format(mouthSpriteLoc, generatedSClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedSClassLabels.Length);
+            realBodySpriteLoc = string.Format(bodySpriteLoc, generatedSClassLabels[rIndex]);
+            realArmSpriteLoc = string.Format(armSpriteLoc, generatedSClassLabels[rIndex]);
+            rIndex = Random.Range(0, generatedSClassLabels.Length);
+            realLegSpriteLoc = string.Format(legSpriteLoc, generatedSClassLabels[rIndex]);
+        }
+
+        countOfHeadSprite = spriteHelper.Count(realHeadSpriteLoc);
+        countOfEyeSprite = spriteHelper.Count(realEyeSpriteLoc);
+        countOfMouthSprite = spriteHelper.Count(realMouthSpriteLoc);
+        countOfBodySprite = spriteHelper.Count(realBodySpriteLoc);
+        countOfLegSprite = spriteHelper.Count(realLegSpriteLoc) / 2;
+
+        var headIndex = Random.Range(0, countOfHeadSprite);
+        var eyeIndex = Random.Range(0, countOfEyeSprite);
+        var mouthIndex = Random.Range(0, countOfMouthSprite);
+        var bodyIndex = Random.Range(0, countOfBodySprite);
+        var legIndex = Random.Range(0, countOfLegSprite);
+
+        var headSprite = spriteHelper.Get(string.Format(pattern, realHeadSpriteLoc, headIndex));
+        var eyeSprite = spriteHelper.Get(string.Format(pattern, realEyeSpriteLoc, eyeIndex));
+        var mouthSprite = spriteHelper.Get(string.Format(pattern, realMouthSpriteLoc, mouthIndex));
+        var bodySprite = spriteHelper.Get(string.Format(pattern, realBodySpriteLoc, bodyIndex));
+        var leftArmSprite = spriteHelper.Get(string.Format(pattern, realArmSpriteLoc, "l_" + bodyIndex));
+        var rightArmSprite = spriteHelper.Get(string.Format(pattern, realArmSpriteLoc, "r_" + bodyIndex));
+        var leftLegSprite = spriteHelper.Get(string.Format(pattern, realLegSpriteLoc, "l_" + legIndex));
+        var rightLegSprite = spriteHelper.Get(string.Format(pattern, realLegSpriteLoc, "r_" + legIndex));
+
+        // var instanceOfBaseCharacter = Instantiate<GeneratedBaseCharacter>(generatedBaseCharacterPrefab, Vector3.zero, Quaternion.identity);
+        // _generatedCharaters.Add(instanceOfBaseCharacter);
+
+        var characterElements = character.elements;
+        var characterEyes = characterElements.eye;
+        var characterMouth = characterElements.mouth;
+        characterElements.head.sprite = headSprite;
+        characterEyes.sprite = eyeSprite;
+        characterMouth.sprite = mouthSprite;
+        characterElements.body.sprite = bodySprite;
+        characterElements.leftArm.sprite = leftArmSprite;
+        characterElements.rightArm.sprite = rightArmSprite;
+        characterElements.leftLeg.sprite = leftLegSprite;
+        characterElements.rightLeg.sprite = rightLegSprite;
+
+        // transform eyes and mouth according to pivot of Y
+        // range of mouth
+        var rangeYOfMouth = Random.Range(.2f, .6f);
+        var mouthPosition = characterMouth.transform.localPosition;
+        mouthPosition.y = rangeYOfMouth;
+        characterMouth.transform.localPosition = mouthPosition;
+        // range of eyes
+        var rangeYOfEyes = Random.Range(1f, 1.3f);
+        var eyesPosition = characterEyes.transform.localPosition;
+        eyesPosition.y = rangeYOfEyes;
+        characterEyes.transform.localPosition = eyesPosition;
+    }
+
     void AssignWeaponByJob(JobLabel jobLabel, SpriteRenderer leftWeaponRenderer, SpriteRenderer rightWeaponRenderer)
     {
         var pattern = "{0} => {1}_{2}";
         Sprite sprite;
-        switch(jobLabel)
+        switch (jobLabel)
         {
             default:
             case JobLabel.Swordman:
                 sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "sword", 0));
+                leftWeaponRenderer.sortingOrder = 1;
                 break;
             case JobLabel.Archer:
                 sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "bow", 0));
                 leftWeaponRenderer.flipX = true;
+                leftWeaponRenderer.sortingOrder = 1;
                 break;
             case JobLabel.Mage:
                 sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "staff", 0));
                 leftWeaponRenderer.flipX = true;
+                leftWeaponRenderer.sortingOrder = 1;
                 break;
             case JobLabel.Healer:
                 sprite = spriteHelper.Get(string.Format(pattern, weaponSpriteLoc, "book", 0));
+                leftWeaponRenderer.sortingOrder = 5;
                 break;
         }
         leftWeaponRenderer.sprite = sprite;

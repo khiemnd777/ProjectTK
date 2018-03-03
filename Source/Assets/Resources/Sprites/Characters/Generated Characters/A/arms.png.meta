@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: 0de5cb6dd43194f919849598d010f94f
-timeCreated: 1520048015
+guid: 18b1b9c6e859e4c5180549a21f77180d
+timeCreated: 1520044254
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: sword_0
-    21300002: bow_0
-    21300004: staff_0
-    21300006: book_0
+    21300000: l_0
+    21300002: r_0
+    21300004: l_1
+    21300006: r_1
+    21300008: l_2
+    21300010: r_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,12 +42,12 @@ TextureImporter:
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -109,57 +111,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sword_0
+      name: l_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 2648
-        width: 92
-        height: 302
+        x: 49
+        y: 2802
+        width: 141
+        height: 109
       alignment: 9
-      pivot: {x: 0.51742554, y: 0.18414427}
+      pivot: {x: 0.9284396, y: 0.8894536}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: bow_0
+      name: r_0
       rect:
         serializedVersion: 2
-        x: 249
-        y: 2585
-        width: 103
-        height: 382
+        x: 260
+        y: 2810
+        width: 139
+        height: 103
       alignment: 9
-      pivot: {x: 0.81129444, y: 0.5020982}
+      pivot: {x: 0.06539588, y: 0.8962876}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: staff_0
+      name: l_1
       rect:
         serializedVersion: 2
-        x: 436
-        y: 2653
-        width: 97
-        height: 278
+        x: 466
+        y: 2803
+        width: 150
+        height: 105
       alignment: 9
-      pivot: {x: 0.690066, y: 0.42503127}
+      pivot: {x: 0.91361815, y: 0.8887393}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: book_0
+      name: r_1
       rect:
         serializedVersion: 2
-        x: 604
-        y: 2725
-        width: 115
-        height: 143
+        x: 683
+        y: 2805
+        width: 144
+        height: 106
       alignment: 9
-      pivot: {x: 0.77924645, y: 0.5343829}
+      pivot: {x: 0.08607548, y: 0.90047354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_2
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 2803
+        width: 144
+        height: 106
+      alignment: 9
+      pivot: {x: 0.92510307, y: 0.91587746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_2
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 2805
+        width: 144
+        height: 106
+      alignment: 9
+      pivot: {x: 0.09741381, y: 0.91587746}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: 0de5cb6dd43194f919849598d010f94f
-timeCreated: 1520048015
+guid: b5e3b8ae70526437fa8705583dc959a8
+timeCreated: 1520047679
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: sword_0
-    21300002: bow_0
-    21300004: staff_0
-    21300006: book_0
+    21300000: 0
+    21300002: 1
+    21300004: 2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,12 +39,12 @@ TextureImporter:
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -109,57 +108,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sword_0
+      name: 0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 2648
-        width: 92
-        height: 302
+        x: 121
+        y: 2838
+        width: 272
+        height: 82
       alignment: 9
-      pivot: {x: 0.51742554, y: 0.18414427}
+      pivot: {x: 0.4867051, y: 0.48106718}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: bow_0
+      name: 1
       rect:
         serializedVersion: 2
-        x: 249
-        y: 2585
-        width: 103
-        height: 382
+        x: 123
+        y: 2712
+        width: 280
+        height: 86
       alignment: 9
-      pivot: {x: 0.81129444, y: 0.5020982}
+      pivot: {x: 0.49436253, y: 0.48194778}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: staff_0
+      name: 2
       rect:
         serializedVersion: 2
-        x: 436
-        y: 2653
-        width: 97
-        height: 278
+        x: 125
+        y: 2580
+        width: 272
+        height: 100
       alignment: 9
-      pivot: {x: 0.690066, y: 0.42503127}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: book_0
-      rect:
-        serializedVersion: 2
-        x: 604
-        y: 2725
-        width: 115
-        height: 143
-      alignment: 9
-      pivot: {x: 0.77924645, y: 0.5343829}
+      pivot: {x: 0.44862294, y: 0.26562744}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

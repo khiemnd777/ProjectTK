@@ -100,12 +100,15 @@ MonoBehaviour:
     damage: {fileID: 0}
     hp: {fileID: 0}
     speed: {fileID: 0}
-  headSpriteLoc: Sprites/Characters/Generated Characters/heads
-  eyeSpriteLoc: Sprites/Characters/Generated Characters/eyes
-  mouthSpriteLoc: Sprites/Characters/Generated Characters/mouths
-  bodySpriteLoc: Sprites/Characters/Generated Characters/bodys
-  armSpriteLoc: Sprites/Characters/Generated Characters/arms
-  legSpriteLoc: Sprites/Characters/Generated Characters/legs
+  headSpriteLoc: Sprites/Characters/Generated Characters/{0}/heads
+  eyeSpriteLoc: Sprites/Characters/Generated Characters/{0}/eyes
+  mouthSpriteLoc: Sprites/Characters/Generated Characters/{0}/mouths
+  bodySpriteLoc: Sprites/Characters/Generated Characters/{0}/bodys
+  armSpriteLoc: Sprites/Characters/Generated Characters/{0}/arms
+  legSpriteLoc: Sprites/Characters/Generated Characters/{0}/legs
+  generatedCommonClassLabel: 4
+  generatedAClassLabel: 1
+  generatedSClassLabel: 1
   weaponSpriteLoc: Sprites/Weapons/basic weapons
   generatedBaseCharacterPrefab: {fileID: 114260507223162080, guid: 0562bea1d64db614e91b4892825248b7,
     type: 2}
