@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 18b1b9c6e859e4c5180549a21f77180d
-timeCreated: 1520044254
+timeCreated: 1520160525
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,8 @@ TextureImporter:
     21300006: r_1
     21300008: l_2
     21300010: r_2
+    21300012: l_3
+    21300014: r_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -170,12 +172,12 @@ TextureImporter:
       name: l_2
       rect:
         serializedVersion: 2
-        x: 894
-        y: 2803
-        width: 144
-        height: 106
+        x: 895
+        y: 2802
+        width: 151
+        height: 109
       alignment: 9
-      pivot: {x: 0.92510307, y: 0.91587746}
+      pivot: {x: 0.88661045, y: 0.8625511}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,12 +187,40 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1103
-        y: 2805
+        y: 2804
         width: 144
         height: 106
       alignment: 9
       pivot: {x: 0.09741381, y: 0.91587746}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l_3
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 2795
+        width: 146
+        height: 122
+      alignment: 9
+      pivot: {x: 0.8981039, y: 0.7382092}
+      border: {x: 4, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r_3
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 2800
+        width: 147
+        height: 117
+      alignment: 9
+      pivot: {x: 0.12437304, y: 0.86016375}
+      border: {x: 4, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

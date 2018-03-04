@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 75aa5a56b52094ec08c153f7780946d1
-timeCreated: 1520043997
+timeCreated: 1520161439
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: 0
     21300002: 1
     21300004: 2
+    21300006: 3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -116,7 +117,7 @@ TextureImporter:
         width: 201
         height: 182
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,11 +127,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 374
-        y: 2742
+        y: 2746
         width: 203
         height: 197
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,12 +140,26 @@ TextureImporter:
       name: 2
       rect:
         serializedVersion: 2
-        x: 667
-        y: 2754
+        x: 665
+        y: 2755
         width: 202
         height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5555468, y: 0.5723903}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 3
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 2740
+        width: 215
+        height: 217
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5184298}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
