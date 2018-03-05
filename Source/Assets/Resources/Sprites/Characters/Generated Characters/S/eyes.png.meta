@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: ceab4ee835754407f9cec6a2d5719aaa
-timeCreated: 1520267591
+guid: b20498982d8d3f741a0b1ab3c8296d58
+timeCreated: 1520267855
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: 0
-    21300002: 1
-    21300004: 2
-    21300006: 3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -78,33 +75,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -112,54 +82,12 @@ TextureImporter:
       name: 0
       rect:
         serializedVersion: 2
-        x: 158
-        y: 2361
-        width: 571
-        height: 411
+        x: 114
+        y: 2833
+        width: 285
+        height: 110
       alignment: 9
-      pivot: {x: 0.509537, y: 0.05101173}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 1
-      rect:
-        serializedVersion: 2
-        x: 943
-        y: 2378
-        width: 505
-        height: 445
-      alignment: 9
-      pivot: {x: 0.4561156, y: 0.03941911}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 2
-      rect:
-        serializedVersion: 2
-        x: 1638
-        y: 2379
-        width: 454
-        height: 440
-      alignment: 9
-      pivot: {x: 0.5303076, y: 0.046548184}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 3
-      rect:
-        serializedVersion: 2
-        x: 2257
-        y: 2386
-        width: 485
-        height: 447
-      alignment: 9
-      pivot: {x: 0.5216686, y: 0.042396903}
+      pivot: {x: 0.47619396, y: 0.2996127}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

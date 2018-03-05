@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -289,8 +289,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 154940424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 531, y: 298.5, z: 0}
-  m_LocalScale: {x: 0.995, y: 0.995, z: 0.995}
+  m_LocalPosition: {x: 495.5, y: 319, z: 0}
+  m_LocalScale: {x: 1.0633334, y: 1.0633334, z: 1.0633334}
   m_Children:
   - {fileID: 2037708530}
   - {fileID: 1425949841}
@@ -1095,7 +1095,7 @@ RectTransform:
   m_GameObject: {fileID: 571319474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.91, z: 90}
-  m_LocalScale: {x: 0.016656203, y: 0.016656203, z: 0.016656203}
+  m_LocalScale: {x: 0.016666668, y: 0.016666668, z: 0.016666668}
   m_Children:
   - {fileID: 229615905}
   m_Father: {fileID: 0}
@@ -2814,6 +2814,11 @@ Prefab:
       propertyPath: generatedCharaterBlocks.Array.data[4].speed
       value: 
       objectReference: {fileID: 1701495367}
+    - target: {fileID: 114856027599801928, guid: b2edd0cef62ea45aa8f23b8bb51e051b,
+        type: 2}
+      propertyPath: generatedSClassLabel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2edd0cef62ea45aa8f23b8bb51e051b, type: 2}
   m_IsPrefabParent: 0
