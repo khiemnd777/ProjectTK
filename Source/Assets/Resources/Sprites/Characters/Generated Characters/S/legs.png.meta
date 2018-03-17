@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: a72b81ae6ce650b4dbf44f980acefc96
-timeCreated: 1520267957
+timeCreated: 1520650750
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: l_1
-    21300002: r_1
+    21300000: l_0
+    21300002: r_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -80,7 +80,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: l_1
+      name: l_0
       rect:
         serializedVersion: 2
         x: 66
@@ -94,7 +94,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: r_1
+      name: r_0
       rect:
         serializedVersion: 2
         x: 243
