@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: ee734985182ee45488331bb44b9b7a29
+timeCreated: 1521359956
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: UTM Facebook K&T
+  fontNames:
+  - UTM Facebook K&T
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8223e9224723244cb9958d2be2582548, type: 3}
+  - {fileID: 12800000, guid: 976ec872c615b4c7c8fdcf515fb9cae8, type: 3}
+  - {fileID: 12800000, guid: 3917a1e7a48ad4676bbe407b3949856a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

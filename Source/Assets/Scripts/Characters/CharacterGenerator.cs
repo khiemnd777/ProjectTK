@@ -49,6 +49,9 @@ public class CharacterGenerator : MonoBehaviour
     public string bodySpriteLoc = "Sprites/Characters/Generated Characters/{0}/bodys";
     public string armSpriteLoc = "Sprites/Characters/Generated Characters/{0}/arms";
     public string legSpriteLoc = "Sprites/Characters/Generated Characters/{0}/legs";
+    [Header("Recruitment UI's Sprite Location")]
+    public string recruitUILoc = "Sprites/UI/recruit-ui";
+    [Space]
     public ClassLabel generatedCommonClassLabel = ClassLabel.Common;
     public ClassLabel generatedAClassLabel = ClassLabel.A;
     public ClassLabel generatedSClassLabel = ClassLabel.A;
@@ -117,14 +120,15 @@ public class CharacterGenerator : MonoBehaviour
 
     public void Generate()
     {
-        var descFormat = "{0} ({1})\nLvl. {2}\nHP {3}/{4}";
+        // var descFormat = "{0} ({1})\nLvl. {2}\nHP {3}/{4}";
         var blocks = generatedCharaterBlocks;
         foreach (var block in blocks)
         {
             var currentGeneratedBaseCharacter = block.baseCharacter;
             var tendencyPoint = block.tendencyPoint;
             var characterName = block.name;
-            var characterDescription = block.description;
+            // var characterDescription = block.description;
+            var classImage = block.classImage;
             var characterElements = currentGeneratedBaseCharacter.elements;
 
             // generating names
@@ -172,10 +176,15 @@ public class CharacterGenerator : MonoBehaviour
             stats.TransformValues();
 
             // presentation of description
-            var pHealth = Mathf.FloorToInt(stats.currentHealth);
-            var pMaxHealth = Mathf.FloorToInt(stats.maxHealth.GetValue());
-            var desc = string.Format(descFormat, baseJob.label, baseClass.label, baseLevel, pHealth, pMaxHealth);
-            characterDescription.text = desc;
+            // var pHealth = Mathf.FloorToInt(stats.currentHealth);
+            // var pMaxHealth = Mathf.FloorToInt(stats.maxHealth.GetValue());
+            // var desc = string.Format(descFormat, baseJob.label, baseClass.label, baseLevel, pHealth, pMaxHealth);
+            // characterDescription.text = desc;
+
+            // presentation of info
+            block.jobLabel.text = baseJob.label.ToString();
+            classImage.sprite = GetClassSpriteByLabel(baseClass.label);
+            block.level.text = baseLevel.ToString();
 
             // presentation of stats
             block.damage.text = string.Format("Damage ({0})", statDamage.GetValue());
@@ -341,6 +350,23 @@ public class CharacterGenerator : MonoBehaviour
             _cachedClassLabels = Probability.Initialize(classLabels, percents);
         }
         return Probability.GetValueInProbability(_cachedClassLabels);
+    }
+
+    public Sprite GetClassSpriteByLabel(ClassLabel label){
+        var pattern = "{0} => {1}";
+        switch(label){
+            case ClassLabel.A:
+                return spriteHelper.Get(string.Format(pattern, recruitUILoc, "a-class"));
+            case ClassLabel.B:
+                return spriteHelper.Get(string.Format(pattern, recruitUILoc, "b-class"));
+            case ClassLabel.C:
+                return spriteHelper.Get(string.Format(pattern, recruitUILoc, "c-class"));
+            case ClassLabel.S:
+                return spriteHelper.Get(string.Format(pattern, recruitUILoc, "s-class"));
+            default:
+                break;
+        }
+        return null;
     }
 
     public JobLabel GenerateJob()

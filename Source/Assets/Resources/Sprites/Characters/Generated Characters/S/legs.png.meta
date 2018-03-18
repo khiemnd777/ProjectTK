@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a72b81ae6ce650b4dbf44f980acefc96
-timeCreated: 1520650750
+timeCreated: 1521367819
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -76,6 +76,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -83,12 +110,12 @@ TextureImporter:
       name: l_0
       rect:
         serializedVersion: 2
-        x: 66
-        y: 2778
-        width: 133
-        height: 175
+        x: 68
+        y: 2780
+        width: 130
+        height: 167
       alignment: 9
-      pivot: {x: 0.7850669, y: 0.9263128}
+      pivot: {x: 0.80399734, y: 0.97328925}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -97,12 +124,12 @@ TextureImporter:
       name: r_0
       rect:
         serializedVersion: 2
-        x: 243
-        y: 2775
-        width: 134
-        height: 171
+        x: 245
+        y: 2776
+        width: 130
+        height: 167
       alignment: 9
-      pivot: {x: 0.8011937, y: 0.936285}
+      pivot: {x: 0.80399734, y: 0.97328925}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

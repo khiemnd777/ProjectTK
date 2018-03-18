@@ -8,6 +8,9 @@ public struct GeneratedCharacterBlock
     public TendencyPoint tendencyPoint;
     public Text name;
     public Text description;
+    public Text level;
+    public Text jobLabel;
+    public Image classImage;
     public TextMesh damage;
     public TextMesh hp;
     public TextMesh speed;
