@@ -26,9 +26,9 @@ public sealed class Mathfx
 
     //Ease out
     #region Sinerp
-    public static float Sinerp(float start, float end, float value)
+    public static float Sinerp(float start, float end, float value, float t = .5f)
     {
-        return Mathf.Lerp(start, end, Mathf.Sin(value * Mathf.PI * 0.5f));
+        return Mathf.Lerp(start, end, Mathf.Sin(value * Mathf.PI * t)); 
     }
 
     public static Vector2 Sinerp(Vector2 start, Vector2 end, float value)

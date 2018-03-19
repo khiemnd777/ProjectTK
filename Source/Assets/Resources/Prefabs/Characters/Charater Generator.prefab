@@ -108,9 +108,9 @@ MonoBehaviour:
   weaponSpriteLoc: Sprites/Weapons/basic weapons
   generatedBaseCharacterPrefab: {fileID: 114260507223162080, guid: 0562bea1d64db614e91b4892825248b7,
     type: 2}
-  sPercent: 0.01
+  sPercent: 0.1
   aPercent: 0.1
-  bPercent: 0.55
+  bPercent: 0.45
   cPercent: 0.34
   swordmanPercent: 0.25
   archerPercent: 0.25
@@ -130,3 +130,5 @@ MonoBehaviour:
   cPointPerLevel:
     min: 2
     max: 3
+  frogEyeLeft: {fileID: 0}
+  frogEyeRight: {fileID: 0}

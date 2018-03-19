@@ -88,6 +88,9 @@ public class CharacterGenerator : MonoBehaviour
     public MinMax aPointPerLevel;
     public MinMax bPointPerLevel;
     public MinMax cPointPerLevel;
+    [Header("Misc")]
+    public Rotator frogEyeLeft;
+    public Rotator frogEyeRight;
 
     // [Header("Temporary")]
     // public TendencyPoint tendencyPoint;
@@ -115,11 +118,90 @@ public class CharacterGenerator : MonoBehaviour
 
     void Start()
     {
-
+        FillElementSkinColor(Color.black);
     }
 
-    public void Generate()
+    void FillElementSkinColor (Color skinColor){
+        var blocks = generatedCharaterBlocks;
+        foreach(var block in blocks){
+            var characterElements = block.baseCharacter.elements;
+            var characterEyes = characterElements.eye;
+            var characterMouth = characterElements.mouth;
+            var leftWeapon = characterElements.leftWeapon;
+            var rightWeapon = characterElements.rightWeapon;
+            characterElements.rightLeg.color 
+                = characterElements.leftLeg.color 
+                = characterElements.rightArm.color 
+                = characterElements.leftArm.color 
+                = characterElements.body.color 
+                = characterMouth.color 
+                = characterEyes.color 
+                = characterElements.head.color 
+                = leftWeapon.color
+                = rightWeapon.color
+                = skinColor;
+        }
+        blocks = null;
+    }
+
+    void LerpElementSkinColor (Color from, Color to, float speed = 5f){
+        StartCoroutine(LerpingElementSkinColor(from, to, speed));
+    }
+
+    IEnumerator LerpingElementSkinColor (Color from, Color to, float speed = 5f)
     {
+        var percent = 0f;
+        var blocks = generatedCharaterBlocks;
+        while(percent <= 1f){
+            percent += Time.deltaTime * speed;
+            foreach(var block in blocks){
+                var characterElements = block.baseCharacter.elements;
+                var characterEyes = characterElements.eye;
+                var characterMouth = characterElements.mouth;
+                var leftWeapon = characterElements.leftWeapon;
+                var rightWeapon = characterElements.rightWeapon;
+                characterElements.rightLeg.color 
+                    = characterElements.leftLeg.color 
+                    = characterElements.rightArm.color 
+                    = characterElements.leftArm.color 
+                    = characterElements.body.color 
+                    = characterMouth.color 
+                    = characterEyes.color 
+                    = characterElements.head.color 
+                    = leftWeapon.color
+                    = rightWeapon.color
+                    = Color.Lerp(from, to, percent);
+            }   
+            yield return null;
+        }
+        blocks = null;
+    }
+
+    IEnumerator Generating()
+    {
+        LerpElementSkinColor(Color.white, Color.black, 10f);
+
+        var percent = 0f;
+        var val = 0f;
+        var frogEyeRotatorSpeed = frogEyeLeft.speed;
+        frogEyeLeft.speed = frogEyeRotatorSpeed + 250;
+        frogEyeRight.speed = frogEyeRotatorSpeed + 250;
+        var i = 0;
+        while(percent <= 1)
+        {
+            percent += Time.deltaTime * 1.5f;
+            val = Mathfx.Sinerp(0, 1, percent);
+            yield return new WaitForSeconds(val/10);
+                __Generate();
+            ++i;
+            yield return null;
+        }
+        frogEyeLeft.speed = frogEyeRotatorSpeed;
+        frogEyeRight.speed = frogEyeRotatorSpeed;
+        LerpElementSkinColor(Color.black, Color.white);
+    }
+
+    void __Generate(){
         // var descFormat = "{0} ({1})\nLvl. {2}\nHP {3}/{4}";
         var blocks = generatedCharaterBlocks;
         foreach (var block in blocks)
@@ -202,6 +284,11 @@ public class CharacterGenerator : MonoBehaviour
             tendencyPoint = null;
         }
         blocks = null;
+    }
+
+    public void Generate()
+    {
+        StartCoroutine(Generating());
     }
 
     void GeneratePostureByJob(GeneratedBaseCharacter character, JobLabel jobLabel)
