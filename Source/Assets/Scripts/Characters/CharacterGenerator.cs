@@ -88,6 +88,16 @@ public class CharacterGenerator : MonoBehaviour
     public MinMax aPointPerLevel;
     public MinMax bPointPerLevel;
     public MinMax cPointPerLevel;
+    [Header("Money bag")]
+    public int gold = 9999;
+    public int diamond = 9999;
+    public int baseGoldAmount;
+    public int baseDiamondAmount;
+    public float baseAmountOnTime = 1.5f;
+    public int amountOfCall = 800;
+    public Text goldText;
+    public Text diamondText;
+    public Text amountForCallText;
     [Header("Misc")]
     public Rotator frogEyeLeft;
     public Rotator frogEyeRight;
@@ -118,7 +128,15 @@ public class CharacterGenerator : MonoBehaviour
 
     void Start()
     {
+        amountForCallText.text = amountOfCall.ToString();
         FillElementSkinColor(Color.black);
+    }
+
+    void Update()
+    {
+        // Updating gold and diamond's amount
+        goldText.text = gold.ToString();
+        diamondText.text = diamond.ToString();
     }
 
     void FillElementSkinColor (Color skinColor){
@@ -279,6 +297,9 @@ public class CharacterGenerator : MonoBehaviour
             // generate posture by job
             GeneratePostureByJob(currentGeneratedBaseCharacter, baseJob.label);
 
+            block.goldText.text = GenerateGoldByClass(baseClass.label, baseGoldAmount).ToString();
+            block.diamondText.text = GenerateDiamondByClass(baseClass.label, baseDiamondAmount).ToString();
+
             // release memory
             currentGeneratedBaseCharacter = null;
             tendencyPoint = null;
@@ -288,7 +309,14 @@ public class CharacterGenerator : MonoBehaviour
 
     public void Generate()
     {
+        if(gold < amountOfCall){
+            Debug.Log("You have not enough amount for calling");
+            return;
+        }
+        gold -= amountOfCall;
         StartCoroutine(Generating());
+        amountOfCall = Mathf.FloorToInt(amountOfCall * baseAmountOnTime);
+        amountForCallText.text = amountOfCall.ToString();
     }
 
     void GeneratePostureByJob(GeneratedBaseCharacter character, JobLabel jobLabel)
@@ -488,5 +516,51 @@ public class CharacterGenerator : MonoBehaviour
                 break;
         }
         return point;
+    }
+
+    public int GenerateGoldByClass(ClassLabel classLabel, int baseAmount)
+    {
+        var gold = 0;
+        switch(classLabel)
+        {
+            case ClassLabel.S:
+                gold = baseAmount * Random.Range(5, 10);
+                break;
+            case ClassLabel.A:
+                gold = baseAmount * Random.Range(2, 4);
+                break;
+            case ClassLabel.B:
+                gold = baseAmount * Random.Range(1, 2);
+                break;
+            case ClassLabel.C:
+                gold = baseAmount * Random.Range(1, 1);
+                break;
+            default:
+                break;
+        }
+        return gold;
+    }
+
+    public int GenerateDiamondByClass(ClassLabel classLabel, int baseAmount)
+    {
+        var amount = 0;
+        switch(classLabel)
+        {
+            case ClassLabel.S:
+                amount = baseAmount * Random.Range(5, 10);
+                break;
+            case ClassLabel.A:
+                amount = baseAmount * Random.Range(2, 4);
+                break;
+            case ClassLabel.B:
+                amount = baseAmount * Random.Range(1, 2);
+                break;
+            case ClassLabel.C:
+                amount = baseAmount * Random.Range(1, 1);
+                break;
+            default:
+                break;
+        }
+        return amount;
     }
 }

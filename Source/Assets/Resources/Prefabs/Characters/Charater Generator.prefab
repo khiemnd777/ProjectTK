@@ -75,6 +75,10 @@ MonoBehaviour:
     damage: {fileID: 0}
     hp: {fileID: 0}
     speed: {fileID: 0}
+    goldButton: {fileID: 0}
+    goldText: {fileID: 0}
+    diamondButton: {fileID: 0}
+    diamondText: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
     name: {fileID: 0}
@@ -85,6 +89,10 @@ MonoBehaviour:
     damage: {fileID: 0}
     hp: {fileID: 0}
     speed: {fileID: 0}
+    goldButton: {fileID: 0}
+    goldText: {fileID: 0}
+    diamondButton: {fileID: 0}
+    diamondText: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
     name: {fileID: 0}
@@ -95,6 +103,10 @@ MonoBehaviour:
     damage: {fileID: 0}
     hp: {fileID: 0}
     speed: {fileID: 0}
+    goldButton: {fileID: 0}
+    goldText: {fileID: 0}
+    diamondButton: {fileID: 0}
+    diamondText: {fileID: 0}
   headSpriteLoc: Sprites/Characters/Generated Characters/{0}/heads
   eyeSpriteLoc: Sprites/Characters/Generated Characters/{0}/eyes
   mouthSpriteLoc: Sprites/Characters/Generated Characters/{0}/mouths
@@ -130,5 +142,11 @@ MonoBehaviour:
   cPointPerLevel:
     min: 2
     max: 3
+  gold: 9999
+  diamond: 9999
+  goldText: {fileID: 0}
+  diamondText: {fileID: 0}
+  baseGoldAmount: 100
+  baseDiamondAmount: 1
   frogEyeLeft: {fileID: 0}
   frogEyeRight: {fileID: 0}

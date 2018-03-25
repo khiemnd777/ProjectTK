@@ -14,4 +14,8 @@ public struct GeneratedCharacterBlock
     public TextMesh damage;
     public TextMesh hp;
     public TextMesh speed;
+    public Button goldButton;
+    public Text goldText;
+    public Button diamondButton;
+    public Text diamondText;
 }
