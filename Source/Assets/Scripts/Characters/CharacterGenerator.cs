@@ -139,22 +139,24 @@ public class CharacterGenerator : MonoBehaviour
         diamondText.text = diamond.ToString();
     }
 
-    void FillElementSkinColor (Color skinColor){
+    void FillElementSkinColor(Color skinColor)
+    {
         var blocks = generatedCharaterBlocks;
-        foreach(var block in blocks){
+        foreach (var block in blocks)
+        {
             var characterElements = block.baseCharacter.elements;
             var characterEyes = characterElements.eye;
             var characterMouth = characterElements.mouth;
             var leftWeapon = characterElements.leftWeapon;
             var rightWeapon = characterElements.rightWeapon;
-            characterElements.rightLeg.color 
-                = characterElements.leftLeg.color 
-                = characterElements.rightArm.color 
-                = characterElements.leftArm.color 
-                = characterElements.body.color 
-                = characterMouth.color 
-                = characterEyes.color 
-                = characterElements.head.color 
+            characterElements.rightLeg.color
+                = characterElements.leftLeg.color
+                = characterElements.rightArm.color
+                = characterElements.leftArm.color
+                = characterElements.body.color
+                = characterMouth.color
+                = characterEyes.color
+                = characterElements.head.color
                 = leftWeapon.color
                 = rightWeapon.color
                 = skinColor;
@@ -162,34 +164,37 @@ public class CharacterGenerator : MonoBehaviour
         blocks = null;
     }
 
-    void LerpElementSkinColor (Color from, Color to, float speed = 5f){
+    void LerpElementSkinColor(Color from, Color to, float speed = 5f)
+    {
         StartCoroutine(LerpingElementSkinColor(from, to, speed));
     }
 
-    IEnumerator LerpingElementSkinColor (Color from, Color to, float speed = 5f)
+    IEnumerator LerpingElementSkinColor(Color from, Color to, float speed = 5f)
     {
         var percent = 0f;
         var blocks = generatedCharaterBlocks;
-        while(percent <= 1f){
+        while (percent <= 1f)
+        {
             percent += Time.deltaTime * speed;
-            foreach(var block in blocks){
+            foreach (var block in blocks)
+            {
                 var characterElements = block.baseCharacter.elements;
                 var characterEyes = characterElements.eye;
                 var characterMouth = characterElements.mouth;
                 var leftWeapon = characterElements.leftWeapon;
                 var rightWeapon = characterElements.rightWeapon;
-                characterElements.rightLeg.color 
-                    = characterElements.leftLeg.color 
-                    = characterElements.rightArm.color 
-                    = characterElements.leftArm.color 
-                    = characterElements.body.color 
-                    = characterMouth.color 
-                    = characterEyes.color 
-                    = characterElements.head.color 
+                characterElements.rightLeg.color
+                    = characterElements.leftLeg.color
+                    = characterElements.rightArm.color
+                    = characterElements.leftArm.color
+                    = characterElements.body.color
+                    = characterMouth.color
+                    = characterEyes.color
+                    = characterElements.head.color
                     = leftWeapon.color
                     = rightWeapon.color
                     = Color.Lerp(from, to, percent);
-            }   
+            }
             yield return null;
         }
         blocks = null;
@@ -205,21 +210,61 @@ public class CharacterGenerator : MonoBehaviour
         frogEyeLeft.speed = frogEyeRotatorSpeed + 250;
         frogEyeRight.speed = frogEyeRotatorSpeed + 250;
         var i = 0;
-        while(percent <= 1)
+        // scale out character
+        foreach (var block in generatedCharaterBlocks)
+        {
+            var baseCharacter = block.baseCharacter;
+            var percentScaleOutCharacter = 0f;
+            var baseCharacterTransform = baseCharacter.transform;
+            var baseCharacterLocalPosition = baseCharacterTransform.localPosition;
+            var baseCharacterLocalPositionLerp = new Vector3(baseCharacterLocalPosition.x - 100, baseCharacterLocalPosition.y, baseCharacterLocalPosition.z);
+            while (percentScaleOutCharacter <= 1)
+            {
+                percentScaleOutCharacter += Time.deltaTime * 50;
+                baseCharacterTransform.localScale = Vector3.Lerp(Vector3.one * 27, Vector3.one * 35, percentScaleOutCharacter);
+                baseCharacterTransform.localPosition = Vector3.Lerp(baseCharacterLocalPosition, baseCharacterLocalPositionLerp, percentScaleOutCharacter);
+                yield return null;
+            }
+            block.tendencyPoint.gameObject.SetActive(false);
+            block.level.transform.parent.gameObject.SetActive(false);
+            block.jobLabel.gameObject.SetActive(false);
+        }
+        // generating
+        while (percent <= 1)
         {
             percent += Time.deltaTime * 1.5f;
             val = Mathfx.Sinerp(0, 1, percent);
-            yield return new WaitForSeconds(val/10);
-                __Generate();
+            yield return new WaitForSeconds(val / 10);
+            __Generate();
             ++i;
             yield return null;
         }
         frogEyeLeft.speed = frogEyeRotatorSpeed;
         frogEyeRight.speed = frogEyeRotatorSpeed;
         LerpElementSkinColor(Color.black, Color.white);
+        // scale in character
+        foreach (var block in generatedCharaterBlocks)
+        {
+            var baseCharacter = block.baseCharacter;
+            var percentScaleInCharacter = 0f;
+            var baseCharacterTransform = baseCharacter.transform;
+            var baseCharacterLocalPosition = baseCharacterTransform.localPosition;
+            var baseCharacterLocalPositionLerp = new Vector3(baseCharacterLocalPosition.x + 100, baseCharacterLocalPosition.y, baseCharacterLocalPosition.z);
+            while (percentScaleInCharacter <= 1)
+            {
+                percentScaleInCharacter += Time.deltaTime * 50;
+                baseCharacterTransform.localScale = Vector3.Lerp(Vector3.one * 35, Vector3.one * 27, percentScaleInCharacter);
+                baseCharacterTransform.localPosition = Vector3.Lerp(baseCharacterLocalPosition, baseCharacterLocalPositionLerp, percentScaleInCharacter);
+                yield return null;
+            }
+            block.tendencyPoint.gameObject.SetActive(true);
+            block.level.transform.parent.gameObject.SetActive(true);
+            block.jobLabel.gameObject.SetActive(true);
+        }
     }
 
-    void __Generate(){
+    void __Generate()
+    {
         // var descFormat = "{0} ({1})\nLvl. {2}\nHP {3}/{4}";
         var blocks = generatedCharaterBlocks;
         foreach (var block in blocks)
@@ -309,7 +354,8 @@ public class CharacterGenerator : MonoBehaviour
 
     public void Generate()
     {
-        if(gold < amountOfCall){
+        if (gold < amountOfCall)
+        {
             Debug.Log("You have not enough amount for calling");
             return;
         }
@@ -467,9 +513,11 @@ public class CharacterGenerator : MonoBehaviour
         return Probability.GetValueInProbability(_cachedClassLabels);
     }
 
-    public Sprite GetClassSpriteByLabel(ClassLabel label){
+    public Sprite GetClassSpriteByLabel(ClassLabel label)
+    {
         var pattern = "{0} => {1}";
-        switch(label){
+        switch (label)
+        {
             case ClassLabel.A:
                 return spriteHelper.Get(string.Format(pattern, recruitUILoc, "a-class"));
             case ClassLabel.B:
@@ -521,7 +569,7 @@ public class CharacterGenerator : MonoBehaviour
     public int GenerateGoldByClass(ClassLabel classLabel, int baseAmount)
     {
         var gold = 0;
-        switch(classLabel)
+        switch (classLabel)
         {
             case ClassLabel.S:
                 gold = baseAmount * Random.Range(5, 10);
@@ -544,7 +592,7 @@ public class CharacterGenerator : MonoBehaviour
     public int GenerateDiamondByClass(ClassLabel classLabel, int baseAmount)
     {
         var amount = 0;
-        switch(classLabel)
+        switch (classLabel)
         {
             case ClassLabel.S:
                 amount = baseAmount * Random.Range(5, 10);
