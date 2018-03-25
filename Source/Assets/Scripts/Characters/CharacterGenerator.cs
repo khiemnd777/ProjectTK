@@ -220,7 +220,7 @@ public class CharacterGenerator : MonoBehaviour
             var baseCharacterLocalPositionLerp = new Vector3(baseCharacterLocalPosition.x - 100, baseCharacterLocalPosition.y, baseCharacterLocalPosition.z);
             while (percentScaleOutCharacter <= 1)
             {
-                percentScaleOutCharacter += Time.deltaTime * 50;
+                percentScaleOutCharacter += Time.deltaTime * 25;
                 baseCharacterTransform.localScale = Vector3.Lerp(Vector3.one * 27, Vector3.one * 35, percentScaleOutCharacter);
                 baseCharacterTransform.localPosition = Vector3.Lerp(baseCharacterLocalPosition, baseCharacterLocalPositionLerp, percentScaleOutCharacter);
                 yield return null;
@@ -228,38 +228,109 @@ public class CharacterGenerator : MonoBehaviour
             block.tendencyPoint.gameObject.SetActive(false);
             block.level.transform.parent.gameObject.SetActive(false);
             block.jobLabel.gameObject.SetActive(false);
+            block.goldButton.gameObject.SetActive(false);
+            block.diamondButton.gameObject.SetActive(false);
+            block.name.gameObject.SetActive(false);
+            block.classImage.gameObject.SetActive(false);
         }
         // generating
+        var deltaSlowdown = 50f;
+        var deltaSlowdownPercent = 1.5f;
+        var isInSlowdown = false;
         while (percent <= 1)
         {
-            percent += Time.deltaTime * 1.5f;
-            val = Mathfx.Sinerp(0, 1, percent);
-            yield return new WaitForSeconds(val / 10);
+            percent += Time.deltaTime * deltaSlowdownPercent;
+            val = Mathf.Lerp(0, 1, percent);
+            if (percent >= .5f && percent < .75f && !isInSlowdown)
+            {
+                deltaSlowdown /= 2f;
+                deltaSlowdownPercent /= 2f;
+                isInSlowdown = true;
+            }
+            else if (percent >= .75f && percent < .9f)
+            {
+                if(isInSlowdown){
+                    isInSlowdown = false;
+                    deltaSlowdown /= 2f;
+                    deltaSlowdownPercent /= 2f;
+                }
+            }
+            else if (percent >= .9f && !isInSlowdown)
+            {
+                deltaSlowdown /= 2f;
+                deltaSlowdownPercent /= 2f;
+                isInSlowdown = true;
+            }
+            Debug.Log(deltaSlowdown);
+            yield return new WaitForSeconds(val / deltaSlowdown);
             __Generate();
             ++i;
             yield return null;
         }
         frogEyeLeft.speed = frogEyeRotatorSpeed;
         frogEyeRight.speed = frogEyeRotatorSpeed;
-        LerpElementSkinColor(Color.black, Color.white);
-        // scale in character
+        yield return new WaitForSeconds(.5f);
+        // LerpElementSkinColor(Color.black, Color.white);
         foreach (var block in generatedCharaterBlocks)
         {
-            var baseCharacter = block.baseCharacter;
-            var percentScaleInCharacter = 0f;
-            var baseCharacterTransform = baseCharacter.transform;
-            var baseCharacterLocalPosition = baseCharacterTransform.localPosition;
-            var baseCharacterLocalPositionLerp = new Vector3(baseCharacterLocalPosition.x + 100, baseCharacterLocalPosition.y, baseCharacterLocalPosition.z);
-            while (percentScaleInCharacter <= 1)
+            var characterElements = block.baseCharacter.elements;
+            var characterEyes = characterElements.eye;
+            var characterMouth = characterElements.mouth;
+            var leftWeapon = characterElements.leftWeapon;
+            var rightWeapon = characterElements.rightWeapon;
+            var appearedColorPercent = 0f;
+            while (appearedColorPercent <= 1)
             {
-                percentScaleInCharacter += Time.deltaTime * 50;
-                baseCharacterTransform.localScale = Vector3.Lerp(Vector3.one * 35, Vector3.one * 27, percentScaleInCharacter);
-                baseCharacterTransform.localPosition = Vector3.Lerp(baseCharacterLocalPosition, baseCharacterLocalPositionLerp, percentScaleInCharacter);
+                appearedColorPercent += Time.deltaTime;
+                characterElements.rightLeg.color
+                    = characterElements.leftLeg.color
+                    = characterElements.rightArm.color
+                    = characterElements.leftArm.color
+                    = characterElements.body.color
+                    = characterMouth.color
+                    = characterEyes.color
+                    = characterElements.head.color
+                    = leftWeapon.color
+                    = rightWeapon.color
+                    = Color.Lerp(Color.black, Color.white, appearedColorPercent);
                 yield return null;
             }
-            block.tendencyPoint.gameObject.SetActive(true);
-            block.level.transform.parent.gameObject.SetActive(true);
-            block.jobLabel.gameObject.SetActive(true);
+        }
+        yield return new WaitForSeconds(.625f);
+        // scale in character
+        var percentScaleInCharacter = 0f;
+        var originalPosition = generatedCharaterBlocks[0].baseCharacter.transform.localPosition;
+        var originalPositionLerp = new Vector3(originalPosition.x + 100, originalPosition.y, originalPosition.z);
+        var originalScale = generatedCharaterBlocks[0].baseCharacter.transform.localScale;
+        while (percentScaleInCharacter <= 1)
+        {
+            percentScaleInCharacter += Time.deltaTime * 15;
+            foreach (var block in generatedCharaterBlocks)
+            {
+                var baseCharacter = block.baseCharacter;
+                var baseCharacterTransform = baseCharacter.transform;
+                // var baseCharacterLocalPosition = baseCharacterTransform.localPosition;
+                baseCharacterTransform.localScale = Vector3.Lerp(Vector3.one * 35, Vector3.one * 27, percentScaleInCharacter);
+                baseCharacterTransform.localPosition = Vector3.Lerp(originalPosition, originalPositionLerp, percentScaleInCharacter);
+            }
+            yield return null;
+        }
+        var showingPercent = 0f;
+        while (showingPercent <= 1)
+        {
+            showingPercent += Time.deltaTime * 5f;
+            foreach (var block in generatedCharaterBlocks)
+            {
+                block.tendencyPoint.gameObject.SetActive(true);
+                block.level.transform.parent.gameObject.SetActive(true);
+                block.jobLabel.gameObject.SetActive(true);
+                block.goldButton.gameObject.SetActive(true);
+                block.diamondButton.gameObject.SetActive(true);
+                block.name.gameObject.SetActive(true);
+                block.classImage.gameObject.SetActive(true);
+                block.tendencyPoint.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 30, showingPercent);
+            }
+            yield return null;
         }
     }
 
