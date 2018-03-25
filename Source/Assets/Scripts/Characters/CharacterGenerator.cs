@@ -101,6 +101,8 @@ public class CharacterGenerator : MonoBehaviour
     [Header("Misc")]
     public Rotator frogEyeLeft;
     public Rotator frogEyeRight;
+    public RectTransform mainPanel;
+    public RectTransform tavernBanner;
 
     // [Header("Temporary")]
     // public TendencyPoint tendencyPoint;
@@ -130,6 +132,8 @@ public class CharacterGenerator : MonoBehaviour
     {
         amountForCallText.text = amountOfCall.ToString();
         FillElementSkinColor(Color.black);
+        StartCoroutine(MainPanelShowing());
+        tavernBanner.anchoredPosition = new Vector2(tavernBanner.anchoredPosition.x, 193f);
     }
 
     void Update()
@@ -137,6 +141,55 @@ public class CharacterGenerator : MonoBehaviour
         // Updating gold and diamond's amount
         goldText.text = gold.ToString();
         diamondText.text = diamond.ToString();
+    }
+
+    IEnumerator MainPanelShowing()
+    {
+        var percent = 0f;
+        var originalMainPanelAnchoredPosLerp = new Vector2(Screen.width, 0f);
+        var deltaSlowdownPercent = 1.5f;
+        var isInSlowdown = false;
+        while(percent <= 1f)
+        {
+            percent += Time.deltaTime * deltaSlowdownPercent;
+            if (percent >= .7f && percent < .85f && !isInSlowdown)
+            {
+                deltaSlowdownPercent /= 2f;
+                isInSlowdown = true;
+            }
+            else if (percent >= .85f && percent < .9f)
+            {
+                if(isInSlowdown){
+                    isInSlowdown = false;
+                    deltaSlowdownPercent /= 2f;
+                }
+            }
+            else if (percent >= .9f && !isInSlowdown)
+            {
+                deltaSlowdownPercent /= 2f;
+                isInSlowdown = true;
+            }
+            mainPanel.anchoredPosition = Vector3.Lerp(originalMainPanelAnchoredPosLerp, Vector2.zero, percent);
+            yield return null;
+        }
+
+        percent = 0f;
+
+        while(percent <= 1f)
+        {
+            percent += Time.deltaTime * 2.5f;
+            tavernBanner.anchoredPosition = Vector2.Lerp(new Vector2(0, 193), new Vector2(0, 60), percent);
+            yield return null;
+        }
+
+        percent = 0f;
+
+        while(percent <= 1f)
+        {
+            percent += Time.deltaTime * 4;
+            tavernBanner.anchoredPosition = Vector2.Lerp(new Vector2(0, 60), new Vector2(0, 69), percent);
+            yield return null;
+        }
     }
 
     void FillElementSkinColor(Color skinColor)
@@ -261,7 +314,6 @@ public class CharacterGenerator : MonoBehaviour
                 deltaSlowdownPercent /= 2f;
                 isInSlowdown = true;
             }
-            Debug.Log(deltaSlowdown);
             yield return new WaitForSeconds(val / deltaSlowdown);
             __Generate();
             ++i;

@@ -144,9 +144,14 @@ MonoBehaviour:
     max: 3
   gold: 9999
   diamond: 9999
-  goldText: {fileID: 0}
-  diamondText: {fileID: 0}
   baseGoldAmount: 100
   baseDiamondAmount: 1
+  baseAmountOnTime: 1.5
+  amountOfCall: 800
+  goldText: {fileID: 0}
+  diamondText: {fileID: 0}
+  amountForCallText: {fileID: 0}
   frogEyeLeft: {fileID: 0}
   frogEyeRight: {fileID: 0}
+  mainPanel: {fileID: 0}
+  tavernBanner: {fileID: 0}
