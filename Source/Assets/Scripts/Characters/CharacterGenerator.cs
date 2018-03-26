@@ -103,6 +103,7 @@ public class CharacterGenerator : MonoBehaviour
     public Rotator frogEyeRight;
     public RectTransform mainPanel;
     public RectTransform tavernBanner;
+    public Button generatedButton;
 
     // [Header("Temporary")]
     // public TendencyPoint tendencyPoint;
@@ -384,6 +385,7 @@ public class CharacterGenerator : MonoBehaviour
             }
             yield return null;
         }
+        generatedButton.interactable = true;
     }
 
     void __Generate()
@@ -482,6 +484,7 @@ public class CharacterGenerator : MonoBehaviour
             Debug.Log("You have not enough amount for calling");
             return;
         }
+        generatedButton.interactable = false;
         gold -= amountOfCall;
         StartCoroutine(Generating());
         amountOfCall = Mathf.FloorToInt(amountOfCall * baseAmountOnTime);

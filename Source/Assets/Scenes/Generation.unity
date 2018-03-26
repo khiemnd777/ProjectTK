@@ -499,7 +499,7 @@ Prefab:
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -213.50003
       objectReference: {fileID: 0}
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
@@ -2365,7 +2365,7 @@ Prefab:
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 294.6
+      value: 81.099976
       objectReference: {fileID: 0}
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
@@ -3654,7 +3654,7 @@ Prefab:
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -312.2
+      value: -525.7
       objectReference: {fileID: 0}
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
@@ -3694,7 +3694,7 @@ Prefab:
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 144.2
+      value: 144.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224341059559295150, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
@@ -3741,26 +3741,15 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4759250735581238, guid: 042f7363448384ed38255a7e84fe8cc3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759250735581238, guid: 042f7363448384ed38255a7e84fe8cc3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873707836618446, guid: 042f7363448384ed38255a7e84fe8cc3, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114666351012693936, guid: 042f7363448384ed38255a7e84fe8cc3,
+    - target: {fileID: 224556682837314640, guid: 042f7363448384ed38255a7e84fe8cc3,
         type: 2}
-      propertyPath: m_Color.a
-      value: 1
+      propertyPath: m_LocalPosition.x
+      value: -0.21078491
       objectReference: {fileID: 0}
-    - target: {fileID: 1397056747552666, guid: 042f7363448384ed38255a7e84fe8cc3, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 224556682837314640, guid: 042f7363448384ed38255a7e84fe8cc3,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.0623627
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 042f7363448384ed38255a7e84fe8cc3, type: 2}
@@ -4369,6 +4358,11 @@ Prefab:
       propertyPath: tavernBanner
       value: 
       objectReference: {fileID: 1325818419}
+    - target: {fileID: 114856027599801928, guid: b2edd0cef62ea45aa8f23b8bb51e051b,
+        type: 2}
+      propertyPath: generatedButton
+      value: 
+      objectReference: {fileID: 722034233}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2edd0cef62ea45aa8f23b8bb51e051b, type: 2}
   m_IsPrefabParent: 0

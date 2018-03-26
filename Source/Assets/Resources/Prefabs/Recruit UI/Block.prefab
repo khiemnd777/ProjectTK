@@ -364,7 +364,24 @@ GameObject:
   - component: {fileID: 114430962925289192}
   - component: {fileID: 114975311169493606}
   m_Layer: 0
-  m_Name: Malachi
+  m_Name: Generated Base Character
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1801832254726576
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224556682837314640}
+  - component: {fileID: 222911437601902132}
+  - component: {fileID: 114799123198432554}
+  m_Layer: 5
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,6 +722,7 @@ Transform:
   m_LocalScale: {x: 27, y: 27, z: 1}
   m_Children:
   - {fileID: 4341272015808358}
+  - {fileID: 224556682837314640}
   m_Father: {fileID: 224366422767152448}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1356,6 +1374,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Level
+--- !u!114 &114799123198432554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801832254726576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 0.622}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114840117586226204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2096,6 +2141,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526904740401302}
+--- !u!222 &222911437601902132
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801832254726576}
 --- !u!222 &222964895852126868
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -2152,7 +2203,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1280027884744798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 144.2, y: -186.06, z: 0}
+  m_LocalPosition: {x: 144.20001, y: -186.06, z: 0}
   m_LocalScale: {x: 0.9999897, y: 0.9999897, z: 0.9999897}
   m_Children:
   - {fileID: 224606370228851854}
@@ -2165,7 +2216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 144.2, y: -186.06}
+  m_AnchoredPosition: {x: 144.20001, y: -186.06}
   m_SizeDelta: {x: 238.8, y: 309.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224366422767152448
@@ -2261,6 +2312,24 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: -10.389999, y: 1.3}
   m_SizeDelta: {x: 10.46, y: 32.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224556682837314640
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801832254726576}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.21078491, y: -2.0623627, z: 0}
+  m_LocalScale: {x: 0.052910592, y: 0.052910592, z: 1.0000104}
+  m_Children: []
+  m_Father: {fileID: 4759250735581238}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.21078491, y: -2.0623627}
+  m_SizeDelta: {x: 76.1, y: 17.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224566559613731396
 RectTransform:
