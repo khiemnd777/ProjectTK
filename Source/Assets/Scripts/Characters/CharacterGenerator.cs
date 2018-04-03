@@ -121,6 +121,8 @@ public class CharacterGenerator : MonoBehaviour
     // int countOfArmSprite;
     int countOfLegSprite;
 
+    bool isCalling;
+
     List<string> _listOfCharacterName;
 
     void Awake()
@@ -135,6 +137,8 @@ public class CharacterGenerator : MonoBehaviour
         FillElementSkinColor(Color.black);
         StartCoroutine(MainPanelShowing());
         tavernBanner.anchoredPosition = new Vector2(tavernBanner.anchoredPosition.x, 193f);
+        RegisterGoldButtons();
+        RegisterDiamondButtons();
     }
 
     void Update()
@@ -142,6 +146,161 @@ public class CharacterGenerator : MonoBehaviour
         // Updating gold and diamond's amount
         goldText.text = gold.ToString();
         diamondText.text = diamond.ToString();
+        CheckInteractableButtons();
+    }
+
+    void CheckInteractableButtons()
+    {
+        CheckInteractableGoldButton(generatedCharaterBlocks[0]);
+        CheckInteractableGoldButton(generatedCharaterBlocks[1]);
+        CheckInteractableGoldButton(generatedCharaterBlocks[2]);
+
+        CheckInteractableDiamondButton(generatedCharaterBlocks[0]);
+        CheckInteractableDiamondButton(generatedCharaterBlocks[1]);
+        CheckInteractableDiamondButton(generatedCharaterBlocks[2]);
+
+        generatedButton.interactable = !isCalling && gold >= amountOfCall;
+    }
+
+    void CheckInteractableGoldButton(GeneratedCharacterBlock block)
+    {
+        var gold = System.Convert.ToInt32(block.goldText.text);
+        if(this.gold >= gold)
+            block.goldButton.interactable = !block.clickedOnGoldButton;
+        else
+            block.goldButton.interactable = false;
+    }
+
+    void CheckInteractableDiamondButton(GeneratedCharacterBlock block)
+    {
+        var diamond = System.Convert.ToInt32(block.diamondText.text);
+        if(this.diamond >= diamond)
+            block.diamondButton.interactable = !block.clickedOnDiamondButton;
+        else
+            block.diamondButton.interactable = false;
+    }
+
+
+    void RegisterGoldButtons()
+    {
+        var blocks = generatedCharaterBlocks;
+        blocks[0].goldButton.onClick.AddListener(() => {
+            RegisterGoldButton(generatedCharaterBlocks[0]);
+        });
+
+        blocks[1].goldButton.onClick.AddListener(() => {
+            RegisterGoldButton(generatedCharaterBlocks[1]);
+        });
+
+        blocks[2].goldButton.onClick.AddListener(() => {
+            RegisterGoldButton(generatedCharaterBlocks[2]);
+        });
+        blocks = null;
+    }
+
+    void RegisterGoldButton(GeneratedCharacterBlock block)
+    {
+        var gold = System.Convert.ToInt32(block.goldText.text);
+        if(this.gold < gold){
+            block.goldButton.interactable = false;
+            return;
+        }
+        this.gold -= gold;
+        StartCoroutine(SelectCharacter(block.baseCharacter));
+        StartCoroutine(SelectiveEffect(block.baseCharacter));
+        block.goldButton.interactable = false;
+        block.clickedOnGoldButton 
+            = block.clickedOnDiamondButton = true;
+    }
+
+    void RegisterDiamondButtons()
+    {
+        var blocks = generatedCharaterBlocks;
+        blocks[0].diamondButton.onClick.AddListener(() => {
+            RegisterDiamondButton(generatedCharaterBlocks[0]);
+        });
+
+        blocks[1].diamondButton.onClick.AddListener(() => {
+            RegisterDiamondButton(generatedCharaterBlocks[1]);
+        });
+
+        blocks[2].diamondButton.onClick.AddListener(() => {
+            RegisterDiamondButton(generatedCharaterBlocks[2]);
+        });
+        blocks = null;
+    }
+
+    void RegisterDiamondButton(GeneratedCharacterBlock block)
+    {
+        var diamond = System.Convert.ToInt32(block.diamondText.text);
+        if(this.diamond < diamond){
+            block.diamondButton.interactable = false;
+            return;
+        }
+        this.diamond -= diamond;
+        StartCoroutine(SelectCharacter(block.baseCharacter));
+        StartCoroutine(SelectiveEffect(block.baseCharacter));
+        block.diamondButton.interactable = false;
+        block.clickedOnGoldButton 
+            = block.clickedOnDiamondButton = true;
+    }
+
+    IEnumerator SelectCharacter(GeneratedBaseCharacter character)
+    {
+        var percent = 0f;
+        var characterTransform = character.transform;
+        while(percent <= 1f){
+            percent += Time.deltaTime * 15f;
+            characterTransform.localScale = Vector3.Lerp(Vector3.one * 27, Vector3.one * 38, percent);
+            yield return null;
+        }
+        percent = 0f;
+        while(percent <= 1f){
+            percent += Time.deltaTime * 25f;
+            characterTransform.localScale = Vector3.Lerp(Vector3.one * 38, Vector3.one * 27, percent);
+            yield return null;
+        }
+    }
+
+    IEnumerator SelectiveEffects(GeneratedBaseCharacter character)
+    {
+        var percent = 0f;
+        var characterTransform = character.transform;
+        var clone = Instantiate<GeneratedBaseCharacter>(character, characterTransform.position, characterTransform.rotation, characterTransform.parent);
+        var cloneTransform = clone.transform;
+        var characterElements = clone.elements;
+        var characterEyes = characterElements.eye;
+        var characterMouth = characterElements.mouth;
+        var leftWeapon = characterElements.leftWeapon;
+        var rightWeapon = characterElements.rightWeapon;
+        cloneTransform.localScale = Vector3.one * 27;
+        cloneTransform.SetSiblingIndex(character.transform.GetSiblingIndex() - 1);
+        cloneTransform.localScale = characterTransform.localScale;
+        while(percent <= 1f)
+        {
+            percent += Time.deltaTime * 4.5f;
+            cloneTransform.localScale = Vector3.Lerp(Vector3.one * 27, Vector3.one * 40, percent);
+            characterElements.rightLeg.color
+                = characterElements.leftLeg.color
+                = characterElements.rightArm.color
+                = characterElements.leftArm.color
+                = characterElements.body.color
+                = characterMouth.color
+                = characterEyes.color
+                = characterElements.head.color
+                = leftWeapon.color
+                = rightWeapon.color
+                = new Color32(255, 255, 255, (byte)Mathf.Lerp(255, 50, percent));
+            yield return null;
+        }
+        Destroy(clone.gameObject);
+    }
+
+    IEnumerator SelectiveEffect(GeneratedBaseCharacter character)
+    {
+        StartCoroutine(SelectiveEffects(character));
+        yield return new WaitForSeconds(.125f);
+        StartCoroutine(SelectiveEffects(character));
     }
 
     IEnumerator MainPanelShowing()
@@ -220,7 +379,7 @@ public class CharacterGenerator : MonoBehaviour
 
     void LerpElementSkinColor(Color from, Color to, float speed = 5f)
     {
-        StartCoroutine(LerpingElementSkinColor(from, to, speed));
+        StartCoroutine(LerpingElementSkinColor(from , to, speed));
     }
 
     IEnumerator LerpingElementSkinColor(Color from, Color to, float speed = 5f)
@@ -256,6 +415,7 @@ public class CharacterGenerator : MonoBehaviour
 
     IEnumerator Generating()
     {
+        isCalling = true;
         LerpElementSkinColor(Color.white, Color.black, 10f);
 
         var percent = 0f;
@@ -385,7 +545,16 @@ public class CharacterGenerator : MonoBehaviour
             }
             yield return null;
         }
-        generatedButton.interactable = true;
+        isCalling = false;
+
+        var blocks = generatedCharaterBlocks;
+        blocks[0].clickedOnGoldButton = 
+        blocks[0].clickedOnDiamondButton = 
+        blocks[1].clickedOnGoldButton = 
+        blocks[1].clickedOnDiamondButton = 
+        blocks[2].clickedOnGoldButton = 
+        blocks[2].clickedOnDiamondButton = false;
+        blocks = null;
     }
 
     void __Generate()
@@ -481,7 +650,7 @@ public class CharacterGenerator : MonoBehaviour
     {
         if (gold < amountOfCall)
         {
-            Debug.Log("You have not enough amount for calling");
+            generatedButton.interactable = false; 
             return;
         }
         generatedButton.interactable = false;

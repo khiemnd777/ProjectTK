@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public struct GeneratedCharacterBlock
+public class GeneratedCharacterBlock
 {
     public GeneratedBaseCharacter baseCharacter;
     public TendencyPoint tendencyPoint;
@@ -18,4 +18,6 @@ public struct GeneratedCharacterBlock
     public Text goldText;
     public Button diamondButton;
     public Text diamondText;
+    public bool clickedOnGoldButton;
+    public bool clickedOnDiamondButton;
 }

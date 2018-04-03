@@ -26,7 +26,7 @@ public class CharacterField : MonoBehaviour
 
     void LateUpdate()
     {
-        BeCoaxial();
+        // BeCoaxial();
     }
 
     public void AddField(Character character)
