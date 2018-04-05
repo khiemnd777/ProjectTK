@@ -124,11 +124,16 @@ public class CharacterGenerator : MonoBehaviour
     bool isCalling;
 
     List<string> _listOfCharacterName;
+    Transform _goldRes;
+    Transform _diamondRes;
 
     void Awake()
     {
         spriteHelper = SpriteHelper.instance;
         nameGenerator = CharacterNameGenerator.instance;
+        // Init resources of gold and diamond
+        _goldRes = Resources.Load<Transform>("Prefabs/Shared/Gold");
+        _diamondRes = Resources.Load<Transform>("Prefabs/Shared/Diamond");
     }
 
     void Start()
@@ -137,20 +142,23 @@ public class CharacterGenerator : MonoBehaviour
         FillElementSkinColor(Color.black);
         StartCoroutine(MainPanelShowing());
         tavernBanner.anchoredPosition = new Vector2(tavernBanner.anchoredPosition.x, 193f);
+        // Register Gold & Diamond Buttons
         RegisterGoldButtons();
         RegisterDiamondButtons();
     }
 
     void Update()
     {
-        // Updating gold and diamond's amount
-        goldText.text = gold.ToString();
-        diamondText.text = diamond.ToString();
         CheckInteractableButtons();
     }
 
+    #region Check Interactable Buttons
     void CheckInteractableButtons()
     {
+        // Updating gold and diamond's amount
+        goldText.text = gold.ToString();
+        diamondText.text = diamond.ToString();
+
         CheckInteractableGoldButton(generatedCharaterBlocks[0]);
         CheckInteractableGoldButton(generatedCharaterBlocks[1]);
         CheckInteractableGoldButton(generatedCharaterBlocks[2]);
@@ -179,8 +187,9 @@ public class CharacterGenerator : MonoBehaviour
         else
             block.diamondButton.interactable = false;
     }
+    #endregion
 
-
+    #region Register Gold & Diamond Buttons
     void RegisterGoldButtons()
     {
         var blocks = generatedCharaterBlocks;
@@ -207,7 +216,8 @@ public class CharacterGenerator : MonoBehaviour
         }
         this.gold -= gold;
         StartCoroutine(SelectCharacter(block.baseCharacter));
-        StartCoroutine(SelectiveEffect(block.baseCharacter));
+        // StartCoroutine(SelectiveEffect(block.baseCharacter));
+        StartCoroutine(EffectReduceGolds(goldText.transform, block.baseCharacter.transform, gold, block.baseCharacter));
         block.goldButton.interactable = false;
         block.clickedOnGoldButton 
             = block.clickedOnDiamondButton = true;
@@ -239,7 +249,8 @@ public class CharacterGenerator : MonoBehaviour
         }
         this.diamond -= diamond;
         StartCoroutine(SelectCharacter(block.baseCharacter));
-        StartCoroutine(SelectiveEffect(block.baseCharacter));
+        // StartCoroutine(SelectiveEffect(block.baseCharacter));
+        StartCoroutine(EffectReduceDiamonds(diamondText.transform, block.baseCharacter.transform, diamond, block.baseCharacter));
         block.diamondButton.interactable = false;
         block.clickedOnGoldButton 
             = block.clickedOnDiamondButton = true;
@@ -260,6 +271,13 @@ public class CharacterGenerator : MonoBehaviour
             characterTransform.localScale = Vector3.Lerp(Vector3.one * 38, Vector3.one * 27, percent);
             yield return null;
         }
+    }
+
+    IEnumerator SelectiveEffect(GeneratedBaseCharacter character)
+    {
+        StartCoroutine(SelectiveEffects(character));
+        yield return new WaitForSeconds(.125f);
+        StartCoroutine(SelectiveEffects(character));
     }
 
     IEnumerator SelectiveEffects(GeneratedBaseCharacter character)
@@ -295,12 +313,95 @@ public class CharacterGenerator : MonoBehaviour
         }
         Destroy(clone.gameObject);
     }
-
-    IEnumerator SelectiveEffect(GeneratedBaseCharacter character)
+    #endregion
+    
+    IEnumerator EffectReduceGolds(Transform pocket, Transform target, int amountGold, GeneratedBaseCharacter character)
     {
-        StartCoroutine(SelectiveEffects(character));
-        yield return new WaitForSeconds(.125f);
-        StartCoroutine(SelectiveEffects(character));
+        var amount = amountGold / 10;
+        amount = amount < 1 ? 1 : amount;
+        // init array of gold and position
+        var golds = new Transform[amount];
+        var positions = new Vector2[amount];
+        for(var i = 0; i < amount; i++)
+        {
+            var gold = Instantiate<Transform>(_goldRes, pocket.position, Quaternion.identity);
+            gold.transform.localScale = Vector2.one * .625f;
+            golds[i] = gold;
+        }
+        for(var i = 0; i < golds.Length; i++){
+            positions[i] = Random.insideUnitCircle * Random.Range(1, 2) + new Vector2(pocket.position.x, pocket.position.y);
+        }
+        // jump around target, then moving to destination
+        for(var i = 0; i < golds.Length; i++)
+        {
+            StartCoroutine(JumpToDestination(golds[i], pocket.position, positions[i]
+                , false, MoveToDestination(golds[i], target, true, SelectiveEffects(character))));
+            yield return new WaitForSeconds(.02f);
+        }
+        golds = null;
+        positions = null;
+    }
+
+    IEnumerator EffectReduceDiamonds(Transform pocket, Transform target, int amountDiamond, GeneratedBaseCharacter character)
+    {
+        var amount = amountDiamond / 1;
+        amount = amount < 1 ? 1 : amount;
+        // init array of gold and position
+        var golds = new Transform[amount];
+        var positions = new Vector2[amount];
+        for(var i = 0; i < amount; i++)
+        {
+            var gold = Instantiate<Transform>(_diamondRes, pocket.position, Quaternion.identity);
+            gold.transform.localScale = Vector2.one * .625f;
+            golds[i] = gold;
+        }
+        for(var i = 0; i < golds.Length; i++){
+            positions[i] = Random.insideUnitCircle * Random.Range(1, 2) + new Vector2(pocket.position.x, pocket.position.y);
+        }
+        // jump around target, then moving to destination
+        for(var i = 0; i < golds.Length; i++)
+        {
+            StartCoroutine(JumpToDestination(golds[i], pocket.position, positions[i]
+                , false, MoveToDestination(golds[i], target, true, SelectiveEffects(character))));
+            yield return new WaitForSeconds(.02f);
+        }
+        golds = null;
+        positions = null;
+    }
+
+    IEnumerator JumpToDestination(Transform target, Vector3 source, Vector3 destination, bool destroy, params IEnumerator[] nextActions)
+    {
+        var percent = .0f;
+        while(percent <= 1f){
+            percent += Time.deltaTime * 2;
+            var currentPos = Vector2.Lerp(source, destination, percent);
+            var trajectoryHeight = Random.Range(.2f, .6f);
+            currentPos.y += trajectoryHeight * Mathf.Sin(Mathf.Clamp01(percent) * Mathf.PI);
+            target.position = currentPos;
+            yield return null;
+        }
+        for(var i = 0; i < nextActions.Length; i++)
+        {
+            yield return StartCoroutine(nextActions[i]);
+        }
+        if(destroy)
+            Destroy(target.gameObject);
+    }
+
+    IEnumerator MoveToDestination(Transform target, Transform destination, bool destroy, params IEnumerator[] nextActions)
+    {
+        var percent = .0f;
+        while(percent <= 1f){
+            percent += Time.deltaTime * 2;
+            target.position = Vector2.MoveTowards(target.position, destination.position, percent);
+            yield return null;
+        }
+        for(var i = 0; i < nextActions.Length; i++)
+        {
+            yield return StartCoroutine(nextActions[i]);
+        }
+        if(destroy)
+            Destroy(target.gameObject);
     }
 
     IEnumerator MainPanelShowing()
