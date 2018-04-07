@@ -149,6 +149,8 @@ public class CharacterGenerator : MonoBehaviour
 
     void Update()
     {
+        // goldText.text = gold.ToString();
+        diamondText.text = diamond.ToString();
         CheckInteractableButtons();
     }
 
@@ -156,9 +158,6 @@ public class CharacterGenerator : MonoBehaviour
     void CheckInteractableButtons()
     {
         // Updating gold and diamond's amount
-        goldText.text = gold.ToString();
-        diamondText.text = diamond.ToString();
-
         CheckInteractableGoldButton(generatedCharaterBlocks[0]);
         CheckInteractableGoldButton(generatedCharaterBlocks[1]);
         CheckInteractableGoldButton(generatedCharaterBlocks[2]);
@@ -215,6 +214,7 @@ public class CharacterGenerator : MonoBehaviour
             return;
         }
         this.gold -= gold;
+        StartCoroutine(RunAmountToDestination(goldText, this.gold));
         StartCoroutine(SelectCharacter(block.baseCharacter));
         // StartCoroutine(SelectiveEffect(block.baseCharacter));
         StartCoroutine(EffectReduceGolds(goldText.transform, block.baseCharacter.transform, gold, block.baseCharacter));
@@ -248,6 +248,7 @@ public class CharacterGenerator : MonoBehaviour
             return;
         }
         this.diamond -= diamond;
+        StartCoroutine(RunAmountToDestination(diamondText, this.diamond));
         StartCoroutine(SelectCharacter(block.baseCharacter));
         // StartCoroutine(SelectiveEffect(block.baseCharacter));
         StartCoroutine(EffectReduceDiamonds(diamondText.transform, block.baseCharacter.transform, diamond, block.baseCharacter));
@@ -266,7 +267,8 @@ public class CharacterGenerator : MonoBehaviour
             yield return null;
         }
         percent = 0f;
-        while(percent <= 1f){
+        while(percent <= 1f)
+        {
             percent += Time.deltaTime * 25f;
             characterTransform.localScale = Vector3.Lerp(Vector3.one * 38, Vector3.one * 27, percent);
             yield return null;
@@ -285,19 +287,19 @@ public class CharacterGenerator : MonoBehaviour
         var percent = 0f;
         var characterTransform = character.transform;
         var clone = Instantiate<GeneratedBaseCharacter>(character, characterTransform.position, characterTransform.rotation, characterTransform.parent);
-        var cloneTransform = clone.transform;
+        var cloneTransform = clone.transform.Find("Body");
         var characterElements = clone.elements;
         var characterEyes = characterElements.eye;
         var characterMouth = characterElements.mouth;
         var leftWeapon = characterElements.leftWeapon;
         var rightWeapon = characterElements.rightWeapon;
-        cloneTransform.localScale = Vector3.one * 27;
+        cloneTransform.localScale = Vector3.one;
         cloneTransform.SetSiblingIndex(character.transform.GetSiblingIndex() - 1);
         cloneTransform.localScale = characterTransform.localScale;
         while(percent <= 1f)
         {
             percent += Time.deltaTime * 4.5f;
-            cloneTransform.localScale = Vector3.Lerp(Vector3.one * 27, Vector3.one * 40, percent);
+            cloneTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 1.375f, percent);
             characterElements.rightLeg.color
                 = characterElements.leftLeg.color
                 = characterElements.rightArm.color
@@ -315,6 +317,7 @@ public class CharacterGenerator : MonoBehaviour
     }
     #endregion
     
+    #region Effect Reducing Gold & Diamond
     IEnumerator EffectReduceGolds(Transform pocket, Transform target, int amountGold, GeneratedBaseCharacter character)
     {
         var amount = amountGold / 10;
@@ -362,13 +365,17 @@ public class CharacterGenerator : MonoBehaviour
         for(var i = 0; i < golds.Length; i++)
         {
             StartCoroutine(JumpToDestination(golds[i], pocket.position, positions[i]
-                , false, MoveToDestination(golds[i], target, true, SelectiveEffects(character))));
+                , false
+                    , MoveToDestination(golds[i], target, true
+                        , SelectiveEffects(character))));
             yield return new WaitForSeconds(.02f);
         }
         golds = null;
         positions = null;
     }
+    #endregion
 
+    #region Transform Utility
     IEnumerator JumpToDestination(Transform target, Vector3 source, Vector3 destination, bool destroy, params IEnumerator[] nextActions)
     {
         var percent = .0f;
@@ -402,6 +409,25 @@ public class CharacterGenerator : MonoBehaviour
         }
         if(destroy)
             Destroy(target.gameObject);
+    }
+    #endregion
+
+    IEnumerator RunAmountToDestination(Text text, int destination, params IEnumerator[] nextActions)
+    {
+        var percent = 0f;
+        while(percent <= 1f)
+        {
+            percent += Time.deltaTime * .75f;
+            var source = System.Convert.ToInt32(text.text);
+            source = (int) Mathf.Lerp(source, destination, percent);
+            text.text = source.ToString();
+            yield return null;
+        }
+        for(var i = 0; i < nextActions.Length; i++)
+        {
+            yield return StartCoroutine(nextActions[i]);
+        }
+        text.text = destination.ToString();
     }
 
     IEnumerator MainPanelShowing()
@@ -756,6 +782,7 @@ public class CharacterGenerator : MonoBehaviour
         }
         generatedButton.interactable = false;
         gold -= amountOfCall;
+        StartCoroutine(RunAmountToDestination(goldText, gold));
         StartCoroutine(Generating());
         amountOfCall = Mathf.FloorToInt(amountOfCall * baseAmountOnTime);
         amountForCallText.text = amountOfCall.ToString();
