@@ -126,6 +126,7 @@ public class CharacterGenerator : MonoBehaviour
     List<string> _listOfCharacterName;
     Transform _goldRes;
     Transform _diamondRes;
+    ReduceAmountMotion _reduceAmountMotionRes;
 
     void Awake()
     {
@@ -134,6 +135,7 @@ public class CharacterGenerator : MonoBehaviour
         // Init resources of gold and diamond
         _goldRes = Resources.Load<Transform>("Prefabs/Shared/Gold");
         _diamondRes = Resources.Load<Transform>("Prefabs/Shared/Diamond");
+        _reduceAmountMotionRes = Resources.Load<ReduceAmountMotion>("Prefabs/Shared/Reduce Amount Motion");
     }
 
     void Start()
@@ -460,8 +462,8 @@ public class CharacterGenerator : MonoBehaviour
             yield return null;
         }
 
+        // Showing tavern panel
         percent = 0f;
-
         while(percent <= 1f)
         {
             percent += Time.deltaTime * 2.5f;
@@ -635,6 +637,8 @@ public class CharacterGenerator : MonoBehaviour
                     = Color.Lerp(Color.black, Color.white, appearedColorPercent);
                 yield return null;
             }
+            block.effectStarBurst.Play();
+            StartCoroutine(PlayParticleSystem(block.effectStarBurst, 1.2f));
         }
         yield return new WaitForSeconds(.625f);
         // scale in character
@@ -682,6 +686,13 @@ public class CharacterGenerator : MonoBehaviour
         blocks[2].clickedOnGoldButton = 
         blocks[2].clickedOnDiamondButton = false;
         blocks = null;
+    }
+
+    IEnumerator PlayParticleSystem(ParticleSystem particleSystem, float seconds)
+    {
+        particleSystem.Play();
+        yield return new WaitForSeconds(seconds);
+        particleSystem.Stop();
     }
 
     void __Generate()
@@ -782,6 +793,9 @@ public class CharacterGenerator : MonoBehaviour
         }
         generatedButton.interactable = false;
         gold -= amountOfCall;
+        var reduceAmountMotion = Instantiate<ReduceAmountMotion>(_reduceAmountMotionRes, goldText.transform.position, Quaternion.identity, goldText.transform);
+
+        StartCoroutine(reduceAmountMotion.Reduce(goldText.transform, amountOfCall));
         StartCoroutine(RunAmountToDestination(goldText, gold));
         StartCoroutine(Generating());
         amountOfCall = Mathf.FloorToInt(amountOfCall * baseAmountOnTime);

@@ -79,6 +79,9 @@ MonoBehaviour:
     goldText: {fileID: 0}
     diamondButton: {fileID: 0}
     diamondText: {fileID: 0}
+    clickedOnGoldButton: 0
+    clickedOnDiamondButton: 0
+    effectStarBurst: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
     name: {fileID: 0}
@@ -93,6 +96,9 @@ MonoBehaviour:
     goldText: {fileID: 0}
     diamondButton: {fileID: 0}
     diamondText: {fileID: 0}
+    clickedOnGoldButton: 0
+    clickedOnDiamondButton: 0
+    effectStarBurst: {fileID: 0}
   - baseCharacter: {fileID: 0}
     tendencyPoint: {fileID: 0}
     name: {fileID: 0}
@@ -107,6 +113,9 @@ MonoBehaviour:
     goldText: {fileID: 0}
     diamondButton: {fileID: 0}
     diamondText: {fileID: 0}
+    clickedOnGoldButton: 0
+    clickedOnDiamondButton: 0
+    effectStarBurst: {fileID: 0}
   headSpriteLoc: Sprites/Characters/Generated Characters/{0}/heads
   eyeSpriteLoc: Sprites/Characters/Generated Characters/{0}/eyes
   mouthSpriteLoc: Sprites/Characters/Generated Characters/{0}/mouths
@@ -122,8 +131,8 @@ MonoBehaviour:
     type: 2}
   sPercent: 0.1
   aPercent: 0.1
-  bPercent: 0.45
-  cPercent: 0.34
+  bPercent: 0.6
+  cPercent: 0.2
   swordmanPercent: 0.25
   archerPercent: 0.25
   magePercent: 0.25
@@ -155,3 +164,4 @@ MonoBehaviour:
   frogEyeRight: {fileID: 0}
   mainPanel: {fileID: 0}
   tavernBanner: {fileID: 0}
+  generatedButton: {fileID: 0}
