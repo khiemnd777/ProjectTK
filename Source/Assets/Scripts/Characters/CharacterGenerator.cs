@@ -382,20 +382,6 @@ public class CharacterGenerator : MonoBehaviour
         positions = null;
     }
 
-    IEnumerator SealRecruitedMark(GeneratedCharacterBlock block, bool executed)
-    {
-        if(!executed)
-            yield break;
-        block.recruitedMark.gameObject.SetActive(true);
-        var percent = 0f;
-        while(percent <= 1f)
-        {
-            percent += Time.deltaTime * 10f;
-            block.recruitedMark.localScale = Vector3.Lerp(Vector3.one * 45, Vector3.one * 27, percent);
-            yield return null;
-        }
-    }
-
     IEnumerator EffectReduceDiamonds(Transform pocket, Transform target, int amountDiamond, GeneratedCharacterBlock block)
     {
         var amount = amountDiamond / 1;
@@ -463,6 +449,20 @@ public class CharacterGenerator : MonoBehaviour
             Destroy(target.gameObject);
     }
     #endregion
+
+    IEnumerator SealRecruitedMark(GeneratedCharacterBlock block, bool executed)
+    {
+        if(!executed)
+            yield break;
+        block.recruitedMark.gameObject.SetActive(true);
+        var percent = 0f;
+        while(percent <= 1f)
+        {
+            percent += Time.deltaTime * 10f;
+            block.recruitedMark.localScale = Vector3.Lerp(Vector3.one * 45, Vector3.one * 27, percent);
+            yield return null;
+        }
+    }
 
     IEnumerator RunAmountToDestination(Text text, int destination, params IEnumerator[] nextActions)
     {
