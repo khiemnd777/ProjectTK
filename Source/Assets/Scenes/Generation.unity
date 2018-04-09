@@ -790,6 +790,11 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 198378721947684282, guid: 042f7363448384ed38255a7e84fe8cc3,
     type: 2}
   m_PrefabInternal: {fileID: 168965998}
+--- !u!4 &168966011 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4692021553255306, guid: 042f7363448384ed38255a7e84fe8cc3,
+    type: 2}
+  m_PrefabInternal: {fileID: 168965998}
 --- !u!1 &229615904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,6 +2569,11 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 198378721947684282, guid: 042f7363448384ed38255a7e84fe8cc3,
     type: 2}
   m_PrefabInternal: {fileID: 780407661}
+--- !u!4 &780407674 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4692021553255306, guid: 042f7363448384ed38255a7e84fe8cc3,
+    type: 2}
+  m_PrefabInternal: {fileID: 780407661}
 --- !u!1 &783390422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,6 +2709,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 042f7363448384ed38255a7e84fe8cc3, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &832891409 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4692021553255306, guid: 042f7363448384ed38255a7e84fe8cc3,
+    type: 2}
+  m_PrefabInternal: {fileID: 832891408}
 --- !u!1 &871430470
 GameObject:
   m_ObjectHideFlags: 0
@@ -4403,6 +4418,21 @@ Prefab:
       propertyPath: generatedButton
       value: 
       objectReference: {fileID: 722034233}
+    - target: {fileID: 114856027599801928, guid: b2edd0cef62ea45aa8f23b8bb51e051b,
+        type: 2}
+      propertyPath: generatedCharaterBlocks.Array.data[0].recruitedMark
+      value: 
+      objectReference: {fileID: 832891409}
+    - target: {fileID: 114856027599801928, guid: b2edd0cef62ea45aa8f23b8bb51e051b,
+        type: 2}
+      propertyPath: generatedCharaterBlocks.Array.data[1].recruitedMark
+      value: 
+      objectReference: {fileID: 168966011}
+    - target: {fileID: 114856027599801928, guid: b2edd0cef62ea45aa8f23b8bb51e051b,
+        type: 2}
+      propertyPath: generatedCharaterBlocks.Array.data[2].recruitedMark
+      value: 
+      objectReference: {fileID: 780407674}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2edd0cef62ea45aa8f23b8bb51e051b, type: 2}
   m_IsPrefabParent: 0

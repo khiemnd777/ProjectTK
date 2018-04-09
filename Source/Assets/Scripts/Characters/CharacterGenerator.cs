@@ -140,6 +140,7 @@ public class CharacterGenerator : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(LoadResourcesAtFirstTime());
         amountForCallText.text = amountOfCall.ToString();
         FillElementSkinColor(Color.black);
         StartCoroutine(MainPanelShowing());
@@ -154,6 +155,38 @@ public class CharacterGenerator : MonoBehaviour
         // goldText.text = gold.ToString();
         diamondText.text = diamond.ToString();
         CheckInteractableButtons();
+    }
+
+    IEnumerator LoadResourcesAtFirstTime()
+    {
+        var pattern = "{0} => {1}";
+        spriteHelper.Get(string.Format(pattern, string.Format(headSpriteLoc, "A"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(eyeSpriteLoc, "A"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(mouthSpriteLoc, "A"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(bodySpriteLoc, "A"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(armSpriteLoc, "A"), "l_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(armSpriteLoc, "A"), "r_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(legSpriteLoc, "A"), "l_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(legSpriteLoc, "A"), "r_" + 0));
+        
+        spriteHelper.Get(string.Format(pattern, string.Format(headSpriteLoc, "S"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(eyeSpriteLoc, "S"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(mouthSpriteLoc, "S"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(bodySpriteLoc, "S"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(armSpriteLoc, "S"), "l_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(armSpriteLoc, "S"), "r_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(legSpriteLoc, "S"), "l_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(legSpriteLoc, "S"), "r_" + 0));
+
+        spriteHelper.Get(string.Format(pattern, string.Format(headSpriteLoc, "Common"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(eyeSpriteLoc, "Common"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(mouthSpriteLoc, "Common"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(bodySpriteLoc, "Common"), 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(armSpriteLoc, "Common"), "l_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(armSpriteLoc, "Common"), "r_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(legSpriteLoc, "Common"), "l_" + 0));
+        spriteHelper.Get(string.Format(pattern, string.Format(legSpriteLoc, "Common"), "r_" + 0));
+        yield return null;
     }
 
     #region Check Interactable Buttons
@@ -219,7 +252,7 @@ public class CharacterGenerator : MonoBehaviour
         StartCoroutine(RunAmountToDestination(goldText, this.gold));
         StartCoroutine(SelectCharacter(block.baseCharacter));
         // StartCoroutine(SelectiveEffect(block.baseCharacter));
-        StartCoroutine(EffectReduceGolds(goldText.transform, block.baseCharacter.transform, gold, block.baseCharacter));
+        StartCoroutine(EffectReduceGolds(goldText.transform, block.baseCharacter.transform, gold, block));
         block.goldButton.interactable = false;
         block.clickedOnGoldButton 
             = block.clickedOnDiamondButton = true;
@@ -253,7 +286,7 @@ public class CharacterGenerator : MonoBehaviour
         StartCoroutine(RunAmountToDestination(diamondText, this.diamond));
         StartCoroutine(SelectCharacter(block.baseCharacter));
         // StartCoroutine(SelectiveEffect(block.baseCharacter));
-        StartCoroutine(EffectReduceDiamonds(diamondText.transform, block.baseCharacter.transform, diamond, block.baseCharacter));
+        StartCoroutine(EffectReduceDiamonds(diamondText.transform, block.baseCharacter.transform, diamond, block));
         block.diamondButton.interactable = false;
         block.clickedOnGoldButton 
             = block.clickedOnDiamondButton = true;
@@ -320,7 +353,7 @@ public class CharacterGenerator : MonoBehaviour
     #endregion
     
     #region Effect Reducing Gold & Diamond
-    IEnumerator EffectReduceGolds(Transform pocket, Transform target, int amountGold, GeneratedBaseCharacter character)
+    IEnumerator EffectReduceGolds(Transform pocket, Transform target, int amountGold, GeneratedCharacterBlock block)
     {
         var amount = amountGold / 10;
         amount = amount < 1 ? 1 : amount;
@@ -340,14 +373,30 @@ public class CharacterGenerator : MonoBehaviour
         for(var i = 0; i < golds.Length; i++)
         {
             StartCoroutine(JumpToDestination(golds[i], pocket.position, positions[i]
-                , false, MoveToDestination(golds[i], target, true, SelectiveEffects(character))));
+                , false, MoveToDestination(golds[i], target, true
+                    , SelectiveEffects(block.baseCharacter)
+                    , SealRecruitedMark(block, i == golds.Length - 1))));
             yield return new WaitForSeconds(.02f);
         }
         golds = null;
         positions = null;
     }
 
-    IEnumerator EffectReduceDiamonds(Transform pocket, Transform target, int amountDiamond, GeneratedBaseCharacter character)
+    IEnumerator SealRecruitedMark(GeneratedCharacterBlock block, bool executed)
+    {
+        if(!executed)
+            yield break;
+        block.recruitedMark.gameObject.SetActive(true);
+        var percent = 0f;
+        while(percent <= 1f)
+        {
+            percent += Time.deltaTime * 10f;
+            block.recruitedMark.localScale = Vector3.Lerp(Vector3.one * 45, Vector3.one * 27, percent);
+            yield return null;
+        }
+    }
+
+    IEnumerator EffectReduceDiamonds(Transform pocket, Transform target, int amountDiamond, GeneratedCharacterBlock block)
     {
         var amount = amountDiamond / 1;
         amount = amount < 1 ? 1 : amount;
@@ -369,7 +418,8 @@ public class CharacterGenerator : MonoBehaviour
             StartCoroutine(JumpToDestination(golds[i], pocket.position, positions[i]
                 , false
                     , MoveToDestination(golds[i], target, true
-                        , SelectiveEffects(character))));
+                        , SelectiveEffects(block.baseCharacter)
+                        , SealRecruitedMark(block, i == golds.Length - 1))));
             yield return new WaitForSeconds(.02f);
         }
         golds = null;
@@ -575,6 +625,7 @@ public class CharacterGenerator : MonoBehaviour
             block.diamondButton.gameObject.SetActive(false);
             block.name.gameObject.SetActive(false);
             block.classImage.gameObject.SetActive(false);
+            block.recruitedMark.gameObject.SetActive(false);
         }
         // generating
         var deltaSlowdown = 50f;
@@ -793,9 +844,10 @@ public class CharacterGenerator : MonoBehaviour
         }
         generatedButton.interactable = false;
         gold -= amountOfCall;
-        var reduceAmountMotion = Instantiate<ReduceAmountMotion>(_reduceAmountMotionRes, goldText.transform.position, Quaternion.identity, goldText.transform);
 
+        var reduceAmountMotion = Instantiate<ReduceAmountMotion>(_reduceAmountMotionRes, goldText.transform.position, Quaternion.identity, goldText.transform);
         StartCoroutine(reduceAmountMotion.Reduce(goldText.transform, amountOfCall));
+
         StartCoroutine(RunAmountToDestination(goldText, gold));
         StartCoroutine(Generating());
         amountOfCall = Mathf.FloorToInt(amountOfCall * baseAmountOnTime);

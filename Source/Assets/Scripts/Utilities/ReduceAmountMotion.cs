@@ -16,11 +16,14 @@ public class ReduceAmountMotion : MonoBehaviour
 	{
 		_text.text = "-" + amount.ToString();	
 		var percent = 0f;
-		var srcPos = Vector2.zero;
-		var destPos = new Vector2(0, 5f);
+		var srcPos = target.position;
+		var destPos = Random.insideUnitCircle * Random.Range(.5f, 1) + new Vector2(target.position.x, target.position.y);
+		var trajectoryHeight = Random.Range(.2f, .6f);
 		while(percent <= 1f){
-			percent += Time.deltaTime * 2.5f;
-			transform.localPosition = Vector2.Lerp(srcPos, destPos, percent);
+			percent += Time.deltaTime;
+			var currentPos = Vector2.Lerp(srcPos, destPos, percent);
+			currentPos.y += trajectoryHeight * Mathf.Sin(Mathf.Clamp01(percent) * Mathf.PI);
+            transform.position = currentPos;
 			yield return null;
 		}
 		Destroy(gameObject);

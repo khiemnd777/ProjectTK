@@ -21,14 +21,25 @@ GameObject:
   - component: {fileID: 224956807303764790}
   - component: {fileID: 222866271944810898}
   - component: {fileID: 114276907012629820}
-  - component: {fileID: 114969107612066494}
+  - component: {fileID: 114262329178691748}
   m_Layer: 5
-  m_Name: Reduce Amount Motion
+  m_Name: Increase Amount Motion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114262329178691748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568524488126830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435d973fe69d945e4a10deaa0607821d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114276907012629820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9485294, g: 0.22318338, b: 0.22318338, a: 1}
+  m_Color: {r: 1, g: 0.84999996, b: 0.3602941, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -62,17 +73,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1000
---- !u!114 &114969107612066494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568524488126830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b170bf8d391654d4b91dbce8530956d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222866271944810898
 CanvasRenderer:
   m_ObjectHideFlags: 1

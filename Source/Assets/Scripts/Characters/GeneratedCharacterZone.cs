@@ -20,5 +20,6 @@ public class GeneratedCharacterBlock
     public Text diamondText;
     public bool clickedOnGoldButton;
     public bool clickedOnDiamondButton;
+    public Transform recruitedMark;
     public ParticleSystem effectStarBurst;
 }
