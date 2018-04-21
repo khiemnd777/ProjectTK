@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public bool arrangeable = true;
+    public bool missingEffect = true;
+    public bool beginDragEffect = true;
     [Space]
     public bool useIcon;
     public Image icon;
@@ -105,6 +107,11 @@ public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (!arrangeable)
             return;
         var position = eventData.position;
+        if (canvas.renderMode == RenderMode.ScreenSpaceCamera
+            || canvas.renderMode == RenderMode.WorldSpace)
+        {
+            position = canvas.worldCamera.ScreenToWorldPoint(position);
+        }
         if (useIcon)
         {
             if (draggableIcon != null)
@@ -234,52 +241,80 @@ public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     IEnumerator OnBeginDragging()
     {
-        var fracJourney = 0f;
-        var iconScale = icon.transform.localScale;
-        while (fracJourney < 1f)
+        if (beginDragEffect)
         {
-            var distCovered = (Time.time - startDragTime) * 8f;
-            fracJourney = distCovered / dragJourneyLength;
+            var fracJourney = 0f;
+            while (fracJourney < 1f)
+            {
+                var distCovered = (Time.time - startDragTime) * 8f;
+                fracJourney = distCovered / dragJourneyLength;
+                if (useIcon)
+                {
+                    var iconScale = icon.transform.localScale;
+                    icon.transform.localScale = Vector3.Lerp(iconScale, Vector3.zero, fracJourney);
+                }
+                else
+                {
+                    transform.localScale = Vector3.Lerp(Vector3.one / 4f, Vector3.zero, fracJourney);
+                }
+                yield return null;
+            }
+        }
+        else
+        {
             if (useIcon)
             {
-                icon.transform.localScale = Vector3.Lerp(iconScale, Vector3.zero, fracJourney);
+                icon.transform.localScale = Vector3.zero;
             }
             else
             {
-                transform.localScale = Vector3.Lerp(Vector3.one / 4f, Vector3.zero, fracJourney);
+                transform.localScale = Vector3.zero;
             }
-            yield return null;
         }
     }
 
     IEnumerator OnSlotMiss()
     {
-        var fracJourney = 0f;
-        while (fracJourney < 1f)
+        if (missingEffect)
         {
-            var distCovered = (Time.time - startEndDragTime) * 5f;
-            fracJourney = distCovered / endDragJourneyLength;
+            var fracJourney = 0f;
+            while (fracJourney < 1f)
+            {
+                var distCovered = (Time.time - startEndDragTime) * 5f;
+                fracJourney = distCovered / endDragJourneyLength;
+                if (useIcon)
+                {
+
+                    if (!draggableIcon.IsNull())
+                    {
+                        icon.transform.localScale = Vector3.Lerp(originalIconScale * 1.5f, originalIconScale, fracJourney);
+                        draggableIcon.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, fracJourney);
+                        draggableIcon.transform.position = Vector3.Lerp(lastDraggableIconPosition, startPosition, fracJourney);
+                    }
+                }
+                else
+                {
+                    if (!draggableObject.IsNull())
+                    {
+                        transform.localScale = Vector3.Lerp(Vector3.one * 1.025f, Vector3.one, fracJourney);
+                        draggableObject.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, fracJourney);
+                        draggableObject.transform.position = Vector3.Lerp(lastDraggableObjectPosition, startPosition, fracJourney);
+                    }
+                }
+
+                yield return null;
+            }
+        }
+        else
+        {
             if (useIcon)
             {
-
-                if (!draggableIcon.IsNull())
-                {
-                    icon.transform.localScale = Vector3.Lerp(originalIconScale * 1.5f, originalIconScale, fracJourney);
-                    draggableIcon.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, fracJourney);
-                    draggableIcon.transform.position = Vector3.Lerp(lastDraggableIconPosition, startPosition, fracJourney);
-                }
+                icon.transform.localScale = originalIconScale;
             }
             else
             {
-                if (!draggableObject.IsNull())
-                {
-                    transform.localScale = Vector3.Lerp(Vector3.one * 1.025f, Vector3.one, fracJourney);
-                    draggableObject.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, fracJourney);
-                    draggableObject.transform.position = Vector3.Lerp(lastDraggableObjectPosition, startPosition, fracJourney);
-                }
+                transform.localScale = Vector3.one;
             }
-
-            yield return null;
         }
         if (draggableIcon != null)
             Destroy(draggableIcon.gameObject);

@@ -14,18 +14,27 @@ public class DropZoneHandler : MonoBehaviour
 
     DragDropHandler handler;
     DroppableZone lastDraggableZone;
+    Canvas canvas;
 
     void Start()
     {
         handler = GetComponent<DragDropHandler>();
+        handler.onBeginDragEvent += OnBeginDrag;
         handler.onDragEvent += OnDrag;
         handler.onEndDragEvent += OnEndDrag;
+    }
+
+    void OnBeginDrag(PointerEventData eventData){
+        canvas = GetComponentInParent<Canvas>();
     }
 
     void OnDrag(PointerEventData eventData)
     {
         var position = eventData.position;
-
+        if(canvas.renderMode == RenderMode.ScreenSpaceCamera 
+            || canvas.renderMode == RenderMode.WorldSpace){
+            position = canvas.worldCamera.ScreenToWorldPoint(position);
+        }
         // interactable cases
         var interactableZones = FindObjectsOfType<InteractableZone>();
         if (interactableZones.Length == 0)

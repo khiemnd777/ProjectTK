@@ -254,8 +254,8 @@ public class CharacterGenerator : MonoBehaviour
         // StartCoroutine(SelectiveEffect(block.baseCharacter));
         StartCoroutine(EffectReduceGolds(goldText.transform, block.baseCharacter.transform, gold, block));
         block.goldButton.interactable = false;
-        block.clickedOnGoldButton 
-            = block.clickedOnDiamondButton = true;
+        block.clickedOnGoldButton = block.clickedOnDiamondButton = true;
+        CharacterList.instance.AddCharacter(block.baseCharacter);
     }
 
     void RegisterDiamondButtons()
@@ -288,8 +288,8 @@ public class CharacterGenerator : MonoBehaviour
         // StartCoroutine(SelectiveEffect(block.baseCharacter));
         StartCoroutine(EffectReduceDiamonds(diamondText.transform, block.baseCharacter.transform, diamond, block));
         block.diamondButton.interactable = false;
-        block.clickedOnGoldButton 
-            = block.clickedOnDiamondButton = true;
+        block.clickedOnGoldButton = block.clickedOnDiamondButton = true;
+        CharacterList.instance.AddCharacter(block.baseCharacter);
     }
 
     IEnumerator SelectCharacter(GeneratedBaseCharacter character)
