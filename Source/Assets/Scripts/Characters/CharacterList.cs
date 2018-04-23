@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -30,10 +31,12 @@ public class CharacterList : MonoBehaviour
 
     public int squadNumber = 3;
     public int preparatoryNumber = 2;
-    [System.NonSerialized]
+    // [System.NonSerialized]
     public List<GeneratedBaseCharacter> squadCharacters;
-    [System.NonSerialized]
+    // [System.NonSerialized]
     public List<GeneratedBaseCharacter> preparatoryCharacters;
+    [System.NonSerialized]
+    public List<GeneratedBaseCharacter> freeCharacters;
 
     void Start()
     {
@@ -45,19 +48,54 @@ public class CharacterList : MonoBehaviour
     {
         if (squadCharacters.Count < squadNumber)
         {
-            squadCharacters.Add(character);
+            var clone = Instantiate<GeneratedBaseCharacter>(character, Vector3.zero, Quaternion.identity, transform);
+            clone.gameObject.SetActive(false);
+            squadCharacters.Add(clone);
         }
         else
         {
             if (preparatoryCharacters.Count < preparatoryNumber)
             {
-                preparatoryCharacters.Add(character);
+                var clone = Instantiate<GeneratedBaseCharacter>(character, Vector3.zero, Quaternion.identity, transform);
+                clone.gameObject.SetActive(false);
+                preparatoryCharacters.Add(clone);
             }
             else
             {
                 // both lists are full
                 Debug.Log("Both lists are full");
+                var clone = Instantiate<GeneratedBaseCharacter>(character, Vector3.zero, Quaternion.identity, transform);
+                clone.gameObject.SetActive(false);
+                freeCharacters.Add(clone);
             }
         }
+    }
+
+    public void AddToSquad(GeneratedBaseCharacter character, bool justAdd = false)
+    {
+        if (!justAdd)
+        {
+            if (preparatoryCharacters.Any(x => x.id == character.id))
+            {
+                preparatoryCharacters.RemoveAll(x => x.id == character.id);
+            }
+            if (squadCharacters.Any(x => x.id == character.id))
+                return;
+        }
+        squadCharacters.Add(character);
+    }
+
+    public void AddToPreparatory(GeneratedBaseCharacter character, bool justAdd = false)
+    {
+        if (!justAdd)
+        {
+            if (squadCharacters.Any(x => x.id == character.id))
+            {
+                squadCharacters.RemoveAll(x => x.id == character.id);
+            }
+            if (preparatoryCharacters.Any(x => x.id == character.id))
+                return;
+        }
+        preparatoryCharacters.Add(character);
     }
 }
