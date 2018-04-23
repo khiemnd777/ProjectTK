@@ -56,6 +56,7 @@ public class SelectionCharacterUI : MonoBehaviour
         foreach(var child in children){
             DestroyImmediate(child.gameObject);
         }
+        var colors = squadType == SquadType.Squad ? new [] {"22b573", "0071bc", "006837"} : new [] {"603813", "603813"};
         // assigns
         for (var i = 0; i < squadCharacters.Count; i++)
         {
@@ -65,6 +66,10 @@ public class SelectionCharacterUI : MonoBehaviour
             var squadItem = Instantiate<SquadItem>(squadItemPrefab, Vector3.zero, Quaternion.identity, panel.transform);
             squadItem.character = character;
             squadItem.squadType = squadType;
+            squadItem.displayOrder.text = ((squadType == SquadType.Squad ? 0 : _list.squadCharacters.Count) + i + 1).ToString();
+            var color = new Color();
+            ColorUtility.TryParseHtmlString("#" + colors[i], out color);
+            squadItem.displayOrder.color = color;
         }
 
     }
@@ -79,19 +84,20 @@ public class SelectionCharacterUI : MonoBehaviour
         // NumberDisplayOrder(preparatorySquadPanel, "603813", "603813");
     }
 
-    public void NumberDisplayOrder(Transform panel, params string[] squadColors)
+    public void NumberDisplayOrder(SquadType squadType)
     {
+        var colors = squadType == SquadType.Squad ? new [] {"22b573", "0071bc", "006837"} : new [] {"603813", "603813"};
+        var panel = squadType == SquadType.Squad ? squadPanel : preparatorySquadPanel;
         var squadItems = panel.GetComponentsInChildren<SquadItem>();
-        squadItems = squadItems.Where(x => !x.Equals(null)).ToArray();
         for (var i = 0; i < squadItems.Length; i++)
         {
             var squadItem = squadItems[i];
             if (!squadItem.gameObject.activeSelf)
                 continue;
             var number = i + 1;
-            squadItem.displayOrder.text = (i + 1).ToString();
+            squadItem.displayOrder.text = ((squadType == SquadType.Squad ? 0 : _list.squadCharacters.Count) + i + 1).ToString();
             var color = new Color();
-            ColorUtility.TryParseHtmlString("#" + squadColors[i], out color);
+            ColorUtility.TryParseHtmlString("#" + colors[i], out color);
             squadItem.displayOrder.color = color;
         }
     }
@@ -103,6 +109,7 @@ public class SelectionCharacterUI : MonoBehaviour
         foreach(var i in items){
             _list.AddToSquad(i.character);
         }
+        NumberDisplayOrder(SquadType.Squad);
     }
 
     public void OrderPreparatorySquadByDragged()
@@ -112,5 +119,6 @@ public class SelectionCharacterUI : MonoBehaviour
         foreach(var i in items){
             _list.AddToPreparatory(i.character);
         }
+        NumberDisplayOrder(SquadType.PreparatorySquad);
     }
 }

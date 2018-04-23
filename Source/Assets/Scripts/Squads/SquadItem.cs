@@ -78,6 +78,9 @@ public class SquadItem : MonoBehaviour
                     var matchedSquadItem = matchedItem.GetComponent<SquadItem>();
                     matchedSquadItem.squadType = SquadType.Squad;
                     CharacterList.instance.AddToSquad(matchedSquadItem.character);
+                    // display order
+                    SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.Squad);
+                    SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.PreparatorySquad);
                 }
                 else if (squadType == SquadType.PreparatorySquad)
                 {
@@ -87,6 +90,9 @@ public class SquadItem : MonoBehaviour
                     var matchedSquadItem = matchedItem.GetComponent<SquadItem>();
                     matchedSquadItem.squadType = SquadType.PreparatorySquad;
                     CharacterList.instance.AddToPreparatory(matchedSquadItem.character);
+                    // display order
+                    SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.Squad);
+                    SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.PreparatorySquad);
                 }
                 return;
             }
@@ -99,6 +105,9 @@ public class SquadItem : MonoBehaviour
                 transform.SetAsLastSibling();
                 squadType = SquadType.PreparatorySquad;
                 CharacterList.instance.AddToPreparatory(character);
+                // display order
+                SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.Squad);
+                SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.PreparatorySquad);
             }
         }
         else if (squadType == SquadType.PreparatorySquad)
@@ -109,6 +118,9 @@ public class SquadItem : MonoBehaviour
                 transform.SetAsLastSibling();
                 squadType = SquadType.Squad;
                 CharacterList.instance.AddToSquad(character);
+                // display order
+                SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.Squad);
+                SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.PreparatorySquad);
             }
         }
     }
