@@ -263,7 +263,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7208cb68f944388827347e5de2477e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconJob: {fileID: 114655968411281650}
+  iconClass: {fileID: 114445428559929538}
+  characterName: {fileID: 114563146955292612}
+  level: {fileID: 114916057353933278}
+  jobText: {fileID: 114547257558892980}
+  healthText: {fileID: 114508161307174482}
   displayOrder: {fileID: 114337487416433534}
+  squadType: 0
 --- !u!114 &114269176849211426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -881,7 +888,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -171.09, y: 23.94}
-  m_SizeDelta: {x: 15.79, y: 21.59}
+  m_SizeDelta: {x: 15.76, y: 21.547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224582650697901560
 RectTransform:

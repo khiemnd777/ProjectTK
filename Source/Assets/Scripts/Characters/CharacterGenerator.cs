@@ -761,7 +761,7 @@ public class CharacterGenerator : MonoBehaviour
 
             // generating names
             var genName = nameGenerator.Generate();
-            currentGeneratedBaseCharacter.name = genName;
+            currentGeneratedBaseCharacter.characterName = genName;
             characterName.text = genName;
 
             // generating jobs

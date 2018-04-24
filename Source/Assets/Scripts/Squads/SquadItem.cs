@@ -10,6 +10,12 @@ public enum SquadType
 
 public class SquadItem : MonoBehaviour
 {
+    public Image iconJob;
+    public Image iconClass;
+    public Text characterName;
+    public Text level;
+    public Text jobText;
+    public Text healthText;
     public Text displayOrder;
     public SquadType squadType;
     [System.NonSerialized]

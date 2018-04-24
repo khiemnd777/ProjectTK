@@ -21,6 +21,7 @@ public class GeneratedBaseCharacter : MonoBehaviour
 
     [System.NonSerialized]
     public int id;
+    public string characterName;
     public BaseJob baseJob;
     public BaseClass baseClass;
     public bool isDeath;
@@ -46,6 +47,5 @@ public class GeneratedBaseCharacter : MonoBehaviour
     void Awake()
     {
         id = transform.GetInstanceID();
-        baseJob.label = JobLabel.Swordman;
     }
 }

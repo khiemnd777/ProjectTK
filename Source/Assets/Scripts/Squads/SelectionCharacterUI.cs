@@ -29,6 +29,9 @@ public class SelectionCharacterUI : MonoBehaviour
     }
     #endregion
 
+    const string iconJobUILocation = "Sprites/UI/selection-ui";
+    const string recruitUILoc = "Sprites/UI/recruit-ui";
+
     [SerializeField]
     RectTransform squadPanel;
     [SerializeField]
@@ -39,9 +42,11 @@ public class SelectionCharacterUI : MonoBehaviour
     CharacterList _list;
     SquadItem[] _squadCharacterSquadItems;
     SquadItem[] _preparatorySquadCharacterSquadItems;
+    SpriteHelper _spriteHelper;
 
     void Start()
     {
+        _spriteHelper = SpriteHelper.instance;
         _list = CharacterList.instance;
         _squadCharacterSquadItems = squadPanel.GetComponentsInChildren<SquadItem>();
         _preparatorySquadCharacterSquadItems = preparatorySquadPanel.GetComponentsInChildren<SquadItem>();
@@ -66,12 +71,63 @@ public class SelectionCharacterUI : MonoBehaviour
             var squadItem = Instantiate<SquadItem>(squadItemPrefab, Vector3.zero, Quaternion.identity, panel.transform);
             squadItem.character = character;
             squadItem.squadType = squadType;
+            // display order
             squadItem.displayOrder.text = ((squadType == SquadType.Squad ? 0 : _list.squadCharacters.Count) + i + 1).ToString();
+            // display order text's color
             var color = new Color();
             ColorUtility.TryParseHtmlString("#" + colors[i], out color);
             squadItem.displayOrder.color = color;
+            // icon of job
+            squadItem.iconJob.sprite = GetIconJobSprite(character.baseJob.label);
+            // icon of class
+            squadItem.iconClass.sprite = GetClassSpriteByLabel(character.baseClass.label);
+            // job text
+            squadItem.jobText.text = character.baseJob.label.ToString();
+            // character name
+            squadItem.characterName.text = character.characterName;
+            // level
+            squadItem.level.text = character.baseClass.level.ToString();
+            // health
+            squadItem.healthText.text = Mathf.RoundToInt(character.stats.currentHealth) + "/" + Mathf.RoundToInt(character.stats.maxHealth.GetValue());
         }
+    }
 
+    Sprite GetIconJobSprite(JobLabel label)
+    {
+        var pattern = "{0} => {1}";
+        switch (label)
+        {
+            case JobLabel.Swordman:
+                return _spriteHelper.Get(string.Format(pattern, iconJobUILocation, "icon_swordman"));
+            case JobLabel.Archer:
+                return _spriteHelper.Get(string.Format(pattern, iconJobUILocation, "icon_archer"));
+            case JobLabel.Healer:
+                return _spriteHelper.Get(string.Format(pattern, iconJobUILocation, "icon_healer"));
+            case JobLabel.Mage:
+                return _spriteHelper.Get(string.Format(pattern, iconJobUILocation, "icon_mage"));
+            default:
+                break;
+        }
+        return null;
+    }
+
+    public Sprite GetClassSpriteByLabel(ClassLabel label)
+    {
+        var pattern = "{0} => {1}";
+        switch (label)
+        {
+            case ClassLabel.A:
+                return _spriteHelper.Get(string.Format(pattern, recruitUILoc, "a-class"));
+            case ClassLabel.B:
+                return _spriteHelper.Get(string.Format(pattern, recruitUILoc, "b-class"));
+            case ClassLabel.C:
+                return _spriteHelper.Get(string.Format(pattern, recruitUILoc, "c-class"));
+            case ClassLabel.S:
+                return _spriteHelper.Get(string.Format(pattern, recruitUILoc, "s-class"));
+            default:
+                break;
+        }
+        return null;
     }
 
     public void AssignSquad(){
