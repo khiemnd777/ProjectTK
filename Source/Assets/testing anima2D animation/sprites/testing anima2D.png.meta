@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: 510cb1ae9609afd4a96dd02edf292011
+timeCreated: 1524753522
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sword
+    21300002: l hand
+    21300004: r hand
+    21300006: head
+    21300008: testing anima2D_4
+    21300010: body
+    21300012: l foot
+    21300014: r foot
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 600
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sword
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 326
+        width: 110
+        height: 478
+      alignment: 9
+      pivot: {x: 0.50881886, y: 0.13673024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l hand
+      rect:
+        serializedVersion: 2
+        x: 302.74414
+        y: 511.41205
+        width: 161.3081
+        height: 120.72949
+      alignment: 9
+      pivot: {x: 0.8616435, y: 0.8351806}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r hand
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 515.61554
+        width: 146.91077
+        height: 114.299805
+      alignment: 9
+      pivot: {x: 0.110514976, y: 0.854397}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 796.38055
+        y: 479.41867
+        width: 406.00006
+        height: 366.58133
+      alignment: 9
+      pivot: {x: 0.5779107, y: 0.05750226}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testing anima2D_4
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 575
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body
+      rect:
+        serializedVersion: 2
+        x: 354.9671
+        y: 282.49893
+        width: 228.0329
+        height: 208.20465
+      alignment: 9
+      pivot: {x: 0.40854344, y: 0.1126541}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: l foot
+      rect:
+        serializedVersion: 2
+        x: 260.3493
+        y: 52.739765
+        width: 156.12701
+        height: 197.68604
+      alignment: 9
+      pivot: {x: 0.7490926, y: 0.8698427}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: r foot
+      rect:
+        serializedVersion: 2
+        x: 441.90897
+        y: 51.997543
+        width: 150.96921
+        height: 194
+      alignment: 9
+      pivot: {x: 0.79668033, y: 0.90988904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 99926240292159
+  assetBundleName: 
+  assetBundleVariant: 

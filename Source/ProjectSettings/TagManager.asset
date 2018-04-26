@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: David
+    uniqueID: 3362332987
+    locked: 0
