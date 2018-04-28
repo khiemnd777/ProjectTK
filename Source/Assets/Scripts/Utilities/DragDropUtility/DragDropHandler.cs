@@ -4,8 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+public delegate void OnDragged(GameObject item, int index, bool isAlternative);
+public delegate void OnBeginDragEvent(PointerEventData eventData);
+public delegate void OnDragEvent(PointerEventData eventData);
+public delegate void OnEndDragEvent(PointerEventData eventData);
+public delegate void OnPointerDownEvent(PointerEventData eventData);
+
 [RequireComponent(typeof(Image))]
-public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragDropHandler : MonoBehaviour
+    , IBeginDragHandler
+    , IDragHandler
+    , IEndDragHandler
+    , IPointerDownHandler
 {
     public bool arrangeable = true;
     public bool missingEffect = true;
@@ -18,17 +28,11 @@ public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public bool isDrag;
     public bool isEndDrag;
 
-    public delegate void OnDragged(GameObject item, int index, bool isAlternative);
     public OnDragged onDragged;
-
-    public delegate void OnBeginDragEvent(PointerEventData eventData);
     public OnBeginDragEvent onBeginDragEvent;
-
-    public delegate void OnDragEvent(PointerEventData eventData);
     public OnDragEvent onDragEvent;
-
-    public delegate void OnEndDragEvent(PointerEventData eventData);
     public OnEndDragEvent onEndDragEvent;
+    public OnPointerDownEvent onPointerDownEvent;
 
     DragDropHandler[] items;
     Color originalColor;
@@ -236,6 +240,14 @@ public class DragDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                     StartCoroutine(OnSlotMiss());
                 }
             }
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if(onPointerDownEvent != null)
+        {
+            onPointerDownEvent.Invoke(eventData);
         }
     }
 

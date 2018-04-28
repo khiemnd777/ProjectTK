@@ -30,6 +30,7 @@ public class SquadItem : MonoBehaviour
         _dragDropHandler = GetComponent<DragDropHandler>();
         _dragDropHandler.onDragged += OnItemDragged;
         _dragDropHandler.onBeginDragEvent += OnItemBeginDrag;
+        _dragDropHandler.onPointerDownEvent += OnPointerDownEvent;
         // drop zone handler
         _dropZoneHandler = GetComponent<DropZoneHandler>();
         _dropZoneHandler.onDropInZoneEvent += OnItemDroppedInZone;
@@ -129,5 +130,10 @@ public class SquadItem : MonoBehaviour
                 SelectionCharacterUI.instance.NumberDisplayOrder(SquadType.PreparatorySquad);
             }
         }
+    }
+
+    void OnPointerDownEvent(PointerEventData eventData)
+    {
+        CharacterInfoUI.instance.PerformCharacter(character);   
     }
 }
