@@ -1,0 +1,235 @@
+fileFormatVersion: 2
+guid: 880b82b7d2170984583754c6f1f09547
+timeCreated: 1524970717
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: L_ear
+    21300002: head
+    21300004: R_ear
+    21300006: Jaw
+    21300008: L_arm
+    21300010: R_arm
+    21300012: Body
+    21300014: tail
+    21300016: R_leg
+    21300018: L_leg
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 600
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: L_ear
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 645
+        width: 123
+        height: 195
+      alignment: 9
+      pivot: {x: 0.49593493, y: 0.50769234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 578
+        width: 141.14948
+        height: 224.89783
+      alignment: 9
+      pivot: {x: 0.49592817, y: 0.49355745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: R_ear
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 645.0264
+        width: 137.45871
+        height: 186.97357
+      alignment: 9
+      pivot: {x: 0.47286928, y: 0.510626}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Jaw
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 479.00003
+        width: 108
+        height: 91.99997
+      alignment: 9
+      pivot: {x: 0.4675926, y: 0.49999985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: L_arm
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 260
+        width: 151.60765
+        height: 175.16544
+      alignment: 9
+      pivot: {x: 0.47820807, y: 0.4824011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: R_arm
+      rect:
+        serializedVersion: 2
+        x: 159.3066
+        y: 238.99998
+        width: 123.693405
+        height: 204.85664
+      alignment: 9
+      pivot: {x: 0.535141, y: 0.48814633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Body
+      rect:
+        serializedVersion: 2
+        x: 293.0786
+        y: 223
+        width: 362.9214
+        height: 428.3537
+      alignment: 9
+      pivot: {x: 0.5095357, y: 0.48791453}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tail
+      rect:
+        serializedVersion: 2
+        x: 358.00003
+        y: 21
+        width: 286.99997
+        height: 201.99998
+      alignment: 9
+      pivot: {x: 0.51219505, y: 0.4925743}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: R_leg
+      rect:
+        serializedVersion: 2
+        x: 158.2444
+        y: 34
+        width: 154.5818
+        height: 197.06448
+      alignment: 9
+      pivot: {x: 0.5062407, y: 0.4820757}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: L_leg
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 55
+        width: 160.16159
+        height: 184.00002
+      alignment: 9
+      pivot: {x: 0.49949554, y: 0.50543475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 99940462319201
+  assetBundleName: 
+  assetBundleVariant: 
