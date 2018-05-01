@@ -13,20 +13,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PoseEntries:
   - path: Bones/body
-    localPosition: {x: -0.15216696, y: -0.26028568, z: 0}
+    localPosition: {x: -0.15216696, y: -0.2602857, z: 0}
     localRotation: {x: 0, y: 0, z: 0.785662, w: 0.6186561}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso
     localPosition: {x: 0.13811836, y: -0.0014157891, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.030499384, w: 0.9995348}
+    localRotation: {x: 0, y: 0, z: 0.081207894, w: 0.99669725}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/head
     localPosition: {x: 0.21570282, y: 7.2759576e-10, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.7833497, w: 0.6215813}
+    localRotation: {x: 0, y: 0, z: 0.78335196, w: 0.62157845}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/head/Jaw
     localPosition: {x: 0.044040732, y: 0.067939274, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.06260322, w: 0.99803853}
+    localRotation: {x: 0, y: 0, z: -0.06259891, w: 0.99803877}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/head/R_ear
     localPosition: {x: -0.042182863, y: -0.02608836, z: 0}
@@ -38,45 +38,45 @@ MonoBehaviour:
     localScale: {x: 1.0000005, y: 1.0000005, z: 1}
   - path: Bones/body/torso/R_arm
     localPosition: {x: 0.11601898, y: -0.088775836, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.9841382, w: 0.17740384}
+    localRotation: {x: 0, y: 0, z: -0.97841495, w: 0.20665017}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/R_arm/R_arm 1
     localPosition: {x: 0.1009939, y: 0.000000029802322, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.33756587, w: 0.94130194}
+    localRotation: {x: 0, y: 0, z: -0.336872, w: 0.9415505}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/L_arm
     localPosition: {x: 0.10625919, y: 0.040418707, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.9732635, w: -0.22969161}
+    localRotation: {x: 0, y: 0, z: -0.9790923, w: -0.20341644}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/L_arm/L_arm 1
     localPosition: {x: 0.10099388, y: -0.000000022351742, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.5033833, w: 0.8640632}
+    localRotation: {x: 0, y: 0, z: -0.44490397, w: 0.89557827}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/R_leg
     localPosition: {x: -0.023601178, y: -0.14257349, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.9270138, w: 0.37502724}
+    localRotation: {x: 0, y: 0, z: 0.9435068, w: 0.3313533}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/R_leg/R_leg 1
     localPosition: {x: 0.12461986, y: 0.000000067055225, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.60316235, w: 0.7976185}
+    localRotation: {x: 0, y: 0, z: 0.6176223, w: 0.7864748}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/R_leg/R_leg 1/R_leg 2
     localPosition: {x: 0.085441336, y: -0.000000013038516, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.837566, w: -0.5463361}
+    localRotation: {x: 0, y: 0, z: 0.876727, w: -0.48098838}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/L_leg
     localPosition: {x: 0.036428586, y: 0.023235478, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.86846554, w: -0.49574962}
+    localRotation: {x: 0, y: 0, z: -0.91357017, w: -0.40668118}
     localScale: {x: 1.0000013, y: 1.0000013, z: 1}
   - path: Bones/body/L_leg/L_leg 1
     localPosition: {x: 0.08412106, y: -0.000000022351713, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.3399046, w: 0.94045997}
+    localRotation: {x: 0, y: 0, z: 0.26421604, w: 0.9644636}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/L_leg/L_leg 1/L_leg 2
     localPosition: {x: 0.098161556, y: 0.0025559068, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.533291, w: 0.8459319}
+    localRotation: {x: 0, y: -0, z: 0.58239263, w: -0.81290764}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/tail
-    localPosition: {x: 0.040368963, y: -0.1798144, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.86079067, w: 0.5089591}
+    localPosition: {x: 0.0025227182, y: -0.25913218, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.9349627, w: 0.35474613}
     localScale: {x: 1, y: 1, z: 1}
