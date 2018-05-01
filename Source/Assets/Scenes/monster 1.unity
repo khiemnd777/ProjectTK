@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.10099392
+  m_Length: 0.100993924
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 331803075}
   m_AttachedIK: {fileID: 1047413933}
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.10099388
+  m_Length: 0.10099384
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 614021915}
   m_AttachedIK: {fileID: 818710064}
@@ -862,6 +862,7 @@ GameObject:
   - component: {fileID: 685404029}
   - component: {fileID: 685404031}
   - component: {fileID: 685404030}
+  - component: {fileID: 685404032}
   m_Layer: 0
   m_Name: monster 1
   m_TagString: Untagged
@@ -916,6 +917,17 @@ MonoBehaviour:
   m_Poses:
   - {fileID: 0}
   - {fileID: 11400000, guid: 3791d0734ab758c489014bdff17fc37f, type: 2}
+--- !u!114 &685404032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 685404028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ecdd72a1ac8914fbc5e434f19657c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &719696778
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.12461988
+  m_Length: 0.12461989
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 246452115}
   m_AttachedIK: {fileID: 1366030580}
@@ -1639,7 +1651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.22435518
+  m_Length: 0.21570294
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 311092782}
   m_AttachedIK: {fileID: 0}

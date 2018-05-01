@@ -2,15 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster1 : MonoBehaviour {
+public class Monster1 : MonoBehaviour 
+{
+	Animator _animator;
+	bool wasBiten;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Start()
+	{
+		_animator = GetComponent<Animator>();
+	}	
+
+	void Update()
+	{
+		HandleInputs();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+
+	void HandleInputs()
+	{
+		if(Input.GetKeyDown(KeyCode.B))
+		{
+			if(!wasBiten){
+				_animator.SetInteger("Bite", 1);
+			}else{
+				_animator.SetInteger("Bite", 0);
+			}
+			wasBiten = !wasBiten;
+		}
 	}
 }
