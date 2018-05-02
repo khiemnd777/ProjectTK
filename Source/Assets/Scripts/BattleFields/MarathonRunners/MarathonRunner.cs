@@ -6,6 +6,7 @@ using UnityEngine;
 public class MarathonRunner : MonoBehaviour
 {
     public Transform reachedRoad;
+    public Transform affectiveRoad;
     public Transform actionRoad;
     public Transform characterArea;
     public Transform enemyArea;
@@ -82,6 +83,7 @@ public class MarathonRunner : MonoBehaviour
         runner.icon.sprite = character.icon;
         runner.character = character;
         runner.reachedRoad = reachedRoad;
+        runner.affectiveRoad = affectiveRoad;
         runner.actionRoad = actionRoad;
 
         // register event of reaching

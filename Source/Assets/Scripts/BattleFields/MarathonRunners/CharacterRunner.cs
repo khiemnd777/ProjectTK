@@ -13,11 +13,14 @@ public class CharacterRunner : MonoBehaviour
     public float deltaScale = 1.25f;
     [Space]
     public Character character;
+    public GeneratedBaseCharacter baseCharacter;
     #endregion
 
     #region Public non-serialized fields
     [System.NonSerialized]
     public Transform reachedRoad;
+    [System.NonSerialized]
+    public Transform affectiveRoad;
     [System.NonSerialized]
     public Transform actionRoad;
     #endregion
@@ -33,6 +36,7 @@ public class CharacterRunner : MonoBehaviour
     RectTransform runnerRectTranform;
     RectTransform rectTransform;
     RectTransform reachedRoadRect;
+    RectTransform affectiveRoadRect;
     RectTransform actionRoadRect;
 
     bool isStopped = true;
@@ -47,6 +51,7 @@ public class CharacterRunner : MonoBehaviour
         marathonRunner = GetComponentInParent<MarathonRunner>();
         reachedRoadRect = reachedRoad.GetComponent<RectTransform>();
         actionRoadRect = actionRoad.GetComponent<RectTransform>();
+        affectiveRoadRect = affectiveRoad.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -86,12 +91,17 @@ public class CharacterRunner : MonoBehaviour
         transform.localScale = Vector3.one;
         // Move position towards the end of road
         var journeyLength = reachedRoadRect.GetWidth();
+        var affectiveLength = affectiveRoadRect.GetWidth();
         var targetAnchoredPosition = new Vector2(journeyLength, 0f);
         var stats = character.GetComponent<CharacterStats>();
         runOnReachedRoadPercent += (stats.dexterity.GetValue() / 60f) * Time.deltaTime;
-
+        // moving the character runner on road
         rectTransform.anchoredPosition = Vector2.Lerp(Vector2.zero, targetAnchoredPosition, runOnReachedRoadPercent);
-
+        // if position is through affective road
+        if(rectTransform.anchoredPosition.x >= journeyLength - affectiveLength)
+        {
+            Debug.Log("Character");
+        }
         if (runOnReachedRoadPercent >= 1f)
         {
             runOnReachedRoadPercent = 0f;
