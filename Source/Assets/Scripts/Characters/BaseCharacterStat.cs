@@ -23,7 +23,7 @@ public class BaseCharacterStat : MonoBehaviour
     [Space]
     public Image healthBar;
 
-    GeneratedBaseCharacter character;
+    BaseCharacter character;
 
     void Awake()
     {
@@ -32,7 +32,7 @@ public class BaseCharacterStat : MonoBehaviour
 
     void Start()
     {
-        character = GetComponent<GeneratedBaseCharacter>();
+        character = GetComponent<BaseCharacter>();
     }
 
     public void TransformValues()
@@ -54,7 +54,7 @@ public class BaseCharacterStat : MonoBehaviour
 
         healthBar.fillAmount = currentHealth / maxHealth.GetValue();
 
-        Debug.Log(character.name + " takes " + damage + " damage");
+        Debug.Log(character.characterName + " takes " + damage + " damage");
 
         // If he hits 0, he dies
         if (currentHealth <= 0)

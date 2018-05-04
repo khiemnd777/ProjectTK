@@ -30,7 +30,11 @@ public class BattleFieldManager : MonoBehaviour
 
     public int numOfFields = 9;
 
+    [System.Obsolete]
     public Character[] characters;
+    [System.NonSerialized]
+    public BaseCharacter[] baseCharacters;
+
     [Space]
     public Transform playerField;
     public Transform opponentField;
@@ -55,7 +59,7 @@ public class BattleFieldManager : MonoBehaviour
     void Start()
     {
         CreateNewBattle();
-        StartCoroutine(DequeueHandledAbilities());
+        // StartCoroutine(DequeueHandledAbilities());
     }
 
     void Update()
@@ -74,9 +78,10 @@ public class BattleFieldManager : MonoBehaviour
             return;
         // if any characters reached turn
         // they will be enqueued to handled ability list
-        EnqueueHandledAbilityListWhenCharacterTurned();
+        // EnqueueHandledAbilityListWhenCharacterTurned();
     }
 
+    // Todo: remove
     void EnqueueHandledAbilityListWhenCharacterTurned(){
         // find any character when turned
         var singleCharacterInTurn = GetCharacterInTurn();
@@ -88,7 +93,9 @@ public class BattleFieldManager : MonoBehaviour
         singleCharacterInTurn = null;
     }
 
+    // Todo: remove
     Character GetCharacterInTurn(){
+        
         var character = characters.FirstOrDefault(x => x.isTurn);
         if(character.IsNull())
             return null;
@@ -96,6 +103,7 @@ public class BattleFieldManager : MonoBehaviour
         return character;
     }
 
+    // Todo: remove
     IEnumerator DequeueHandledAbilities(){
         while(!gameObject.IsNull()){
             if(queueHandledAbilities.Count == 0){
@@ -113,7 +121,7 @@ public class BattleFieldManager : MonoBehaviour
         // Add skill for player's characters (It's a bit hijack)
         foreach (var character in characters)
         {
-            character.Setup();
+            // character.Setup();
             foreach (var skill in character.skills)
             {
                 if (skill.IsNull())

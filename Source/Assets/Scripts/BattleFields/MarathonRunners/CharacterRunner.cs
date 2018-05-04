@@ -6,17 +6,27 @@ using UnityEngine.UI;
 public class CharacterRunner : MonoBehaviour
 {
     #region Unity fields
-    public Image icon;
+    public Transform icon;
     [Range(0f, 1f)]
     public float deltaSpeed = .5f;
     [Range(1f, 2f)]
     public float deltaScale = 1.25f;
     [Space]
+    [System.Obsolete]
     public Character character;
-    public GeneratedBaseCharacter baseCharacter;
+    [System.NonSerialized]
+    public BaseCharacter baseCharacter;
     #endregion
 
     #region Public non-serialized fields
+    public bool isTurn
+    {
+        get; private set;
+    }
+    public bool isOnActionRoad
+    {
+        get; private set;
+    }
     [System.NonSerialized]
     public Transform reachedRoad;
     [System.NonSerialized]
@@ -56,7 +66,7 @@ public class CharacterRunner : MonoBehaviour
 
     void Update()
     {
-        if(marathonRunner.isStopped)
+        if (marathonRunner.isStopped)
             return;
         RunOnReachedRoad();
     }
@@ -78,34 +88,36 @@ public class CharacterRunner : MonoBehaviour
 
     void RunOnReachedRoad()
     {
-        if(IsCharacterDied())
+        if (IsCharacterDied())
             return;
 
         // run if non-stop
         if (isStopped)
             return;
-        if (isRunningOnActionRoad)
+        if (isRunningOnActionRoad) // Todo: remove this
+            return;
+        if(isOnActionRoad)
             return;
         // check character is in turn. True if it reachs
-        character.isTurn = false;
+        // isTurn = false;
         transform.localScale = Vector3.one;
         // Move position towards the end of road
         var journeyLength = reachedRoadRect.GetWidth();
         var affectiveLength = affectiveRoadRect.GetWidth();
         var targetAnchoredPosition = new Vector2(journeyLength, 0f);
-        var stats = character.GetComponent<CharacterStats>();
-        runOnReachedRoadPercent += (stats.dexterity.GetValue() / 60f) * Time.deltaTime;
+        var stats = baseCharacter.stats;
+        runOnReachedRoadPercent += (stats.speed.GetValue() / 60f) * Time.deltaTime;
         // moving the character runner on road
         rectTransform.anchoredPosition = Vector2.Lerp(Vector2.zero, targetAnchoredPosition, runOnReachedRoadPercent);
         // if position is through affective road
-        if(rectTransform.anchoredPosition.x >= journeyLength - affectiveLength)
+        if (rectTransform.anchoredPosition.x >= journeyLength - affectiveLength)
         {
-            Debug.Log("Character");
+            Debug.Log("The character was infected the positive/negative effects");
         }
         if (runOnReachedRoadPercent >= 1f)
         {
             runOnReachedRoadPercent = 0f;
-            character.isTurn = true;
+            // isTurn = true;
             transform.localScale = Vector3.one * deltaScale;
             if (onRunnerReachedCallback != null)
             {
@@ -114,21 +126,47 @@ public class CharacterRunner : MonoBehaviour
         }
     }
 
-    public void RunOnActionRoad(float executedAbilityTime){
-        if(IsCharacterDied())
+    // Todo: remove
+    public void RunOnActionRoad(float executedAbilityTime)
+    {
+        if (IsCharacterDied())
             return;
         isRunningOnActionRoad = true;
         StartCoroutine(RunningOnActionRoad(executedAbilityTime));
     }
 
-    IEnumerator RunningOnActionRoad(float executedAbilityTime){
+    public IEnumerator RunForAction()
+    {
+        isOnActionRoad = true;
+        isTurn = false;
         var reachedRoadLength = reachedRoadRect.GetWidth();
         var journeyLength = reachedRoadLength + actionRoadRect.GetWidth();
         var startPosition = new Vector2(reachedRoadLength, 0f);
         var endPosition = new Vector2(journeyLength, 0f);
-        Debug.Log(character.name + " executes skill in " + executedAbilityTime + "s");
+        var runningTime = 1f; // It must be got by skill but 1 second is default
+        Debug.Log(baseCharacter.characterName + " executes skill in " + runningTime + "s");
         var percent = 0f;
-        while(!IsCharacterDied() && percent <= 1f){
+        while (!IsCharacterDied() && percent <= 1f)
+        {
+            percent += Time.deltaTime / runningTime;
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, percent);
+            yield return null;
+        }
+        isOnActionRoad = false;
+        StopCoroutine("RunForAction");
+    }
+
+    // Todo: remove
+    IEnumerator RunningOnActionRoad(float executedAbilityTime)
+    {
+        var reachedRoadLength = reachedRoadRect.GetWidth();
+        var journeyLength = reachedRoadLength + actionRoadRect.GetWidth();
+        var startPosition = new Vector2(reachedRoadLength, 0f);
+        var endPosition = new Vector2(journeyLength, 0f);
+        Debug.Log(baseCharacter.characterName + " executes skill in " + executedAbilityTime + "s");
+        var percent = 0f;
+        while (!IsCharacterDied() && percent <= 1f)
+        {
             percent += Time.deltaTime / executedAbilityTime;
             rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, percent);
             yield return null;
@@ -137,8 +175,10 @@ public class CharacterRunner : MonoBehaviour
         StopCoroutine("RunningOnActionRoad");
     }
 
-    bool IsCharacterDied(){
-        if(gameObject.activeSelf && character.isDeath){
+    bool IsCharacterDied()
+    {
+        if (gameObject.activeSelf && baseCharacter.isDeath)
+        {
             gameObject.SetActive(false);
             ResetRunningPosition();
             return true;
