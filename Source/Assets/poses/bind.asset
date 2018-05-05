@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PoseEntries:
   - path: Bones/body
-    localPosition: {x: -0.15216696, y: -0.2602857, z: 0}
+    localPosition: {x: 0.026951969, y: -0.14232942, z: 0}
     localRotation: {x: 0, y: 0, z: 0.785662, w: 0.6186561}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso
@@ -22,7 +22,7 @@ MonoBehaviour:
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/head
     localPosition: {x: 0.21570282, y: 7.2759576e-10, z: 0}
-    localRotation: {x: 0, y: 0, z: 0.78335196, w: 0.62157845}
+    localRotation: {x: 0, y: 0, z: 0.75621384, w: 0.6543246}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/torso/head/Jaw
     localPosition: {x: 0.044040732, y: 0.067939274, z: 0}
@@ -77,6 +77,6 @@ MonoBehaviour:
     localRotation: {x: 0, y: -0, z: 0.58239263, w: -0.81290764}
     localScale: {x: 1, y: 1, z: 1}
   - path: Bones/body/tail
-    localPosition: {x: 0.0025227182, y: -0.25913218, z: 0}
-    localRotation: {x: 0, y: 0, z: -0.9349627, w: 0.35474613}
+    localPosition: {x: -0.011897434, y: -0.24522647, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.90987754, w: 0.41487688}
     localScale: {x: 1, y: 1, z: 1}
