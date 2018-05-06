@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,6 +38,14 @@ public class CharacterList : MonoBehaviour
     public List<GeneratedBaseCharacter> preparatoryCharacters;
     [System.NonSerialized]
     public List<GeneratedBaseCharacter> freeCharacters;
+
+    void Awake()
+    {
+        if (!_instance)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -97,5 +106,14 @@ public class CharacterList : MonoBehaviour
                 return;
         }
         preparatoryCharacters.Add(character);
+    }
+
+    public void MoveToSence(string name)
+    {
+        var scene = SceneManager.GetSceneByName(name);
+        if (scene.isLoaded)
+        {
+            SceneManager.MoveGameObjectToScene(gameObject, scene);
+        }
     }
 }

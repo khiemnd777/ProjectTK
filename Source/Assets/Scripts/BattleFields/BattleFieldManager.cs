@@ -58,7 +58,7 @@ public class BattleFieldManager : MonoBehaviour
 
     void Start()
     {
-        CreateNewBattle();
+        // CreateNewBattle();
         // StartCoroutine(DequeueHandledAbilities());
     }
 

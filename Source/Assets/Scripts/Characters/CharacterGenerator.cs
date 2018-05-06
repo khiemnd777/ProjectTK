@@ -355,7 +355,7 @@ public class CharacterGenerator : MonoBehaviour
     #region Effect Reducing Gold & Diamond
     IEnumerator EffectReduceGolds(Transform pocket, Transform target, int amountGold, GeneratedCharacterBlock block)
     {
-        var amount = amountGold / 10;
+        var amount = Mathf.Min(amountGold / 10, 40);
         amount = amount < 1 ? 1 : amount;
         // init array of gold and position
         var golds = new Transform[amount];

@@ -8,12 +8,27 @@ public abstract class BaseCharacter : MonoBehaviour
     public string characterName;
     public bool isDeath;
 
+    [Space]
+    [Header("Default Animations")]
+    public AnimationClip idlingAnimation;
+    public AnimationClip hurtingAnimation;
+    public AnimationClip dodgingAnimation;
+
     BaseCharacterStat _stats;
     public BaseCharacterStat stats
     {
         get
         {
             return _stats ?? (_stats = GetComponent<BaseCharacterStat>());
+        }
+    }
+
+    Animator _animator;
+    public Animator animator
+    {
+        get
+        {
+            return _animator ?? (_animator = GetComponent<Animator>());
         }
     }
     

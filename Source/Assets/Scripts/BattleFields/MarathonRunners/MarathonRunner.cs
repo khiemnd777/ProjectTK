@@ -21,6 +21,7 @@ public class MarathonRunner : MonoBehaviour
     void Start()
     {
         StartCoroutine(DequeueCharacterRunnerInTurnForAction());
+        Debug.Log(CharacterList.instance.squadCharacters.Count);
     }
 
     void Update()
