@@ -31,7 +31,7 @@ public abstract class BaseCharacter : MonoBehaviour
             return _animator ?? (_animator = GetComponent<Animator>());
         }
     }
-    
+
     protected virtual void Awake()
     {
         id = transform.GetInstanceID();
@@ -44,11 +44,17 @@ public abstract class BaseCharacter : MonoBehaviour
 
     protected virtual void Update()
     {
-        
+
     }
 
-    public virtual Transform GetAvatar()
+    public virtual AvatarInfo GetAvatarInfo()
     {
-        return null;
+        return default(AvatarInfo);
     }
+}
+
+public struct AvatarInfo
+{
+    public Transform Avatar { get; set; }
+    public Sprite AvatarStyle { get; set; }
 }

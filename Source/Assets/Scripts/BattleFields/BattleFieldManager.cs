@@ -58,6 +58,7 @@ public class BattleFieldManager : MonoBehaviour
 
     void Start()
     {
+        InitMarathonRunner();
         // CreateNewBattle();
         // StartCoroutine(DequeueHandledAbilities());
     }
@@ -149,6 +150,17 @@ public class BattleFieldManager : MonoBehaviour
         for (var i = 0; i < characters.Length; i++)
         {
             AddCharacterToField(characters[i]);
+        }
+    }
+
+    void InitMarathonRunner()
+    {
+        var characterList = CharacterList.instance;
+        if(!characterList.squadCharacters.Any())
+            return;
+        foreach(var character in characterList.squadCharacters)
+        {
+            marathonRunner.AddToRunner(character);
         }
     }
 

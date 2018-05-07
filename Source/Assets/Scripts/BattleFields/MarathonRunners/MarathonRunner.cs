@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarathonRunner : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class MarathonRunner : MonoBehaviour
     void Start()
     {
         StartCoroutine(DequeueCharacterRunnerInTurnForAction());
-        Debug.Log(CharacterList.instance.squadCharacters.Count);
     }
 
     void Update()
@@ -91,8 +91,6 @@ public class MarathonRunner : MonoBehaviour
     {
         if (runner.IsNull())
             return;
-        if (characterRunners.Any(x => x.transform.GetInstanceID() != runner.transform.GetInstanceID()))
-            return;
         runner.StartRunning();
         runner = null;
     }
@@ -109,8 +107,6 @@ public class MarathonRunner : MonoBehaviour
     public void StopSingleRunner(CharacterRunner runner)
     {
         if (runner.IsNull())
-            return;
-        if (characterRunners.Any(x => x.transform.GetInstanceID() != runner.transform.GetInstanceID()))
             return;
         runner.StopRunning();
         runner = null;
@@ -149,7 +145,23 @@ public class MarathonRunner : MonoBehaviour
     public CharacterRunner CreateCharacterRunner(BaseCharacter baseCharacter, Transform runnerArea)
     {
         var runner = Instantiate<CharacterRunner>(characterRunnerPrefab, runnerArea.position, Quaternion.identity, runnerArea);
-        runner.icon = baseCharacter.GetAvatar();
+        // Avatar
+        var avatarInfo = baseCharacter.GetAvatarInfo();
+        var avatar = avatarInfo.Avatar;
+        if (avatar != null && avatar is Object && !avatar.Equals(null))
+        {
+            var avatarPerformance = runner.avatar.transform.Find("Performance");
+            var instantiatedAvatar = Instantiate<Transform>(avatar, Vector3.zero, Quaternion.identity, avatarPerformance);
+            instantiatedAvatar.transform.localPosition = Vector3.zero;
+            instantiatedAvatar.transform.localScale = Vector3.one * 7.5f;
+            // icon's style
+            var avatarStyle = avatarInfo.AvatarStyle;
+            if (avatarStyle != null && avatarStyle is Object && !avatarStyle.Equals(null))
+            {
+                var avatarImage = runner.avatar.GetComponent<Image>();
+                avatarImage.sprite = avatarStyle;
+            }
+        }
         runner.baseCharacter = baseCharacter;
         runner.reachedRoad = reachedRoad;
         runner.affectiveRoad = affectiveRoad;
@@ -200,6 +212,8 @@ public class MarathonRunner : MonoBehaviour
             if (character.isDeath)
                 continue;
             yield return StartCoroutine(characterRunner.RunForAction());
+            Debug.Log(character.characterName + " is done yet");
+            StartSingleRunner(characterRunner);
         }
     }
 

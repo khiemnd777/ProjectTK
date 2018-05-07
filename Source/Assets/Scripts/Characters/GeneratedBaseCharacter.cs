@@ -6,14 +6,18 @@ using System.Collections.Generic;
 
 public class GeneratedBaseCharacter : BaseCharacter
 {
-    public BaseGeneratedCharacterElement elements;    
+    public BaseGeneratedCharacterElement elements;
     public BaseJob baseJob;
     public BaseClass baseClass;
     public GeneratedBaseCharacterData savedData;
 
-    public override Transform GetAvatar()
+    public override AvatarInfo GetAvatarInfo()
     {
-        return elements.head.transform;
+        return new AvatarInfo
+        {
+            Avatar = elements.head.transform,
+            AvatarStyle = SpriteHelper.instance.Get("Sprites/UI/action_bar => action_bar_3")
+        };
     }
 
     public void LoadFromData(GeneratedBaseCharacterData data)
@@ -27,7 +31,7 @@ public class GeneratedBaseCharacter : BaseCharacter
 
     public void SaveToData(GeneratedBaseCharacterData data = null)
     {
-        if(data == null)
+        if (data == null)
             data = savedData;
         data.baseJob = baseJob;
         data.baseClass = baseClass;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CharacterRunner : MonoBehaviour
 {
     #region Unity fields
-    public Transform icon;
+    public Transform avatar;
     [Range(0f, 1f)]
     public float deltaSpeed = .5f;
     [Range(1f, 2f)]
@@ -106,13 +106,13 @@ public class CharacterRunner : MonoBehaviour
         var affectiveLength = affectiveRoadRect.GetWidth();
         var targetAnchoredPosition = new Vector2(journeyLength, 0f);
         var stats = baseCharacter.stats;
-        runOnReachedRoadPercent += (stats.speed.GetValue() / 60f) * Time.deltaTime;
+        runOnReachedRoadPercent += (stats.speed.GetValue() / 30f) * Time.deltaTime;
         // moving the character runner on road
         rectTransform.anchoredPosition = Vector2.Lerp(Vector2.zero, targetAnchoredPosition, runOnReachedRoadPercent);
         // if position is through affective road
         if (rectTransform.anchoredPosition.x >= journeyLength - affectiveLength)
         {
-            Debug.Log("The character was infected the positive/negative effects");
+            // Debug.Log("The character was infected the positive/negative effects");
         }
         if (runOnReachedRoadPercent >= 1f)
         {

@@ -43,6 +43,7 @@ public class CharacterList : MonoBehaviour
     {
         if (!_instance)
         {
+            _instance = instance;
             DontDestroyOnLoad(gameObject);
         }
     }

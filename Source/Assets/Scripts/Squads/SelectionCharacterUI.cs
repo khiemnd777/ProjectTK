@@ -44,10 +44,14 @@ public class SelectionCharacterUI : MonoBehaviour
     SquadItem[] _preparatorySquadCharacterSquadItems;
     SpriteHelper _spriteHelper;
 
-    void Start()
+    void Awake()
     {
         _spriteHelper = SpriteHelper.instance;
         _list = CharacterList.instance;
+    }
+
+    void Start()
+    {
         _squadCharacterSquadItems = squadPanel.GetComponentsInChildren<SquadItem>();
         _preparatorySquadCharacterSquadItems = preparatorySquadPanel.GetComponentsInChildren<SquadItem>();
         AssignSquadCharacter(_list.squadCharacters, squadPanel, SquadType.Squad);
