@@ -47,6 +47,11 @@ public abstract class BaseCharacter : MonoBehaviour
 
     }
 
+    public virtual ActionInfo DoAction()
+    {
+        return default(ActionInfo);
+    }
+
     public virtual AvatarInfo GetAvatarInfo()
     {
         return default(AvatarInfo);
@@ -57,4 +62,9 @@ public struct AvatarInfo
 {
     public Transform Avatar { get; set; }
     public Sprite AvatarStyle { get; set; }
+}
+
+public struct ActionInfo
+{
+    public float time { get; set; }
 }

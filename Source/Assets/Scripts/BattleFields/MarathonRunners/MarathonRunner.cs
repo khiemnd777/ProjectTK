@@ -112,13 +112,6 @@ public class MarathonRunner : MonoBehaviour
         runner = null;
     }
 
-    // public GeneratedBaseCharacter GetCharacterInTurn()
-    // {
-    //     var firstTurnedCharacter = characterRunners.FirstOrDefault(x => x.isTurn);
-    //     if(firstTurnedCharacter.IsNull())
-    //         return null;
-    // }
-
     [System.Obsolete]
     public CharacterRunner CreateRunner(Character character, Transform parent)
     {
@@ -228,7 +221,6 @@ public class MarathonRunner : MonoBehaviour
     {
         // Start runner after tactic process of character is finished
         // StartRunner();
-
     }
 
     void OrderCharacterRunners(List<CharacterRunner> characterRunners)

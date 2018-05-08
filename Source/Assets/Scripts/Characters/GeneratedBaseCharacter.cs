@@ -20,6 +20,14 @@ public class GeneratedBaseCharacter : BaseCharacter
         };
     }
 
+    public override ActionInfo DoAction()
+    {
+        return new ActionInfo
+        {
+            time = 1f
+        };
+    }
+
     public void LoadFromData(GeneratedBaseCharacterData data)
     {
         savedData = data;

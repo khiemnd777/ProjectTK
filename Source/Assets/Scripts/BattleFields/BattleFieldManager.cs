@@ -43,6 +43,7 @@ public class BattleFieldManager : MonoBehaviour
     public Transform opponentField3D;
     [Space]
     public MarathonRunner marathonRunner;
+    public HeroPositions heroPositions;
 
     [System.NonSerialized]
     public CharacterField[] playerFields;
@@ -58,7 +59,7 @@ public class BattleFieldManager : MonoBehaviour
 
     void Start()
     {
-        InitMarathonRunner();
+        Init();
         // CreateNewBattle();
         // StartCoroutine(DequeueHandledAbilities());
     }
@@ -153,7 +154,7 @@ public class BattleFieldManager : MonoBehaviour
         }
     }
 
-    void InitMarathonRunner()
+    void Init()
     {
         var characterList = CharacterList.instance;
         if(!characterList.squadCharacters.Any())
@@ -161,6 +162,7 @@ public class BattleFieldManager : MonoBehaviour
         foreach(var character in characterList.squadCharacters)
         {
             marathonRunner.AddToRunner(character);
+            heroPositions.AddToPosition(character);
         }
     }
 
