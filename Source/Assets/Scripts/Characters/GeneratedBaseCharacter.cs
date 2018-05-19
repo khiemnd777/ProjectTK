@@ -10,6 +10,7 @@ public class GeneratedBaseCharacter : BaseCharacter
     public BaseJob baseJob;
     public BaseClass baseClass;
     public GeneratedBaseCharacterData savedData;
+    public BaseSkillHandler skillHandler;
 
     public override AvatarInfo GetAvatarInfo()
     {
@@ -22,9 +23,22 @@ public class GeneratedBaseCharacter : BaseCharacter
 
     public override ActionInfo DoAction()
     {
+        var baseSkills = skillHandler.baseSkills;
+        if(!baseSkills.Any())
+            return new ActionInfo
+            {
+                time = 0f
+            };
+        var skill = baseSkills.FirstOrDefault();
+        if(skill == null || skill is Object && skill.Equals(null))
+            return new ActionInfo{
+                time = 0f
+            };
+        // Execute the skill
+        skill.Execute();
         return new ActionInfo
         {
-            time = 1f
+            time = skill.GetLength()
         };
     }
 

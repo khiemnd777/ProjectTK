@@ -19,6 +19,28 @@ public class MarathonRunner : MonoBehaviour
 
     public bool isStopped = true;
 
+    // Main function
+    IEnumerator DequeueCharacterRunnerInTurnForAction()
+    {
+        while (gameObject.activeSelf)
+        {
+            if (characterRunnersInTurn.Count == 0)
+            {
+                yield return null;
+                continue;
+            }
+            var characterRunner = characterRunnersInTurn.Dequeue();
+            var character = characterRunner.baseCharacter;
+            if (character.isDeath)
+                continue;
+            // Run for action
+            yield return StartCoroutine(characterRunner.RunForAction());
+            Debug.Log(character.characterName + " is done yet");
+            // After successfully running on action, then restarting on reached road.
+            StartSingleRunner(characterRunner);
+        }
+    }
+
     void Start()
     {
         StartCoroutine(DequeueCharacterRunnerInTurnForAction());
@@ -189,25 +211,6 @@ public class MarathonRunner : MonoBehaviour
     {
         var runner = characterRunners.FirstOrDefault(x => x.baseCharacter == baseCharacter);
         return runner;
-    }
-
-    IEnumerator DequeueCharacterRunnerInTurnForAction()
-    {
-        while (gameObject.activeSelf)
-        {
-            if (characterRunnersInTurn.Count == 0)
-            {
-                yield return null;
-                continue;
-            }
-            var characterRunner = characterRunnersInTurn.Dequeue();
-            var character = characterRunner.baseCharacter;
-            if (character.isDeath)
-                continue;
-            yield return StartCoroutine(characterRunner.RunForAction());
-            Debug.Log(character.characterName + " is done yet");
-            StartSingleRunner(characterRunner);
-        }
     }
 
     void OnSingleRunnerReachedCallback(CharacterRunner runner)

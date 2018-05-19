@@ -50,8 +50,8 @@ public class CharacterList : MonoBehaviour
 
     void Start()
     {
-        squadCharacters = new List<GeneratedBaseCharacter>();
-        preparatoryCharacters = new List<GeneratedBaseCharacter>();
+        squadCharacters = squadCharacters ?? (squadCharacters = new List<GeneratedBaseCharacter>());
+        preparatoryCharacters = preparatoryCharacters ?? (preparatoryCharacters = new List<GeneratedBaseCharacter>());
     }
 
     public void AddCharacter(GeneratedBaseCharacter character)

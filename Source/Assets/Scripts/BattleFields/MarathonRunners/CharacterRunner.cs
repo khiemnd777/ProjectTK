@@ -55,6 +55,30 @@ public class CharacterRunner : MonoBehaviour
 
     #endregion
 
+    // Main action
+    public IEnumerator RunForAction()
+    {
+        isOnActionRoad = true;
+        isTurn = false;
+        var reachedRoadLength = reachedRoadRect.GetWidth();
+        var journeyLength = reachedRoadLength + actionRoadRect.GetWidth();
+        var startPosition = new Vector2(reachedRoadLength, 0f);
+        var endPosition = new Vector2(journeyLength, 0f);
+        // Do an action
+        var actionInfo = baseCharacter.DoAction();
+        var runningTime = actionInfo.time; // It must be got by skill but 1 second is default
+        Debug.Log(baseCharacter.characterName + " executes skill in " + runningTime + "s");
+        var percent = 0f;
+        while (!IsCharacterDied() && percent <= 1f)
+        {
+            percent += Time.deltaTime / runningTime;
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, percent);
+            yield return null;
+        }
+        isOnActionRoad = false;
+        StopCoroutine("RunForAction");
+    }
+
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -94,7 +118,7 @@ public class CharacterRunner : MonoBehaviour
         // run if non-stop
         if (isStopped)
             return;
-        if(isOnActionRoad)
+        if (isOnActionRoad)
             return;
         // check character is in turn. True if it reachs
         // isTurn = false;
@@ -152,28 +176,6 @@ public class CharacterRunner : MonoBehaviour
         }
         isRunningOnActionRoad = false;
         StopCoroutine("RunningOnActionRoad");
-    }
-
-    public IEnumerator RunForAction()
-    {
-        isOnActionRoad = true;
-        isTurn = false;
-        var reachedRoadLength = reachedRoadRect.GetWidth();
-        var journeyLength = reachedRoadLength + actionRoadRect.GetWidth();
-        var startPosition = new Vector2(reachedRoadLength, 0f);
-        var endPosition = new Vector2(journeyLength, 0f);
-        var actionInfo = baseCharacter.DoAction();
-        var runningTime = actionInfo.time; // It must be got by skill but 1 second is default
-        Debug.Log(baseCharacter.characterName + " executes skill in " + runningTime + "s");
-        var percent = 0f;
-        while (!IsCharacterDied() && percent <= 1f)
-        {
-            percent += Time.deltaTime / runningTime;
-            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, percent);
-            yield return null;
-        }
-        isOnActionRoad = false;
-        StopCoroutine("RunForAction");
     }
 
     bool IsCharacterDied()

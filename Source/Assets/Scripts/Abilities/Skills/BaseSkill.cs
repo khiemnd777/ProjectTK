@@ -21,6 +21,16 @@ public abstract class BaseSkill : MonoBehaviour
         
     }
 
+    public virtual float GetLength()
+    {
+        return 0f;
+    }
+
+    public virtual void Execute()
+    {
+        
+    }
+
     public virtual void TakeDamage(BaseCharacter[] baseCharacters){
         var stats = baseCharacter.stats;
         stats.damage.AddModifier(damageModifier);

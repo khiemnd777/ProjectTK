@@ -4,7 +4,6 @@ public abstract class BaseCharacter : MonoBehaviour
 {
     [System.NonSerialized]
     public int id;
-
     public string characterName;
     public bool isDeath;
 
@@ -14,6 +13,7 @@ public abstract class BaseCharacter : MonoBehaviour
     public AnimationClip hurtingAnimation;
     public AnimationClip dodgingAnimation;
 
+    // non-serialized
     BaseCharacterStat _stats;
     public BaseCharacterStat stats
     {
