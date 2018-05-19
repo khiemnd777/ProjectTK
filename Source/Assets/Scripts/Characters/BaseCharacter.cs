@@ -6,12 +6,19 @@ public abstract class BaseCharacter : MonoBehaviour
     public int id;
     public string characterName;
     public bool isDeath;
-
-    [Space]
     [Header("Default Animations")]
     public AnimationClip idlingAnimation;
     public AnimationClip hurtingAnimation;
     public AnimationClip dodgingAnimation;
+
+    BaseSkillHandler _skillHandler;
+    public BaseSkillHandler skillHandler
+    {
+        get
+        {
+            return _skillHandler ?? (_skillHandler = GetComponent<BaseSkillHandler>());
+        }
+    }
 
     // non-serialized
     BaseCharacterStat _stats;
@@ -45,11 +52,6 @@ public abstract class BaseCharacter : MonoBehaviour
     protected virtual void Update()
     {
 
-    }
-
-    public virtual ActionInfo DoAction()
-    {
-        return default(ActionInfo);
     }
 
     public virtual AvatarInfo GetAvatarInfo()

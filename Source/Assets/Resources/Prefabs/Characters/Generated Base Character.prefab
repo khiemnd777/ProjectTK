@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 4662943989703664}
   - component: {fileID: 95721635074709074}
   - component: {fileID: 114260507223162080}
+  - component: {fileID: 114278536102986888}
   - component: {fileID: 114560150389988736}
   m_Layer: 0
   m_Name: Generated Base Character
@@ -401,6 +402,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: 
   isDeath: 0
+  idlingAnimation: {fileID: 0}
+  hurtingAnimation: {fileID: 0}
+  dodgingAnimation: {fileID: 0}
   elements:
     head: {fileID: 212527027627607902}
     eye: {fileID: 212176919969374134}
@@ -418,6 +422,19 @@ MonoBehaviour:
     level: 0
     pointPerLevel: 0
     label: 0
+  savedData: {fileID: 0}
+--- !u!114 &114278536102986888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688731979536594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154bd10b7afba40c3a2e15869336cb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSkills: []
 --- !u!114 &114560150389988736
 MonoBehaviour:
   m_ObjectHideFlags: 1

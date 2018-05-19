@@ -10,7 +10,14 @@ public class GeneratedBaseCharacter : BaseCharacter
     public BaseJob baseJob;
     public BaseClass baseClass;
     public GeneratedBaseCharacterData savedData;
+    [System.NonSerialized]
     public BaseSkillHandler skillHandler;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        skillHandler = GetComponent<BaseSkillHandler>();
+    }
 
     public override AvatarInfo GetAvatarInfo()
     {
@@ -18,27 +25,6 @@ public class GeneratedBaseCharacter : BaseCharacter
         {
             Avatar = elements.head.transform,
             AvatarStyle = SpriteHelper.instance.Get("Sprites/UI/action_bar => action_bar_3")
-        };
-    }
-
-    public override ActionInfo DoAction()
-    {
-        var baseSkills = skillHandler.baseSkills;
-        if(!baseSkills.Any())
-            return new ActionInfo
-            {
-                time = 0f
-            };
-        var skill = baseSkills.FirstOrDefault();
-        if(skill == null || skill is Object && skill.Equals(null))
-            return new ActionInfo{
-                time = 0f
-            };
-        // Execute the skill
-        skill.Execute();
-        return new ActionInfo
-        {
-            time = skill.GetLength()
         };
     }
 

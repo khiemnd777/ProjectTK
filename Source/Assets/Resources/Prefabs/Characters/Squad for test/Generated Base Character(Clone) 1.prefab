@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4015890766277688}
   - component: {fileID: 95333062725309114}
   - component: {fileID: 114281567548720276}
+  - component: {fileID: 114471771543572660}
   - component: {fileID: 114253631564559146}
   m_Layer: 0
   m_Name: Generated Base Character(Clone) 1
@@ -43,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1138288970335812
 GameObject:
   m_ObjectHideFlags: 1
@@ -556,8 +557,18 @@ MonoBehaviour:
     pointPerLevel: 40
     label: 0
   savedData: {fileID: 0}
-  skillHandler:
-    baseSkills: []
+--- !u!114 &114471771543572660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125861156418182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154bd10b7afba40c3a2e15869336cb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSkills: []
 --- !u!114 &114967249223043430
 MonoBehaviour:
   m_ObjectHideFlags: 1

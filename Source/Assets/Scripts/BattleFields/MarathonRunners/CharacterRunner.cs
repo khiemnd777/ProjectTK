@@ -65,7 +65,7 @@ public class CharacterRunner : MonoBehaviour
         var startPosition = new Vector2(reachedRoadLength, 0f);
         var endPosition = new Vector2(journeyLength, 0f);
         // Do an action
-        var actionInfo = baseCharacter.DoAction();
+        var actionInfo = baseCharacter.skillHandler.DoAction();
         var runningTime = actionInfo.time; // It must be got by skill but 1 second is default
         Debug.Log(baseCharacter.characterName + " executes skill in " + runningTime + "s");
         var percent = 0f;
