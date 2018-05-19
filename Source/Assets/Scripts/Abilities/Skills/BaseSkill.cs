@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class BaseSkill : MonoBehaviour
+public class BaseSkill : MonoBehaviour
 {
     [Header("Modifiers")]
     public float damageModifier;
@@ -11,26 +11,26 @@ public abstract class BaseSkill : MonoBehaviour
     [Header("Animation Clips")]
     public AnimationClip[] animationClips;
 
-    [System.NonSerialized]
-    public BaseCharacter baseCharacter;
-
     // Main function
-    public virtual void Execute(Animator animator)
+    public virtual void Execute(Animator animator, GeneratedBaseCharacter baseCharacter)
     {
-        StartCoroutine(PlayingAnimationClips(animator));
+        StartCoroutine(PlayingAnimationClips(animator, baseCharacter));
     }
 
-    IEnumerator PlayingAnimationClips(Animator animator)
+    IEnumerator PlayingAnimationClips(Animator animator, GeneratedBaseCharacter baseCharacter)
     {
         for (var i = 0; i < animationClips.Length; i++)
         {
             var animClip = animationClips[i];
+            Debug.Log(animClip.name);
             var frameRate = animClip.frameRate;
             var startTime = 0f;
             var endTime = animClip.length;
             var length = animClip.length;
-            animator.Play(animClip.name, 0, startTime / endTime);
+            var animLayerIndex = animator.GetLayerIndex(baseCharacter.baseJob.label.ToString());
+            animator.Play(animClip.name, animLayerIndex, startTime / endTime);
             yield return new WaitForSeconds(length);
+            animator.Play(baseCharacter.idlingAnimation.name, animLayerIndex, startTime / endTime);
         }
     }
 
@@ -42,43 +42,48 @@ public abstract class BaseSkill : MonoBehaviour
 
     public virtual BaseCharacter[] DetermineOpponents()
     {
-        return null;
+        // Get default opponent in list
+        return BattleFieldManager.instance
+            .monsterPositions
+            .monsterPositions
+            .Select(x => x.monster)
+            .ToArray();
     }
 
-    public virtual void TakeDamage(BaseCharacter[] baseCharacters)
-    {
-        var stats = baseCharacter.stats;
-        stats.damage.AddModifier(damageModifier);
-        StartCoroutine(TakingDamage(stats.damage.GetValue(), baseCharacters));
-        stats.damage.RemoveModifier(damageModifier);
-    }
+    // public virtual void TakeDamage(BaseCharacter[] baseCharacters)
+    // {
+    //     var stats = baseCharacter.stats;
+    //     stats.damage.AddModifier(damageModifier);
+    //     StartCoroutine(TakingDamage(stats.damage.GetValue(), baseCharacters));
+    //     stats.damage.RemoveModifier(damageModifier);
+    // }
 
-    public virtual IEnumerator TakingDamage(float damage, BaseCharacter[] opponents)
-    {
-        foreach (var opponent in opponents)
-        {
-            var stats = opponent.stats;
-            stats.TakeDamage(damage);
-            StartCoroutine(TakingDamageAnimation(opponent));
-            stats = null;
-            yield return null;
-        }
-    }
+    // public virtual IEnumerator TakingDamage(float damage, BaseCharacter[] opponents)
+    // {
+    //     foreach (var opponent in opponents)
+    //     {
+    //         var stats = opponent.stats;
+    //         stats.TakeDamage(damage);
+    //         StartCoroutine(TakingDamageAnimation(opponent));
+    //         stats = null;
+    //         yield return null;
+    //     }
+    // }
 
-    IEnumerator TakingDamageAnimation(BaseCharacter opponent)
-    {
-        if (!opponent.hurtingAnimation.IsNull())
-        {
-            var animClip = opponent.hurtingAnimation;
-            var animator = opponent.animator;
-            animator.Play(animClip.name, 0);
-            yield return new WaitForSeconds(animClip.length);
-        }
-        if (!opponent.idlingAnimation.IsNull())
-        {
-            var animClip = opponent.idlingAnimation;
-            var animator = opponent.animator;
-            animator.Play(animClip.name, 0);
-        }
-    }
+    // IEnumerator TakingDamageAnimation(BaseCharacter opponent)
+    // {
+    //     if (!opponent.hurtingAnimation.IsNull())
+    //     {
+    //         var animClip = opponent.hurtingAnimation;
+    //         var animator = opponent.animator;
+    //         animator.Play(animClip.name, 0);
+    //         yield return new WaitForSeconds(animClip.length);
+    //     }
+    //     if (!opponent.idlingAnimation.IsNull())
+    //     {
+    //         var animClip = opponent.idlingAnimation;
+    //         var animator = opponent.animator;
+    //         animator.Play(animClip.name, 0);
+    //     }
+    // }
 }

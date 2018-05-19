@@ -664,8 +664,11 @@ public class CharacterGenerator : MonoBehaviour
         frogEyeRight.speed = frogEyeRotatorSpeed;
         yield return new WaitForSeconds(.5f);
         // LerpElementSkinColor(Color.black, Color.white);
+        // Generate successfuly
         foreach (var block in generatedCharaterBlocks)
         {
+            var baseCharacter = block.baseCharacter;
+            AnimatorUtility.ActiveLayer(baseCharacter.animator, baseCharacter.baseJob.label.ToString());
             var characterElements = block.baseCharacter.elements;
             var characterEyes = characterElements.eye;
             var characterMouth = characterElements.mouth;
@@ -729,14 +732,19 @@ public class CharacterGenerator : MonoBehaviour
         }
         isCalling = false;
 
-        var blocks = generatedCharaterBlocks;
-        blocks[0].clickedOnGoldButton = 
-        blocks[0].clickedOnDiamondButton = 
-        blocks[1].clickedOnGoldButton = 
-        blocks[1].clickedOnDiamondButton = 
-        blocks[2].clickedOnGoldButton = 
-        blocks[2].clickedOnDiamondButton = false;
-        blocks = null;
+        foreach (var block in generatedCharaterBlocks)
+        {
+            block.tendencyPoint.gameObject.SetActive(true);
+            block.level.transform.parent.gameObject.SetActive(true);
+            block.jobLabel.gameObject.SetActive(true);
+            block.goldButton.gameObject.SetActive(true);
+            block.diamondButton.gameObject.SetActive(true);
+            block.name.gameObject.SetActive(true);
+            block.classImage.gameObject.SetActive(true);
+            block.tendencyPoint.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 30, showingPercent);
+            block.clickedOnGoldButton = 
+            block.clickedOnDiamondButton = false;
+        }
     }
 
     IEnumerator PlayParticleSystem(ParticleSystem particleSystem, float seconds)

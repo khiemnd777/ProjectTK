@@ -10,13 +10,10 @@ public class GeneratedBaseCharacter : BaseCharacter
     public BaseJob baseJob;
     public BaseClass baseClass;
     public GeneratedBaseCharacterData savedData;
-    [System.NonSerialized]
-    public BaseSkillHandler skillHandler;
 
     protected override void Awake()
     {
         base.Awake();
-        skillHandler = GetComponent<BaseSkillHandler>();
     }
 
     public override AvatarInfo GetAvatarInfo()

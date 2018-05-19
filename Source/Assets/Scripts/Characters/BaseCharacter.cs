@@ -10,7 +10,7 @@ public abstract class BaseCharacter : MonoBehaviour
     public AnimationClip idlingAnimation;
     public AnimationClip hurtingAnimation;
     public AnimationClip dodgingAnimation;
-
+    public Transform impactPoint;
     BaseSkillHandler _skillHandler;
     public BaseSkillHandler skillHandler
     {

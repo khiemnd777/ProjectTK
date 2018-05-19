@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1240829620156078}
   m_IsPrefabParent: 1
+--- !u!1 &1010951143094930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4553685569609204}
+  m_Layer: 0
+  m_Name: Skills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1206811241693466
 GameObject:
   m_ObjectHideFlags: 1
@@ -121,6 +136,22 @@ GameObject:
   - component: {fileID: 212589693560216044}
   m_Layer: 0
   m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1593228345787584
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4273345784637502}
+  - component: {fileID: 114653191308392794}
+  m_Layer: 0
+  m_Name: Mage Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,6 +313,7 @@ Transform:
   - {fileID: 4161738577151020}
   - {fileID: 224407209583036976}
   - {fileID: 4578431518055394}
+  - {fileID: 4553685569609204}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -356,6 +388,19 @@ Transform:
   m_Father: {fileID: 4161738577151020}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.2210001}
+--- !u!4 &4273345784637502
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1593228345787584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -2.5, y: 2.5, z: 2.5}
+  m_Children: []
+  m_Father: {fileID: 4553685569609204}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4286995630907066
 Transform:
   m_ObjectHideFlags: 1
@@ -397,6 +442,20 @@ Transform:
   - {fileID: 4014126678780864}
   m_Father: {fileID: 4286995630907066}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4553685569609204
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010951143094930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4273345784637502}
+  m_Father: {fileID: 4007127354411068}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4561949859530432
 Transform:
@@ -507,9 +566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ec5cc06697c4537b475d8270ec0eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Cyrus
+  characterName: Timotheus
   isDeath: 0
-  idlingAnimation: {fileID: 0}
+  idlingAnimation: {fileID: 7400000, guid: d7be6c7f8c8e74406a8dc644b564ad27, type: 2}
   hurtingAnimation: {fileID: 0}
   dodgingAnimation: {fileID: 0}
   elements:
@@ -557,6 +616,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114653191308392794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1593228345787584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f001bf4e6ef9140c48c8880467493b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 0
+  armorModifier: 0
+  animationClips:
+  - {fileID: 7400000, guid: 1093280f0490d44459685360846470c5, type: 2}
 --- !u!114 &114674022981116692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,7 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154bd10b7afba40c3a2e15869336cb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSkills: []
+  baseSkills:
+  - {fileID: 114653191308392794}
 --- !u!198 &198598796169224838
 ParticleSystem:
   m_ObjectHideFlags: 1

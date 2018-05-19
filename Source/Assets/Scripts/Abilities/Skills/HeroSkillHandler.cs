@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HeroSkillHandler : BaseSkillHandler
 {
+    public BaseSkill[] baseSkills;
+
     // Animator component
     Animator _animator;
     public Animator animator
@@ -16,8 +18,18 @@ public class HeroSkillHandler : BaseSkillHandler
     }
 
     BaseCharacter[] _opponents;
+    BaseCharacter currentOpponent;
+    BaseSkill currentSkill;
+    GeneratedBaseCharacter _baseCharacter;
+    Vector3 _originalPosition;
 
-	public override ActionInfo DoAction()
+    void Start()
+    {
+        _baseCharacter = GetComponent<GeneratedBaseCharacter>();
+        _originalPosition = transform.position;
+    }
+
+    public override ActionInfo DoAction()
     {
         _opponents = null;
         if (!baseSkills.Any())
@@ -25,7 +37,7 @@ public class HeroSkillHandler : BaseSkillHandler
             {
                 time = 0f
             };
-        var skill = baseSkills.FirstOrDefault();
+        var skill = currentSkill = baseSkills.FirstOrDefault();
         if (skill == null || skill is Object && skill.Equals(null))
             return new ActionInfo
             {
@@ -33,25 +45,33 @@ public class HeroSkillHandler : BaseSkillHandler
             };
         _opponents = skill.DetermineOpponents();
         // Execute the skill
-        skill.Execute(animator);
+        skill.Execute(animator, _baseCharacter);
         return new ActionInfo
         {
             time = skill.GetLength()
         };
     }
 
-    public override void MoveToOpponentEvent(int index, float length)
+    #region Animation Events
+    public override void EventMoveToOpponent(AnimationEvent animEvent)
     {
-        if(!_opponents.Any())
+        if (!_opponents.Any())
             return;
-        var opponent = _opponents[index];
-        if(opponent == null || opponent is Object && opponent.Equals(null))
+        currentOpponent = _opponents[animEvent.intParameter];
+        if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
             return;
-        TransformUtility.MoveToTarget(transform, transform.position, opponent.transform.position, length);
+        var frameRate = animEvent.animatorClipInfo.clip.frameRate;
+        var length = CalculatorUtility.TimeByFrame(animEvent.floatParameter, frameRate);
+        StartCoroutine(TransformUtility.MoveToTarget(transform, _originalPosition, currentOpponent.impactPoint.transform.position, length));
     }
 
-    public override void MoveBackEvent()
+    public override void EventMoveBack(AnimationEvent animEvent)
     {
-
+        if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
+            return;
+        var frameRate = animEvent.animatorClipInfo.clip.frameRate;
+        var length = CalculatorUtility.TimeByFrame(animEvent.floatParameter, frameRate);
+        StartCoroutine(TransformUtility.MoveToTarget(transform, currentOpponent.impactPoint.transform.position, _originalPosition, length));
     }
+    #endregion
 }

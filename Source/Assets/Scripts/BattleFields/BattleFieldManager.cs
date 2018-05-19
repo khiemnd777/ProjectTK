@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BattleFieldManager : MonoBehaviour
 {
-
     #region Singleton
 
     static BattleFieldManager manager;
@@ -44,6 +43,7 @@ public class BattleFieldManager : MonoBehaviour
     [Space]
     public MarathonRunner marathonRunner;
     public HeroPositions heroPositions;
+    public MonsterPositions monsterPositions;
 
     [System.NonSerialized]
     public CharacterField[] playerFields;
@@ -156,6 +156,7 @@ public class BattleFieldManager : MonoBehaviour
 
     void Init()
     {
+        // Add hero list
         var characterList = CharacterList.instance;
         if(!characterList.squadCharacters.Any())
             return;
@@ -163,6 +164,17 @@ public class BattleFieldManager : MonoBehaviour
         {
             marathonRunner.AddToRunner(character);
             heroPositions.AddToPosition(character);
+            // Active the animation layer by hero's job.
+            // This will be removed out because of temporary.
+            AnimatorUtility.ActiveLayer(character.animator, character.baseJob.label.ToString());
+        }
+        // Add monster list
+        var monsterList = MonsterList.instance;
+        if(!monsterList.monsters.Any())
+            return;
+        foreach(var monster in monsterList.monsters)
+        {
+            monsterPositions.AddToPosition(monster);
         }
     }
 

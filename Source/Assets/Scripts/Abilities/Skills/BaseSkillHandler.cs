@@ -4,19 +4,17 @@ using UnityEngine;
 
 public abstract class BaseSkillHandler : MonoBehaviour
 {
-    public BaseSkill[] baseSkills;
-
     public virtual ActionInfo DoAction()
     {
         return default(ActionInfo);
     }
 
-    public virtual void MoveToOpponentEvent(int index, float length)
+    public virtual void EventMoveToOpponent(AnimationEvent animationEvent)
     {
         
     }
 
-    public virtual void MoveBackEvent()
+    public virtual void EventMoveBack(AnimationEvent animEvent)
     {
 
     }
