@@ -3281,7 +3281,7 @@ AnimationClip:
     functionName: EventMoveToOpponent
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 26
+    floatParameter: 25
     intParameter: 0
     messageOptions: 0
   - time: 1.0833334
