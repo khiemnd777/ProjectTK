@@ -26,7 +26,6 @@ public class HeroSkillHandler : BaseSkillHandler
     void Start()
     {
         _baseCharacter = GetComponent<GeneratedBaseCharacter>();
-        _originalPosition = transform.position;
     }
 
     public override ActionInfo DoAction()
@@ -55,6 +54,7 @@ public class HeroSkillHandler : BaseSkillHandler
     #region Animation Events
     public override void EventMoveToOpponent(AnimationEvent animEvent)
     {
+        _originalPosition = transform.position;
         if (!_opponents.Any())
             return;
         currentOpponent = _opponents[animEvent.intParameter];
