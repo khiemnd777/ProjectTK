@@ -13,23 +13,14 @@ public abstract class BaseSkill : MonoBehaviour
 
     [System.NonSerialized]
     public BaseCharacter baseCharacter;
-    // Animator component
-    Animator _animator;
-    public Animator animator
-    {
-        get
-        {
-            return _animator ?? (_animator = GetComponent<Animator>());
-        }
-    }
 
     // Main function
-    public virtual void Execute()
+    public virtual void Execute(Animator animator)
     {
-        StartCoroutine(PlayingAnimationClips());
+        StartCoroutine(PlayingAnimationClips(animator));
     }
 
-    IEnumerator PlayingAnimationClips()
+    IEnumerator PlayingAnimationClips(Animator animator)
     {
         for (var i = 0; i < animationClips.Length; i++)
         {
@@ -43,20 +34,15 @@ public abstract class BaseSkill : MonoBehaviour
         }
     }
 
-    protected virtual void Start()
-    {
-
-    }
-
-    protected virtual void Update()
-    {
-
-    }
-
     public virtual float GetLength()
     {
         var totalLength = animationClips.Any() ? animationClips.Sum(x => x.length) : 0f;
         return totalLength;
+    }
+
+    public virtual BaseCharacter[] DetermineOpponents()
+    {
+        return null;
     }
 
     public virtual void TakeDamage(BaseCharacter[] baseCharacters)

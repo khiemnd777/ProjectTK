@@ -5,10 +5,21 @@ using UnityEngine;
 
 public class HeroSkillHandler : BaseSkillHandler
 {
-	public BaseSkill[] baseSkills;
+    // Animator component
+    Animator _animator;
+    public Animator animator
+    {
+        get
+        {
+            return _animator ?? (_animator = GetComponent<Animator>());
+        }
+    }
+
+    BaseCharacter[] _opponents;
 
 	public override ActionInfo DoAction()
     {
+        _opponents = null;
         if (!baseSkills.Any())
             return new ActionInfo
             {
@@ -20,11 +31,27 @@ public class HeroSkillHandler : BaseSkillHandler
             {
                 time = 0f
             };
+        _opponents = skill.DetermineOpponents();
         // Execute the skill
-        skill.Execute();
+        skill.Execute(animator);
         return new ActionInfo
         {
             time = skill.GetLength()
         };
+    }
+
+    public override void MoveToOpponentEvent(int index, float length)
+    {
+        if(!_opponents.Any())
+            return;
+        var opponent = _opponents[index];
+        if(opponent == null || opponent is Object && opponent.Equals(null))
+            return;
+        TransformUtility.MoveToTarget(transform, transform.position, opponent.transform.position, length);
+    }
+
+    public override void MoveBackEvent()
+    {
+
     }
 }
