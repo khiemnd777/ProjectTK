@@ -659,13 +659,13 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.55
+        time: 0.51666665
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.7
+        time: 0.68333334
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -681,17 +681,17 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 0}
-    - time: 0.55
+    - time: 0.53333336
       value: {fileID: 21300000, guid: 209add6e600aac7499cbbc8ca2702e73, type: 3}
-    - time: 0.5833333
+    - time: 0.56666666
       value: {fileID: 21300000, guid: 620f67872b62e4140a5c5be63b49a0ce, type: 3}
-    - time: 0.6166667
+    - time: 0.6
       value: {fileID: 21300000, guid: 2d2e3d578f310f241a342dd06ed73b8f, type: 3}
-    - time: 0.65
+    - time: 0.6333333
       value: {fileID: 21300000, guid: 188f4e59938213843b0244f81fa299a7, type: 3}
-    - time: 0.68333334
+    - time: 0.6666667
       value: {fileID: 21300000, guid: 0d6d11af2210ee84f8e832fae5c76f7a, type: 3}
-    - time: 1.0833334
+    - time: 1.1
       value: {fileID: 0}
     attribute: m_Sprite
     path: Effects/Slash
@@ -836,7 +836,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1
+    m_StopTime: 1.1166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -2758,13 +2758,13 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.55
+        time: 0.51666665
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.7
+        time: 0.68333334
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -3134,6 +3134,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 30
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6166667
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.9166667
