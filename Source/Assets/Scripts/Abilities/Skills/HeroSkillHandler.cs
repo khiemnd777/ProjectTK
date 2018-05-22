@@ -54,6 +54,11 @@ public class HeroSkillHandler : BaseSkillHandler
     #region Animation Events
     public override void EventMoveToOpponent(AnimationEvent animEvent)
     {
+        Event_MoveToOpponent(animEvent);
+    }
+
+    public override void Event_MoveToOpponent(AnimationEvent animEvent)
+    {
         _originalPosition = transform.position;
         if (!_opponents.Any())
             return;
@@ -66,6 +71,11 @@ public class HeroSkillHandler : BaseSkillHandler
     }
 
     public override void EventMoveBack(AnimationEvent animEvent)
+    {
+        Event_MoveBack(animEvent);
+    }
+
+    public override void Event_MoveBack(AnimationEvent animEvent)
     {
         if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
             return;

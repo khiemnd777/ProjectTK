@@ -10,6 +10,7 @@ public class BaseSkill : MonoBehaviour
     public float armorModifier;
     [Header("Animation Clips")]
     public AnimationClip[] animationClips;
+    public Transform[] activedEffects;
 
     // Main function
     public virtual void Execute(Animator animator, GeneratedBaseCharacter baseCharacter)
