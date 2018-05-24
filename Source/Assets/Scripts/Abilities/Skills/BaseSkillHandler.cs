@@ -41,6 +41,11 @@ public abstract class BaseSkillHandler : MonoBehaviour
 
     }
 
+    public virtual void Event_ActivateFxAtOpponent(AnimationEvent animEvent)
+    {
+        
+    }
+
     public virtual void Event_MoveFxToOpponent(AnimationEvent animEvent)
     {
 

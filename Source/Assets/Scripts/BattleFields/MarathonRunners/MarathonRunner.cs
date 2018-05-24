@@ -35,7 +35,7 @@ public class MarathonRunner : MonoBehaviour
                 continue;
             // Run for action
             yield return StartCoroutine(characterRunner.RunForAction());
-            Debug.Log(character.characterName + " is done yet");
+            // Debug.Log(character.characterName + " is done yet");
             // After successfully running on action, then restarting on reached road.
             StartSingleRunner(characterRunner);
         }
@@ -215,7 +215,7 @@ public class MarathonRunner : MonoBehaviour
 
     void OnSingleRunnerReachedCallback(CharacterRunner runner)
     {
-        Debug.Log(runner.baseCharacter.characterName + " has been in turn!");
+        // Debug.Log(runner.baseCharacter.characterName + " has been in turn!");
         StopSingleRunner(runner);
         characterRunnersInTurn.Enqueue(runner);
     }

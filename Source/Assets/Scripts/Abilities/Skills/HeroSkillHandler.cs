@@ -81,6 +81,18 @@ public class HeroSkillHandler : BaseSkillHandler
         currentSkill.ActivateEffect(animEvent.stringParameter, _baseCharacter);
     }
 
+    public override void Event_ActivateFxAtOpponent(AnimationEvent animEvent)
+    {
+        if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))
+            return;
+        if (!_opponents.Any())
+            return;
+        currentOpponent = _opponents[animEvent.intParameter];
+        if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
+            return;
+        currentSkill.ActivateEffect(animEvent.stringParameter, _baseCharacter, currentOpponent);
+    }
+
     public override void Event_MoveFxToOpponent(AnimationEvent animEvent)
     {
         if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))

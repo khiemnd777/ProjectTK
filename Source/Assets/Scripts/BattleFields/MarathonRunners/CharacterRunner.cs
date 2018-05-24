@@ -67,7 +67,7 @@ public class CharacterRunner : MonoBehaviour
         // Do an action
         var actionInfo = baseCharacter.skillHandler.DoAction();
         var runningTime = actionInfo.time; // It must be got by skill but 1 second is default
-        Debug.Log(baseCharacter.characterName + " executes skill in " + runningTime + "s");
+        // Debug.Log(baseCharacter.characterName + " executes skill in " + runningTime + "s");
         var percent = 0f;
         while (!IsCharacterDied() && percent <= 1f)
         {

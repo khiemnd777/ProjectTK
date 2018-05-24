@@ -17,11 +17,15 @@ public class BaseSkill : MonoBehaviour
         StartCoroutine(PlayingAnimationClips(animator, baseCharacter));
     }
 
-    public virtual void ActivateEffect(string effectName, GeneratedBaseCharacter baseCharacter)
+    public virtual void ActivateEffect(string effectName, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
     {
         var effect = GetEffect(effectName, baseCharacter);
         if(effect == null || effect is Object && effect.Equals(null))
             return;
+        if(target != null){
+            effect.transform.SetParent(null);
+            effect.transform.position = target.hitPoint.position;
+        }
         var animatorEffect = effect.GetComponent<Animator>();
         if(animatorEffect == null || animatorEffect is Object && animatorEffect.Equals(null)){
             Destroy(effect.gameObject);    
@@ -53,7 +57,7 @@ public class BaseSkill : MonoBehaviour
         for (var i = 0; i < animationClips.Length; i++)
         {
             var animClip = animationClips[i];
-            Debug.Log(animClip.name);
+            // Debug.Log(animClip.name);
             var frameRate = animClip.frameRate;
             var startTime = 0f;
             var endTime = animClip.length;
