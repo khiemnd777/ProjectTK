@@ -18,6 +18,17 @@ public class BaseSkill : MonoBehaviour
         StartCoroutine(PlayingAnimationClips(animator, baseCharacter));
     }
 
+    public virtual void ActivateEffect(string effectName, GeneratedBaseCharacter baseCharacter)
+    {
+        var effectPref = activedEffects.FirstOrDefault(x => effectName.Equals(x.name));
+        if(effectPref == null || effectPref is Object && effectPref.Equals(null))
+            return;
+        var effect = Instantiate<Transform>(effectPref, effectPref.transform.position, Quaternion.identity, baseCharacter.transform);
+        effect.gameObject.SetActive(true);
+        var animatorEffect = effect.GetComponent<Animator>();
+        Destroy(effect.gameObject, animatorEffect.GetCurrentAnimatorStateInfo(0).length);
+    }
+
     IEnumerator PlayingAnimationClips(Animator animator, GeneratedBaseCharacter baseCharacter)
     {
         for (var i = 0; i < animationClips.Length; i++)

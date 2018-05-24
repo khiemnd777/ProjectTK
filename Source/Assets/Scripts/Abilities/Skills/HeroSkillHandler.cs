@@ -83,5 +83,12 @@ public class HeroSkillHandler : BaseSkillHandler
         var length = CalculatorUtility.TimeByFrame(animEvent.floatParameter, frameRate);
         StartCoroutine(TransformUtility.MoveToTarget(transform, currentOpponent.impactPoint.transform.position, _originalPosition, length));
     }
+
+    public override void Event_ActivateEffect(AnimationEvent animEvent)
+    {
+        if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))
+            return;
+        currentSkill.ActivateEffect(animEvent.stringParameter, _baseCharacter);
+    }
     #endregion
 }

@@ -724,7 +724,7 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.56666666
+        time: 0.53333336
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -3045,7 +3045,7 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.56666666
+        time: 0.53333336
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -3409,6 +3409,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 30
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.55
+    functionName: Event_ActivateEffect
+    data: Fire Slash
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.9166667

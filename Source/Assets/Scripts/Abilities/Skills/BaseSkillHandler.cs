@@ -9,7 +9,7 @@ public abstract class BaseSkillHandler : MonoBehaviour
         return default(ActionInfo);
     }
 
-    [System.Obsolete]
+    [System.Obsolete("using Event_MoveToOpponent instead")]
     public virtual void EventMoveToOpponent(AnimationEvent animationEvent)
     {
         
@@ -20,13 +20,18 @@ public abstract class BaseSkillHandler : MonoBehaviour
         
     }
 
-    [System.Obsolete]
+    [System.Obsolete("using Event_MoveBack instead")]
     public virtual void EventMoveBack(AnimationEvent animEvent)
     {
 
     }
 
     public virtual void Event_MoveBack(AnimationEvent animEvent)
+    {
+
+    }
+
+    public virtual void Event_ActivateEffect(AnimationEvent animEvent)
     {
 
     }
