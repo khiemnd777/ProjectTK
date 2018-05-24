@@ -10,12 +10,12 @@ public abstract class BaseSkillHandler : MonoBehaviour
     }
 
     [System.Obsolete("using Event_MoveToOpponent instead")]
-    public virtual void EventMoveToOpponent(AnimationEvent animationEvent)
+    public virtual void EventMoveToOpponent(AnimationEvent animEvent)
     {
-        
+        Event_MoveToOpponent(animEvent);
     }
 
-    public virtual void Event_MoveToOpponent(AnimationEvent animationEvent)
+    public virtual void Event_MoveToOpponent(AnimationEvent animEvent)
     {
         
     }
@@ -23,7 +23,7 @@ public abstract class BaseSkillHandler : MonoBehaviour
     [System.Obsolete("using Event_MoveBack instead")]
     public virtual void EventMoveBack(AnimationEvent animEvent)
     {
-
+        Event_MoveBack(animEvent);
     }
 
     public virtual void Event_MoveBack(AnimationEvent animEvent)
@@ -32,6 +32,16 @@ public abstract class BaseSkillHandler : MonoBehaviour
     }
 
     public virtual void Event_ActivateEffect(AnimationEvent animEvent)
+    {
+        Event_ActivateFx(animEvent);
+    }
+
+    public virtual void Event_ActivateFx(AnimationEvent animEvent)
+    {
+
+    }
+
+    public virtual void Event_MoveFxToOpponent(AnimationEvent animEvent)
     {
 
     }

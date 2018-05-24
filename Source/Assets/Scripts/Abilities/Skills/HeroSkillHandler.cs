@@ -52,11 +52,6 @@ public class HeroSkillHandler : BaseSkillHandler
     }
 
     #region Animation Events
-    public override void EventMoveToOpponent(AnimationEvent animEvent)
-    {
-        Event_MoveToOpponent(animEvent);
-    }
-
     public override void Event_MoveToOpponent(AnimationEvent animEvent)
     {
         _originalPosition = transform.position;
@@ -70,11 +65,6 @@ public class HeroSkillHandler : BaseSkillHandler
         StartCoroutine(TransformUtility.MoveToTarget(transform, _originalPosition, currentOpponent.impactPoint.transform.position, length));
     }
 
-    public override void EventMoveBack(AnimationEvent animEvent)
-    {
-        Event_MoveBack(animEvent);
-    }
-
     public override void Event_MoveBack(AnimationEvent animEvent)
     {
         if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
@@ -84,11 +74,32 @@ public class HeroSkillHandler : BaseSkillHandler
         StartCoroutine(TransformUtility.MoveToTarget(transform, currentOpponent.impactPoint.transform.position, _originalPosition, length));
     }
 
-    public override void Event_ActivateEffect(AnimationEvent animEvent)
+    public override void Event_ActivateFx(AnimationEvent animEvent)
     {
         if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))
             return;
         currentSkill.ActivateEffect(animEvent.stringParameter, _baseCharacter);
+    }
+
+    public override void Event_MoveFxToOpponent(AnimationEvent animEvent)
+    {
+        if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))
+            return;
+        if (!_opponents.Any())
+            return;
+        currentOpponent = _opponents[animEvent.intParameter];
+        if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
+            return;
+        var fx = currentSkill.GetEffect(animEvent.stringParameter, _baseCharacter);
+        if(fx == null || fx is Object && fx.Equals(null))
+            return;
+        var fxAnim = fx.GetComponent<Animator>();
+        if(fxAnim == null || fxAnim is Object && fxAnim.Equals(null))
+            return;
+        var frameRate = animEvent.animatorClipInfo.clip.frameRate;
+        var length = CalculatorUtility.TimeByFrame(animEvent.floatParameter, frameRate);
+        StartCoroutine(TransformUtility.MoveToTarget(fx, fx.transform.position, currentOpponent.hitPoint.transform.position, length));
+        Destroy(fx.gameObject, length);
     }
     #endregion
 }

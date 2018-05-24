@@ -10,7 +10,6 @@ public class BaseSkill : MonoBehaviour
     public float armorModifier;
     [Header("Animation Clips")]
     public AnimationClip[] animationClips;
-    public Transform[] activedEffects;
 
     // Main function
     public virtual void Execute(Animator animator, GeneratedBaseCharacter baseCharacter)
@@ -20,13 +19,33 @@ public class BaseSkill : MonoBehaviour
 
     public virtual void ActivateEffect(string effectName, GeneratedBaseCharacter baseCharacter)
     {
-        var effectPref = activedEffects.FirstOrDefault(x => effectName.Equals(x.name));
-        if(effectPref == null || effectPref is Object && effectPref.Equals(null))
+        var effect = GetEffect(effectName, baseCharacter);
+        if(effect == null || effect is Object && effect.Equals(null))
             return;
+        var animatorEffect = effect.GetComponent<Animator>();
+        if(animatorEffect == null || animatorEffect is Object && animatorEffect.Equals(null)){
+            Destroy(effect.gameObject);    
+            return;
+        }
+        var fxStateInfo = animatorEffect.GetCurrentAnimatorStateInfo(0);
+        if(fxStateInfo.Equals(null)){
+            Destroy(effect.gameObject);    
+            return;
+        }
+        Destroy(effect.gameObject, fxStateInfo.length);
+    }
+
+    public virtual Transform GetEffect(string effectName, GeneratedBaseCharacter baseCharacter)
+    {
+        var effectContainer = baseCharacter.transform.Find("Effects");
+        if(effectContainer == null || effectContainer is Object && effectContainer.Equals(null))
+            return null;
+        var effectPref = effectContainer.Find(effectName);
+        if(effectPref == null || effectPref is Object && effectPref.Equals(null))
+            return null;
         var effect = Instantiate<Transform>(effectPref, effectPref.transform.position, Quaternion.identity, baseCharacter.transform);
         effect.gameObject.SetActive(true);
-        var animatorEffect = effect.GetComponent<Animator>();
-        Destroy(effect.gameObject, animatorEffect.GetCurrentAnimatorStateInfo(0).length);
+        return effect;
     }
 
     IEnumerator PlayingAnimationClips(Animator animator, GeneratedBaseCharacter baseCharacter)
