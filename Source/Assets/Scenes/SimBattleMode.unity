@@ -10761,7 +10761,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1240829620156078, guid: 6ba91a225899944e9be0f2a17707362e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114653191308392794, guid: 6ba91a225899944e9be0f2a17707362e,
         type: 2}
@@ -13334,7 +13334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1387502281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13637,6 +13637,54 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1393972228}
+--- !u!1 &1396104244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1819300469613862, guid: 2f54695ba5510574f914d3e721adc729,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1396104245}
+  - component: {fileID: 1396104246}
+  m_Layer: 0
+  m_Name: Swordman Normal Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1396104245
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4400854546319210, guid: 2f54695ba5510574f914d3e721adc729,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396104244}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: -2.499072, y: 2.5009274, z: 2.5009274}
+  m_Children: []
+  m_Father: {fileID: 1486586110}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1396104246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114356375045383360, guid: 2f54695ba5510574f914d3e721adc729,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396104244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f001bf4e6ef9140c48c8880467493b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 0
+  armorModifier: 0
+  effectName: Slash
+  animationClips:
+  - {fileID: 7400000, guid: 535fd6b639eaf8948b7eaad73ae60b13, type: 2}
 --- !u!1 &1421414798
 GameObject:
   m_ObjectHideFlags: 0
@@ -14328,6 +14376,7 @@ Transform:
   m_LocalScale: {x: -0.013475, y: 0.013475, z: 0.013475}
   m_Children:
   - {fileID: 1608441787}
+  - {fileID: 1396104245}
   m_Father: {fileID: 1387502282}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15164,7 +15213,7 @@ GameObject:
   - component: {fileID: 1608441787}
   - component: {fileID: 1608441788}
   m_Layer: 0
-  m_Name: Swordman Attack
+  m_Name: Swordman Fire Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15198,6 +15247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageModifier: 0
   armorModifier: 0
+  effectName: Fire Slash
   animationClips:
   - {fileID: 7400000, guid: 535fd6b639eaf8948b7eaad73ae60b13, type: 2}
 --- !u!1 &1620718133

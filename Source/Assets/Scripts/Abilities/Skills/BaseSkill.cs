@@ -9,6 +9,7 @@ public class BaseSkill : MonoBehaviour
     public float damageModifier;
     public float armorModifier;
     [Header("Animation Clips")]
+    public string effectName;
     public AnimationClip[] animationClips;
 
     // Main function
