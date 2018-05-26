@@ -1714,7 +1714,7 @@ AnimationClip:
     messageOptions: 0
   - time: 1.3
     functionName: Event_ActivateFxAtOpponent
-    data: Explode
+    data: Explode 1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

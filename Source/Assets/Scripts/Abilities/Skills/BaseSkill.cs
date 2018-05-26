@@ -8,36 +8,35 @@ public class BaseSkill : MonoBehaviour
     [Header("Modifiers")]
     public float damageModifier;
     public float armorModifier;
-    [Header("Animation Clips")]
+    [Space]
+    public Transform hitEffectPrefab;
     public string effectName;
     public AnimationClip[] animationClips;
 
     // Main function
-    public virtual void Execute(Animator animator, GeneratedBaseCharacter baseCharacter)
+    public virtual void Execute(Animator animator, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
     {
-        StartCoroutine(PlayingAnimationClips(animator, baseCharacter));
+        StartCoroutine(PlayingAnimationClips(animator, baseCharacter, target));
     }
 
-    public virtual void ActivateEffect(string effectName, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
+    public virtual Transform ActivateEffect(string effectName, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
     {
         var effect = GetEffect(effectName, baseCharacter);
         if(effect == null || effect is Object && effect.Equals(null))
-            return;
-        if(target != null){
-            effect.transform.SetParent(null);
-            effect.transform.position = target.hitPoint.position;
-        }
+            return null;
         var animatorEffect = effect.GetComponent<Animator>();
         if(animatorEffect == null || animatorEffect is Object && animatorEffect.Equals(null)){
             Destroy(effect.gameObject);    
-            return;
+            return effect;
         }
         var fxStateInfo = animatorEffect.GetCurrentAnimatorStateInfo(0);
         if(fxStateInfo.Equals(null)){
             Destroy(effect.gameObject);    
-            return;
+            return effect;
         }
+        StartCoroutine(GenerateHitPointEvent(animatorEffect, target));
         Destroy(effect.gameObject, fxStateInfo.length);
+        return effect;
     }
 
     public virtual Transform GetEffect(string effectName, GeneratedBaseCharacter baseCharacter)
@@ -53,7 +52,7 @@ public class BaseSkill : MonoBehaviour
         return effect;
     }
 
-    IEnumerator PlayingAnimationClips(Animator animator, GeneratedBaseCharacter baseCharacter)
+    IEnumerator PlayingAnimationClips(Animator animator, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
     {
         for (var i = 0; i < animationClips.Length; i++)
         {
@@ -68,6 +67,32 @@ public class BaseSkill : MonoBehaviour
             yield return new WaitForSeconds(length);
             animator.Play(baseCharacter.idlingAnimation.name, animLayerIndex, startTime / endTime);
         }
+    }
+
+    IEnumerator GenerateHitPointEvent(Animator effectAnim, BaseCharacter target)
+    {
+        if(effectAnim == null || effectAnim is Object && effectAnim.Equals(null))
+            yield break;
+        var animClipInfo = effectAnim.GetCurrentAnimatorClipInfo(0)[0];
+        var animEvents = animClipInfo.clip.events;
+        foreach(var animEvent in animEvents)
+        {
+            var time = animEvent.time;
+            Debug.Log(animEvent.functionName + " " + time);
+            CreateHitEffect(target);
+            yield return new WaitForSeconds(time);
+        }
+    }
+
+    void CreateHitEffect(BaseCharacter target)
+    {
+        if(target == null || target is Object && target.Equals(null))
+            return;
+        var hitFx = Instantiate<Transform>(hitEffectPrefab, target.hitPoint.transform.position, Quaternion.identity, target.hitPoint);
+        hitFx.gameObject.SetActive(true);
+        var hitFxAnim = hitFx.GetComponent<Animator>();
+        var length = hitFxAnim.GetCurrentAnimatorStateInfo(0).length;
+        Destroy(hitFxAnim.gameObject, length);
     }
 
     public virtual float GetLength()

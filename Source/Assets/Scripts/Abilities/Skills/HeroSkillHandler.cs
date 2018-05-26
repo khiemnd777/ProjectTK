@@ -44,7 +44,7 @@ public class HeroSkillHandler : BaseSkillHandler
             };
         _opponents = skill.DetermineOpponents();
         // Execute the skill
-        skill.Execute(animator, _baseCharacter);
+        skill.Execute(animator, _baseCharacter, _opponents[0]);
         return new ActionInfo
         {
             time = skill.GetLength()
@@ -78,8 +78,13 @@ public class HeroSkillHandler : BaseSkillHandler
     {
         if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))
             return;
+        if (!_opponents.Any())
+            return;
+        currentOpponent = _opponents[animEvent.intParameter];
+        if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
+            return;
         var evtFxName = string.IsNullOrEmpty(animEvent.stringParameter) ? currentSkill.effectName : animEvent.stringParameter;
-        currentSkill.ActivateEffect(evtFxName, _baseCharacter);
+        currentSkill.ActivateEffect(evtFxName, _baseCharacter, currentOpponent);
     }
 
     public override void Event_ActivateFxAtOpponent(AnimationEvent animEvent)
@@ -92,7 +97,11 @@ public class HeroSkillHandler : BaseSkillHandler
         if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
             return;
         var evtFxName = string.IsNullOrEmpty(animEvent.stringParameter) ? currentSkill.effectName : animEvent.stringParameter;
-        currentSkill.ActivateEffect(evtFxName, _baseCharacter, currentOpponent);
+        var fx = currentSkill.ActivateEffect(evtFxName, _baseCharacter, currentOpponent);
+        if(currentOpponent != null){
+            fx.SetParent(null);
+            fx.position = currentOpponent.hitPoint.position;
+        }
     }
 
     public override void Event_MoveFxToOpponent(AnimationEvent animEvent)
@@ -106,9 +115,6 @@ public class HeroSkillHandler : BaseSkillHandler
             return;
         var fx = currentSkill.GetEffect(animEvent.stringParameter, _baseCharacter);
         if(fx == null || fx is Object && fx.Equals(null))
-            return;
-        var fxAnim = fx.GetComponent<Animator>();
-        if(fxAnim == null || fxAnim is Object && fxAnim.Equals(null))
             return;
         var frameRate = animEvent.animatorClipInfo.clip.frameRate;
         var length = CalculatorUtility.TimeByFrame(animEvent.floatParameter, frameRate);
