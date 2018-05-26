@@ -5,6 +5,7 @@ public abstract class BaseCharacter : MonoBehaviour
     [System.NonSerialized]
     public int id;
     public string characterName;
+    public BaseJob baseJob;
     public bool isDeath;
     [Header("Default Animations")]
     public AnimationClip idlingAnimation;

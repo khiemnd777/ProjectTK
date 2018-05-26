@@ -175,6 +175,7 @@ public class BattleFieldManager : MonoBehaviour
         foreach(var monster in monsterList.monsters)
         {
             monsterPositions.AddToPosition(monster);
+            AnimatorUtility.ActiveLayer(monster.animator, monster.baseJob.label.ToString());
         }
     }
 

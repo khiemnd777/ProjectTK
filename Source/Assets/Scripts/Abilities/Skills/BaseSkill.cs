@@ -81,7 +81,16 @@ public class BaseSkill : MonoBehaviour
             Debug.Log(animEvent.functionName + " " + time);
             CreateHitEffect(target);
             yield return new WaitForSeconds(time);
+            StartCoroutine(ActiveHurtAnimation(target));
         }
+    }
+
+    public IEnumerator ActiveHurtAnimation(BaseCharacter target)
+    {
+        var animLayerIndex = target.animator.GetLayerIndex(target.baseJob.label.ToString());
+        target.animator.Play(target.hurtingAnimation.name, animLayerIndex);
+        yield return new WaitForSeconds(target.hurtingAnimation.length);
+        target.animator.Play(target.idlingAnimation.name, animLayerIndex);
     }
 
     void CreateHitEffect(BaseCharacter target)

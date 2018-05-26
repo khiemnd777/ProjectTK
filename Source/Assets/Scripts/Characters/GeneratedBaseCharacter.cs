@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class GeneratedBaseCharacter : BaseCharacter
 {
     public BaseGeneratedCharacterElement elements;
-    public BaseJob baseJob;
     public BaseClass baseClass;
     public GeneratedBaseCharacterData savedData;
 

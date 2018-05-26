@@ -11,7 +11,7 @@ public enum ClassLabel
 
 public enum JobLabel
 {
-    Swordman, Archer, Mage, Healer
+    Swordman, Archer, Mage, Healer, Monster
 }
 
 public class CharacterGenerator : MonoBehaviour

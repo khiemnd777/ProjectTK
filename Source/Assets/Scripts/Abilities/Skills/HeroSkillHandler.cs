@@ -104,6 +104,18 @@ public class HeroSkillHandler : BaseSkillHandler
         }
     }
 
+    public void Event_ActiveHurtAnimation(AnimationEvent animEvent)
+    {
+        if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))
+            return;
+        if (!_opponents.Any())
+            return;
+        currentOpponent = _opponents[animEvent.intParameter];
+        if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
+            return;
+        StartCoroutine(currentSkill.ActiveHurtAnimation(currentOpponent));
+    }
+
     public override void Event_MoveFxToOpponent(AnimationEvent animEvent)
     {
         if(currentSkill == null || currentSkill is Object && currentSkill.Equals(null))
