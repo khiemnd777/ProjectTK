@@ -34,7 +34,7 @@ public class BaseSkill : MonoBehaviour
             Destroy(effect.gameObject);    
             return effect;
         }
-        StartCoroutine(GenerateHitPointEvent(animatorEffect, target));
+        StartCoroutine(GenerateHitPointEvent(animatorEffect, baseCharacter, target));
         Destroy(effect.gameObject, fxStateInfo.length);
         return effect;
     }
@@ -69,7 +69,7 @@ public class BaseSkill : MonoBehaviour
         }
     }
 
-    IEnumerator GenerateHitPointEvent(Animator effectAnim, BaseCharacter target)
+    IEnumerator GenerateHitPointEvent(Animator effectAnim, GeneratedBaseCharacter baseCharacter, BaseCharacter target)
     {
         if(effectAnim == null || effectAnim is Object && effectAnim.Equals(null))
             yield break;
@@ -79,7 +79,7 @@ public class BaseSkill : MonoBehaviour
         {
             var time = animEvent.time;
             Debug.Log(animEvent.functionName + " " + time);
-            CreateHitEffect(target);
+            CreateHitEffect(baseCharacter, target);
             yield return new WaitForSeconds(time);
             StartCoroutine(ActiveHurtAnimation(target));
         }
@@ -93,12 +93,13 @@ public class BaseSkill : MonoBehaviour
         target.animator.Play(target.idlingAnimation.name, animLayerIndex);
     }
 
-    void CreateHitEffect(BaseCharacter target)
+    void CreateHitEffect(GeneratedBaseCharacter baseCharacter, BaseCharacter target)
     {
         if(target == null || target is Object && target.Equals(null))
             return;
-        var hitFx = Instantiate<Transform>(hitEffectPrefab, target.hitPoint.transform.position, Quaternion.identity, target.hitPoint);
+        var hitFx = Instantiate<Transform>(hitEffectPrefab, target.hitPoint.transform.position, Quaternion.identity, baseCharacter.transform);
         hitFx.gameObject.SetActive(true);
+        hitFx.transform.position =  target.hitPoint.position;
         var hitFxAnim = hitFx.GetComponent<Animator>();
         var length = hitFxAnim.GetCurrentAnimatorStateInfo(0).length;
         Destroy(hitFxAnim.gameObject, length);

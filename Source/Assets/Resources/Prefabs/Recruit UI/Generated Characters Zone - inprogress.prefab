@@ -1239,6 +1239,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1543729993663328
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4326376205288842}
+  m_Layer: 0
+  m_Name: Skills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1543947541956818
 GameObject:
   m_ObjectHideFlags: 1
@@ -1315,6 +1330,7 @@ GameObject:
   - component: {fileID: 4011029369217192}
   - component: {fileID: 95262435365817952}
   - component: {fileID: 114320089794595464}
+  - component: {fileID: 114665407957138782}
   - component: {fileID: 114243308250699432}
   m_Layer: 0
   m_Name: Generated Base Character
@@ -2153,6 +2169,7 @@ Transform:
   - {fileID: 4387145359384144}
   - {fileID: 224483671493506170}
   - {fileID: 4271616322468506}
+  - {fileID: 4326376205288842}
   m_Father: {fileID: 224455996168212150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2461,6 +2478,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4462862167515284}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4326376205288842
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543729993663328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4011029369217192}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4345765111397282
 Transform:
@@ -4585,6 +4615,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ec5cc06697c4537b475d8270ec0eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: 
+  baseJob:
+    label: 0
+  isDeath: 0
+  idlingAnimation: {fileID: 0}
+  hurtingAnimation: {fileID: 0}
+  dodgingAnimation: {fileID: 0}
+  impactPoint: {fileID: 0}
+  hitPoint: {fileID: 0}
   elements:
     head: {fileID: 212935486889114092}
     eye: {fileID: 212632623146163028}
@@ -4596,13 +4635,11 @@ MonoBehaviour:
     rightWeapon: {fileID: 212883126795964214}
     leftLeg: {fileID: 212976407586723466}
     rightLeg: {fileID: 212590984313385282}
-  baseJob:
-    label: 0
   baseClass:
     level: 9
     pointPerLevel: 29
     label: 2
-  isDeath: 0
+  savedData: {fileID: 0}
 --- !u!114 &114329102598497332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4614,6 +4651,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ec5cc06697c4537b475d8270ec0eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: 
+  baseJob:
+    label: 0
+  isDeath: 0
+  idlingAnimation: {fileID: 0}
+  hurtingAnimation: {fileID: 0}
+  dodgingAnimation: {fileID: 0}
+  impactPoint: {fileID: 0}
+  hitPoint: {fileID: 0}
   elements:
     head: {fileID: 212298027871987780}
     eye: {fileID: 212148886891134324}
@@ -4625,13 +4671,11 @@ MonoBehaviour:
     rightWeapon: {fileID: 212853446176849700}
     leftLeg: {fileID: 212473456153885232}
     rightLeg: {fileID: 212651838869554218}
-  baseJob:
-    label: 0
   baseClass:
     level: 9
     pointPerLevel: 29
     label: 2
-  isDeath: 0
+  savedData: {fileID: 0}
 --- !u!114 &114331166980197438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5201,6 +5245,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114665407957138782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1557398509077424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154bd10b7afba40c3a2e15869336cb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSkills: []
 --- !u!114 &114683230211202996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5371,6 +5427,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ec5cc06697c4537b475d8270ec0eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: 
+  baseJob:
+    label: 0
+  isDeath: 0
+  idlingAnimation: {fileID: 0}
+  hurtingAnimation: {fileID: 0}
+  dodgingAnimation: {fileID: 0}
+  impactPoint: {fileID: 0}
+  hitPoint: {fileID: 0}
   elements:
     head: {fileID: 212392215852914122}
     eye: {fileID: 212355019381587782}
@@ -5382,13 +5447,11 @@ MonoBehaviour:
     rightWeapon: {fileID: 212297419583669736}
     leftLeg: {fileID: 212688490769649662}
     rightLeg: {fileID: 212758105608078882}
-  baseJob:
-    label: 0
   baseClass:
     level: 9
     pointPerLevel: 29
     label: 2
-  isDeath: 0
+  savedData: {fileID: 0}
 --- !u!114 &114783370293741274
 MonoBehaviour:
   m_ObjectHideFlags: 1

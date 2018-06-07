@@ -18,9 +18,11 @@ public class MonsterPosition : MonoBehaviour
     {
         _monster = monster;
         var monsterTransform = monster.transform;
+        var spawnPoint = monsterTransform.Find("Spawn Point");
         monsterTransform.SetParent(transform);
-        monsterTransform.localPosition = Vector3.zero;
-        monsterTransform.localScale = Vector3.one * .375f;
+        monsterTransform.localPosition = new Vector3(0f, -spawnPoint.localPosition.y, 0f);
+        // monsterTransform.localPosition = Vector3.zero;
+        monsterTransform.localScale = monsterTransform.localScale;
         monsterTransform.gameObject.SetActive(true);
     }
 }
