@@ -78,7 +78,6 @@ public class BaseSkill : MonoBehaviour
         foreach(var animEvent in animEvents)
         {
             var time = animEvent.time;
-            Debug.Log(animEvent.functionName + " " + time);
             CreateHitEffect(baseCharacter, target);
             yield return new WaitForSeconds(time);
             StartCoroutine(ActiveHurtAnimation(target));
