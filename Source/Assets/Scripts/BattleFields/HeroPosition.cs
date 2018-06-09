@@ -20,7 +20,7 @@ public class HeroPosition : MonoBehaviour
         var heroTransform = hero.transform;
         heroTransform.SetParent(transform);
         heroTransform.localPosition = Vector3.zero;
-        heroTransform.localScale = new Vector3(-.375f, .375f, .375f);
+        heroTransform.localScale = new Vector3(-.3f, .3f, .3f);
         heroTransform.gameObject.SetActive(true);
     }
 }
