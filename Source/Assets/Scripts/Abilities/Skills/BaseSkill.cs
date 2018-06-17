@@ -14,12 +14,12 @@ public class BaseSkill : MonoBehaviour
     public AnimationClip[] animationClips;
 
     // Main function
-    public virtual void Execute(Animator animator, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
+    public virtual void Execute(Animator animator, BaseCharacter baseCharacter, BaseCharacter target = null)
     {
         StartCoroutine(PlayingAnimationClips(animator, baseCharacter, target));
     }
 
-    public virtual Transform ActivateEffect(string effectName, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
+    public virtual Transform ActivateEffect(string effectName, BaseCharacter baseCharacter, BaseCharacter target = null)
     {
         var effect = GetEffect(effectName, baseCharacter);
         if(effect == null || effect is Object && effect.Equals(null))
@@ -39,7 +39,7 @@ public class BaseSkill : MonoBehaviour
         return effect;
     }
 
-    public virtual Transform GetEffect(string effectName, GeneratedBaseCharacter baseCharacter)
+    public virtual Transform GetEffect(string effectName, BaseCharacter baseCharacter)
     {
         var effectContainer = baseCharacter.transform.Find("Effects");
         if(effectContainer == null || effectContainer is Object && effectContainer.Equals(null))
@@ -52,7 +52,7 @@ public class BaseSkill : MonoBehaviour
         return effect;
     }
 
-    IEnumerator PlayingAnimationClips(Animator animator, GeneratedBaseCharacter baseCharacter, BaseCharacter target = null)
+    IEnumerator PlayingAnimationClips(Animator animator, BaseCharacter baseCharacter, BaseCharacter target = null)
     {
         for (var i = 0; i < animationClips.Length; i++)
         {
@@ -69,7 +69,7 @@ public class BaseSkill : MonoBehaviour
         }
     }
 
-    IEnumerator GenerateHitPointEvent(Animator effectAnim, GeneratedBaseCharacter baseCharacter, BaseCharacter target)
+    IEnumerator GenerateHitPointEvent(Animator effectAnim, BaseCharacter baseCharacter, BaseCharacter target)
     {
         if(effectAnim == null || effectAnim is Object && effectAnim.Equals(null))
             yield break;
@@ -92,7 +92,7 @@ public class BaseSkill : MonoBehaviour
         target.animator.Play(target.idlingAnimation.name, animLayerIndex);
     }
 
-    void CreateHitEffect(GeneratedBaseCharacter baseCharacter, BaseCharacter target)
+    void CreateHitEffect(BaseCharacter baseCharacter, BaseCharacter target)
     {
         if(target == null || target is Object && target.Equals(null))
             return;

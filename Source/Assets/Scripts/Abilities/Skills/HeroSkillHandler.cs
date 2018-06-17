@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class HeroSkillHandler : BaseSkillHandler
 {
-    public BaseSkill[] baseSkills;
-
     // Animator component
     Animator _animator;
     public Animator animator

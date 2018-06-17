@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class BaseSkillHandler : MonoBehaviour
 {
+    public BaseSkill[] baseSkills;
+
     public virtual ActionInfo DoAction()
     {
         return default(ActionInfo);
