@@ -12,8 +12,6 @@ public class CharacterRunner : MonoBehaviour
     [Range(1f, 2f)]
     public float deltaScale = 1.25f;
     [Space]
-    [System.Obsolete]
-    public Character character;
     [System.NonSerialized]
     public BaseCharacter baseCharacter;
     #endregion
