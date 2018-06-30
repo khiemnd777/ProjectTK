@@ -95,11 +95,12 @@ public class HeroSkillHandler : BaseSkillHandler
         if (currentOpponent == null || currentOpponent is Object && currentOpponent.Equals(null))
             return;
         var evtFxName = string.IsNullOrEmpty(animEvent.stringParameter) ? currentSkill.effectName : animEvent.stringParameter;
-        var fx = currentSkill.ActivateEffect(evtFxName, _baseCharacter, currentOpponent);
-        if(currentOpponent != null){
-            fx.SetParent(null);
-            fx.position = currentOpponent.hitPoint.position;
-        }
+        currentSkill.ActivateEffect(evtFxName, _baseCharacter, currentOpponent, (_fx) => {
+            if(currentOpponent != null){
+                _fx.SetParent(null);
+                _fx.position = currentOpponent.hitPoint.position;
+            }
+        });
     }
 
     public void Event_ActiveHurtAnimation(AnimationEvent animEvent)
@@ -128,8 +129,9 @@ public class HeroSkillHandler : BaseSkillHandler
             return;
         var frameRate = animEvent.animatorClipInfo.clip.frameRate;
         var length = CalculatorUtility.TimeByFrame(animEvent.floatParameter, frameRate);
-        StartCoroutine(TransformUtility.MoveToTarget(fx, fx.transform.position, currentOpponent.hitPoint.transform.position, length));
-        Destroy(fx.gameObject, length);
+        StartCoroutine(TransformUtility.MoveToTarget(fx, fx.transform.position, currentOpponent.hitPoint.transform.position, length, () => {
+            Destroy(fx.gameObject);
+        }));
     }
     #endregion
 }

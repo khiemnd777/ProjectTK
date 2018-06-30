@@ -19,24 +19,26 @@ public class BaseSkill : MonoBehaviour
         StartCoroutine(PlayingAnimationClips(animator, baseCharacter, target));
     }
 
-    public virtual Transform ActivateEffect(string effectName, BaseCharacter baseCharacter, BaseCharacter target = null)
+    public virtual void ActivateEffect(string effectName, BaseCharacter baseCharacter, BaseCharacter target = null, System.Action<Transform> callback = null)
     {
         var effect = GetEffect(effectName, baseCharacter);
         if(effect == null || effect is Object && effect.Equals(null))
-            return null;
+            return;
         var animatorEffect = effect.GetComponent<Animator>();
         if(animatorEffect == null || animatorEffect is Object && animatorEffect.Equals(null)){
             Destroy(effect.gameObject);    
-            return effect;
+            return;
         }
         var fxStateInfo = animatorEffect.GetCurrentAnimatorStateInfo(0);
         if(fxStateInfo.Equals(null)){
             Destroy(effect.gameObject);    
-            return effect;
+            return;
         }
         StartCoroutine(GenerateHitPointEvent(animatorEffect, baseCharacter, target));
+        if(callback != null){
+            callback(effect);
+        }
         Destroy(effect.gameObject, fxStateInfo.length);
-        return effect;
     }
 
     public virtual Transform GetEffect(string effectName, BaseCharacter baseCharacter)
@@ -87,6 +89,8 @@ public class BaseSkill : MonoBehaviour
     public IEnumerator ActiveHurtAnimation(BaseCharacter target)
     {
         var animLayerIndex = target.animator.GetLayerIndex(target.baseJob.label.ToString());
+        if(animLayerIndex == -1)
+            yield break;
         target.animator.Play(target.hurtingAnimation.name, animLayerIndex);
         yield return new WaitForSeconds(target.hurtingAnimation.length);
         target.animator.Play(target.idlingAnimation.name, animLayerIndex);

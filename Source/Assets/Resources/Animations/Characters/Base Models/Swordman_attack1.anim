@@ -2863,6 +2863,6 @@ AnimationClip:
     functionName: Event_MoveBack
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 10
+    floatParameter: 9
     intParameter: 0
     messageOptions: 0
